@@ -33,6 +33,7 @@ body
     background-color: #4CAF50;
     color: white;
 }
+
 .page 
 {
   display: flex;
@@ -54,6 +55,10 @@ body
 
 .content 
 {
-  margin:10px 0px 0px 0px;
-  flex-grow : 1;
+  flex: 1 1 auto;
+}
+
+iframe
+{
+  width: 100%;
 }
