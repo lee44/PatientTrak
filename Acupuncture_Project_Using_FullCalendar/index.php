@@ -28,7 +28,7 @@
       {
         var title, description;
         title = $("#title").val(); 
-        description = $("#description").val();
+        description = $("#description").val() || '';
         
         if (title) 
         { 
@@ -37,7 +37,7 @@
             url: 'add_events.php',
             data: 'title=' + title + '&start=' + starting + '&end=' + ending + '&description=' + description,
             type: "POST",
-            success: function (json){}
+            success: function (json){$('#calendar').fullCalendar( 'refetchEvents' )}
           });
           // $('#calendar').fullCalendar('renderEvent',
           // {
@@ -48,10 +48,8 @@
           // },
           // true // make the event "stick"
           // );
-          $('#calendar').fullCalendar( 'refetchEvents' )     
-        }
-        document.getElementById("appointmentForm").reset();
-        j1121( "#dialog-form" ).dialog("close");
+          j1121( "#dialog-form" ).dialog("close");     
+        }        
       }   
 
       var dialog = j1121( "#dialog-form" ).dialog(
@@ -87,6 +85,7 @@
         select: function (start, end, allDay) 
         {
     	    passTime(start,end,allDay);
+          document.getElementById("appointmentForm").reset();
     	    dialog.dialog( "open" );    
           calendar.fullCalendar('unselect'); // exits out of the select state
         },
