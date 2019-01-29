@@ -62,7 +62,12 @@
 	      {
 	        "Add Event": addEvent,
 	        Cancel: function(){dialog.dialog( "close" );}
-	      }
+	      },
+        open: function(){
+            jQuery('.ui-widget-overlay').bind('click',function(){
+                jQuery('#dialog-form').dialog('close');
+            })
+        }
       });
 
       var calendar = $('#calendar').fullCalendar(
