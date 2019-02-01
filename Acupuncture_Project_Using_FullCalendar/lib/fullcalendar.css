@@ -554,7 +554,7 @@ tr:first-child > td > .fc-day-grid-event {
 /* "more" link that represents hidden events */
 a.fc-more {
   margin: 1px 3px;
-  font-size: .85em;
+  font-size: 1.3em;
   cursor: pointer;
   text-decoration: none; }
 
@@ -572,7 +572,7 @@ a.fc-more:hover {
 
 .fc-more-popover {
   z-index: 2;
-  width: 220px; }
+  width: 269px; }
 
 .fc-more-popover .fc-event-container {
   padding: 10px; }

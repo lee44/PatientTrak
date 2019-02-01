@@ -117,6 +117,7 @@
       	contentHeight: $(window).height()*0.83,
       	titleRangeSeparator: " - ",
         minTime: "07:00:00", maxTime: "24:00:00",
+        allDaySlot:false,
         editable: true,
         header: 
         {
@@ -131,11 +132,20 @@
         
         select: function (start, end, allDay) 
         {
-    	    starting = fmt(start); ending = fmt(end); isallDay = allDay;
-          document.getElementById("appointmentForm").reset();
-          $("#description").val('');
-    	    dialog.dialog( "open" );    
-          calendar.fullCalendar('unselect'); // exits out of the select state
+          var view = $('#calendar').fullCalendar('getView');
+          if(view.name == 'month')
+          {
+            $('#calendar').fullCalendar('changeView', 'agendaDay');
+            $('#calendar').fullCalendar('gotoDate', start)
+          }
+          else
+          {
+      	    starting = fmt(start); ending = fmt(end); isallDay = allDay;
+            document.getElementById("appointmentForm").reset();
+            $("#description").val('');
+      	    dialog.dialog( "open" );    
+            //calendar.fullCalendar('unselect'); // exits out of the select state
+          }
         },
 
         eventRender: function (event, element, view) 
@@ -144,11 +154,6 @@
           {
             $(element).find('.fc-time').html(moment(event.start).format('h:mm') + '-' + moment(event.end).format('h:mma') + ':');
           }
-
-          if (event.allDay === 'true') 
-            event.allDay = true;
-          else 
-            event.allDay = false;
         },
 
         eventDrop: function (event, delta) 
@@ -212,7 +217,7 @@
             <h3>Title</h3>
             <input type="text" name="title" id="title" class="text ui-widget-content ui-corner-all">
             <h3>Description</h3>
-            <textarea id = "description" form="usrform" class="text ui-widget-content ui-corner-all" rows="6" cols="37"></textarea>
+            <textarea id = "description" form="usrform" class="text ui-widget-content ui-corner-all" rows="6" cols="37" style="resize:none"></textarea>
          </form>
       </div>
 <!-- Edit/Delete Existing Modal Dialog -->
@@ -221,7 +226,7 @@
             <h3>Title</h3>
             <input type="text" name="edit_delete_title" id="title2" class="text ui-widget-content ui-corner-all">
             <h3>Description</h3>
-            <textarea id = "edit_delete_description" form="usrform" class="text ui-widget-content ui-corner-all" rows="6" cols="37"></textarea>
+            <textarea id = "edit_delete_description" form="usrform" class="text ui-widget-content ui-corner-all" rows="6" cols="37" style="resize:none"></textarea>
          </form>
       </div>
 		</div> 
