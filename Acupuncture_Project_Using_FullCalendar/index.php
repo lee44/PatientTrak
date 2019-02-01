@@ -20,10 +20,28 @@
     <script>
     $(document).ready(function () 
     {
-      var starting, ending, isallDay;
+      var starting, ending, isallDay, eventObject;
 
       function fmt(date) {return date.format("YYYY-MM-DD HH:mm");}
-      function passTime(start,end,allDay){starting = fmt(start); ending = fmt(end); isallDay = allDay;}
+            
+      var dialog = j1121( "#dialog-form" ).dialog(
+      {
+	      autoOpen: false,
+	      height: 400,
+	      width: 350,
+	      modal: true,
+	      buttons: 
+	      { 
+	        "Add Event": addEvent,
+	        Cancel: function(){dialog.dialog( "close" );}
+	      },
+        open: function(){
+            jQuery('.ui-widget-overlay').bind('click',function(){
+                jQuery('#dialog-form').dialog('close');
+            })
+        }
+      });
+
       function addEvent()
       {
         var title, description;
@@ -39,42 +57,66 @@
             type: "POST",
             success: function (json){$('#calendar').fullCalendar( 'refetchEvents' )}
           });
-          // $('#calendar').fullCalendar('renderEvent',
-          // {
-          //   title: title,
-          //   start: starting,
-          //   end: ending,
-          //   allDay: isallDay
-          // },
-          // true // make the event "stick"
-          // );
           j1121( "#dialog-form" ).dialog("close");     
         }        
       }   
 
-      var dialog = j1121( "#dialog-form" ).dialog(
+      var dialog2 = j1121( "#dialog-form2" ).dialog(
       {
-	      autoOpen: false,
-	      height: 400,
-	      width: 350,
-	      modal: true,
-	      buttons: 
-	      {
-	        "Add Event": addEvent,
-	        Cancel: function(){dialog.dialog( "close" );}
-	      },
+        autoOpen: false,
+        height: 400,
+        width: 350,
+        modal: true,
+        buttons: 
+        { 
+          "Update": updateEvent,
+          "Delete": deleteEvent,
+          Cancel: function(){dialog2.dialog( "close" );}
+        },
         open: function(){
             jQuery('.ui-widget-overlay').bind('click',function(){
-                jQuery('#dialog-form').dialog('close');
+                jQuery('#dialog-form2').dialog('close');
             })
         }
       });
+
+      function updateEvent()
+      {
+        var title, description, start, end;
+        start  = fmt(eventObject.start);
+        end  = fmt(eventObject.end);
+        title = $("#title2").val(); 
+        description = $("#edit_delete_description").val() || '';
+        
+        if (title) 
+        {
+          $.ajax(
+            {
+              url: 'update_events.php',
+              data: '&title=' + title + '&start=' + start + '&end=' + end + '&id=' + eventObject.id + '&description=' + description,
+              type: "POST",
+              success: function (json){$('#calendar').fullCalendar( 'refetchEvents' )}
+            });
+          j1121( "#dialog-form2" ).dialog("close");
+        }
+      }
+      function deleteEvent()
+      {
+        $.ajax(
+        {
+          type: "POST",
+          url: "delete_event.php",
+          data: "&id=" + eventObject.id,
+          success: function (json) { $('#calendar').fullCalendar('removeEvents', eventObject.id); }
+        });
+        j1121( "#dialog-form2" ).dialog("close");
+      }
 
       var calendar = $('#calendar').fullCalendar(
       {
       	contentHeight: $(window).height()*0.83,
       	titleRangeSeparator: " - ",
-        minTime: "07:00:00", maxTime: "21:00:00",
+        minTime: "07:00:00", maxTime: "24:00:00",
         editable: true,
         header: 
         {
@@ -89,8 +131,9 @@
         
         select: function (start, end, allDay) 
         {
-    	    passTime(start,end,allDay);
+    	    starting = fmt(start); ending = fmt(end); isallDay = allDay;
           document.getElementById("appointmentForm").reset();
+          $("#description").val('');
     	    dialog.dialog( "open" );    
           calendar.fullCalendar('unselect'); // exits out of the select state
         },
@@ -100,7 +143,6 @@
           if(view.name == 'month')
           {
             $(element).find('.fc-time').html(moment(event.start).format('h:mm') + '-' + moment(event.end).format('h:mma') + ':');
-
           }
 
           if (event.allDay === 'true') 
@@ -124,20 +166,10 @@
 
         eventClick: function (event) 
         {
-          console.log(event.id);
-          var decision = confirm("Do you want to remove event?");
-          if (decision) 
-          {
-            $.ajax({
-              type: "POST",
-              url: "delete_event.php",
-              data: "&id=" + event.id,
-              success: function (json) 
-              {
-                $('#calendar').fullCalendar('removeEvents', event.id);
-              }
-            });
-          }
+          $("#title2").val(event.title);
+          $("#edit_delete_description").val(event.description);
+          eventObject = event;
+          dialog2.dialog( "open" );
         },
 
         eventResize: function (event) 
@@ -152,6 +184,7 @@
             success: function (json){}
           });
         }
+
       });
     });
   </script>  
@@ -170,19 +203,28 @@
 				</div>
 			</div>
 
-			<div id="dialog-form" title="Create Appointment">
-			  <form id = "appointmentForm">
-			      <h3>Title</h3>
-			      <input type="text" name="title" id="title" class="text ui-widget-content ui-corner-all">
-			      <h3>Description</h3>
-			      <input type="text" name="description" id="description" class="text ui-widget-content ui-corner-all">
-			   </form>
-			</div>
-		
 			<div class='page content'>
 				<div id="calendar"></div>
 			</div>
-		</div>
+<!-- Appointment Modal Dialog -->
+      <div id="dialog-form" title="Create Appointment">
+        <form id = "appointmentForm">
+            <h3>Title</h3>
+            <input type="text" name="title" id="title" class="text ui-widget-content ui-corner-all">
+            <h3>Description</h3>
+            <textarea id = "description" form="usrform" class="text ui-widget-content ui-corner-all" rows="6" cols="37"></textarea>
+         </form>
+      </div>
+<!-- Edit/Delete Existing Modal Dialog -->
+      <div id="dialog-form2" title="Edit/Delete Appointment">
+        <form id = "edit_delete_appointmentForm">
+            <h3>Title</h3>
+            <input type="text" name="edit_delete_title" id="title2" class="text ui-widget-content ui-corner-all">
+            <h3>Description</h3>
+            <textarea id = "edit_delete_description" form="usrform" class="text ui-widget-content ui-corner-all" rows="6" cols="37"></textarea>
+         </form>
+      </div>
+		</div> 
 		
     </body>    
 </html> 
