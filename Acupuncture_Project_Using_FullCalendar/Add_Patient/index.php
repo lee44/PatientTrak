@@ -16,9 +16,9 @@
 
         <h2>Patient Form</h2>
 
-        <form name = "form1" action="insert.php" method = "post" enctype = "multipart/form-data" >   
-            <div class = "column"> 
-                <div class = "form_contents">
+         <form name = "form1" action="insert.php" method = "post" enctype = "multipart/form-data" >   
+           <div class = "column"> 
+                 <div class = "form_contents">
                     <label>First Name:</label>    
                     <input type = "text" name = "first_name" value = "" required/>    
                 </div>
@@ -43,7 +43,7 @@
                     <input type = "text" name = "Zip" value = "" required/>    
                 </div>
                 <div class = "form_contents">
-                    <label>Phone Number:</label>    
+                    <label>Number:</label>    
                     <input type = "text" name = "Phone Number" value = "" required/>        
                 </div>    
                 <div class = "form_contents">
@@ -55,7 +55,7 @@
                     <input type = "text" name = "SSN" value = "" required/>    
                 </div>
                 <div class = "form_contents">
-                    <label>Drivers License:</label>    
+                    <label>License:</label>    
                     <input type = "text" name = "Drivers License" value = "" required/>    
                 </div>
                 <div class = "form_contents">
@@ -92,7 +92,7 @@
                     
                     <input type="submit" value="Submit">  
                 </div>
-
+ 
             </div>         
         </form> 
     </div>
