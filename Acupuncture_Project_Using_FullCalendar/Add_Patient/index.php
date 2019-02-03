@@ -88,7 +88,7 @@
                     <input type="file" name="file" id="fileSelect"/>
 
                     <h4>Description of File:</h4> 
-                    <textarea name="description_entered" rows='7' cols='45' style="resize: none;"></textarea>
+                    <textarea name="description_entered" rows='8' cols='40'></textarea>
                     
                     <input type="submit" value="Submit">  
                 </div>
