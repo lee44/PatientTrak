@@ -16,90 +16,86 @@
 
         <h2>Patient Form</h2>
 
-        <form name = "form1" action="insert.php" method = "post" enctype = "multipart/form-data" >    
-            
-            <div class = "column1">
-                <div class = "column_contents">
+        <form name = "form1" action="insert.php" method = "post" enctype = "multipart/form-data" >   
+            <div class = "column"> 
+                <div class = "form_contents">
                     <label>First Name:</label>    
                     <input type = "text" name = "first_name" value = "" required/>    
                 </div>
-                <div class = "column_contents">
-                    <label>Email:</label>    
-                    <input type = "text" name = "email" value = "" required/>
-                </div>
-            </div>
-
-            <div class = "column2">
-                <div class = "column_contents">
+                <div class = "form_contents">
                     <label>Last Name:</label>    
                     <input type = "text" name = "last_name" value = "" required/>  
                 </div>       
-                <div class = "column_contents">
+                <div class = "form_contents">
                     <label>Address:</label>    
                     <input type = "text" name = "Address" value = "" required/>
                 </div> 
-            </div>
-            
-          <!-- 
-            <label>City:</label>    
-            <input type = "text" name = "City" value = "" required/>    
-          
-            
-            <label>State:</label>    
-            <input type = "text" name = "State" value = "" required/>    
-         
-            
-            <label>Zip:</label>    
-            <input type = "text" name = "Zip" value = "" required/>    
-         
-            
-            <label>Phone Number:</label>    
-            <input type = "text" name = "Phone Number" value = "" required/>        
-             
-            <label>SSN:</label>    
-            <input type = "text" name = "SSN" value = "" required/>    
-         
-            
-            <label>Drivers License:</label>    
-            <input type = "text" name = "Drivers License" value = "" required/>    
-         
-            
-            <label>BirthDay:</label>    
-            <input type = "text" name = "BirthDay" value = "" required/>    
-         
-            
-            <label>Sex:</label>    
-            <input type = "text" name = "Sex" value = "" required/>    
-         
-            
-            <label>Marital Status:</label>    
-            <input type = "text" name = "Marital Status" value = "" required/>    
-         
-            
-            <label>Employer:</label>    
-            <input type = "text" name = "Employer" value = "" required/>    
-         
-            
-            <label>Occupation:</label>    
-            <input type = "text" name = "Occupation" value = "" required/>    
-         
-            
-            <label>Work Phone:</label>    
-            <input type = "text" name = "Work Phone" value = "" required/>    
-         
-        <div style='margin:25px 0px 25px 0px;padding: 10px;'>    
-            <h1 style='font-size:25px;font-family: Verdana;'>Upload File</h1>
-            <input type="file" name="file" id="fileSelect"/>
+                <div class = "form_contents"> 
+                    <label>City:</label>    
+                    <input type = "text" name = "City" value = "" required/>    
+                </div>
+                <div class = "form_contents">
+                    <label>State:</label>    
+                    <input type = "text" name = "State" value = "" required/>    
+                </div>
+                <div class = "form_contents">
+                    <label>Zip:</label>    
+                    <input type = "text" name = "Zip" value = "" required/>    
+                </div>
+                <div class = "form_contents">
+                    <label>Phone Number:</label>    
+                    <input type = "text" name = "Phone Number" value = "" required/>        
+                </div>    
+                <div class = "form_contents">
+                    <label>Email:</label>    
+                    <input type = "text" name = "email" value = "" required/>
+                </div>
+                <div class = "form_contents"> 
+                    <label>SSN:</label>    
+                    <input type = "text" name = "SSN" value = "" required/>    
+                </div>
+                <div class = "form_contents">
+                    <label>Drivers License:</label>    
+                    <input type = "text" name = "Drivers License" value = "" required/>    
+                </div>
+                <div class = "form_contents">
+                    <label>Birthday:</label>    
+                    <input type = "text" name = "BirthDay" value = "" required/>    
+                </div>
+                <div class = "form_contents">
+                    <label>Sex:</label>    
+                    <input type = "text" name = "Sex" value = "" required/>    
+                </div>
+                <div class = "form_contents">
+                    <label>Marital Status:</label>    
+                    <input type = "text" name = "Marital Status" value = "" required/>    
+                </div>
+                <div class = "form_contents">
+                    <label>Employer:</label>    
+                    <input type = "text" name = "Employer" value = "" required/>    
+                </div>
+                <div class = "form_contents">
+                    <label>Occupation:</label>    
+                    <input type = "text" name = "Occupation" value = "" required/>    
+                </div>
+                <div class = "form_contents">
+                    <label>Work Phone:</label>    
+                    <input type = "text" name = "Work Phone" value = "" required/>  
+                </div>  
+              
+                <div class = 'uploadFile'>    
+                    <h2>Upload File</h2>
+                    <input type="file" name="file" id="fileSelect"/>
 
-            <h1 style='font-size:15px;font-family: Verdana;'>Description of File:</h1> 
-            <textarea name="description_entered" rows='5' cols='40'></textarea>
-            
-            <input type="submit" value="Submit">  
-        </div> -->
-                
+                    <h4>Description of File:</h4> 
+                    <textarea name="description_entered" rows='7' cols='45' style="resize: none;"></textarea>
+                    
+                    <input type="submit" value="Submit">  
+                </div>
+
+            </div>         
         </form> 
     </div>
-
     </body>    
 </html>    
 
