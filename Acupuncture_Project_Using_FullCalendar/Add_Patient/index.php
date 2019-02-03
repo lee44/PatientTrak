@@ -5,7 +5,8 @@
     </head>    
     <body>    
     <link href = "add_patient.css" type = "text/css" rel = "stylesheet" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <div class = "page">
         <div class = "menu topnav">
             <a href = "/index.php">Home</a>
