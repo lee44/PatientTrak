@@ -1,8 +1,11 @@
+@media (min-width: 1200px) { .container { width: 925px !important; } }
+
 .navbar, .navbar-brand 
 {
   font-size: 20px;
   text-transform: uppercase;
 }
+
 /*Commas means applying one rule to multiple classes*/
 .navbar,.navbar-expand-lg,.navbar-light,.bglight 
 {
@@ -21,7 +24,20 @@
   justify-content: space-between;
 }
 
-.nav-item a:hover 
+.nav-item a:hover { background-color: #1e7e34; }
+
+li { margin-left: 5px; }
+
+h1 { text-align: center; margin: 1rem 0 2rem 0 !important;}
+
+label {text-align:right;margin-bottom: 0 !important;}
+
+.row{ margin-right: 10px !important;}
+
+input[type="date"]
 {
-    background-color: #1e7e34;
+    display:block;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    min-height: 2.5em;
 }
