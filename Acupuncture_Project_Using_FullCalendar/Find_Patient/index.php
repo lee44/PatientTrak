@@ -1,41 +1,84 @@
 <html>    
-    <head>    
-        <title>Find/Edit Patient</title>    
-    </head>    
+<head>    
+    <title>Find/Edit Patient</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href = "find_patient_css.css" type = "text/css" rel = "stylesheet" /> 
+    <link href = "add_patient.css" type = "text/css" rel = "stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"> -->
+    <link href='/lib/bootstrap.min.css' rel="stylesheet" />
+    <script src='/lib/jquery-3.3.1.slim.min.js'></script>
+    <script src='/lib/popper.min.js'></script>
+    <script src='/lib/bootstrap.min.js'></script>        
+</head>    
     <body>    
-        <link href = "find_patient_css.css" type = "text/css" rel = "stylesheet" /> 
+    <nav class="navbar navbar-expand-lg navbar-light bglight">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <div class = "topnav">
-            <a href = "/index.php">Home</a>
-            <a href = "/Add_Patient/index.php">Add Patient</a>
-            <a class = "active" href="#home" >Find Patient</a>
-            <a href = "/Table_Query/index.php">Show All Data</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav justify-content-between">
+                <li class="nav-item"><a class="nav-link" href = "/index.php">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#home">Add Patient</a></li>
+                <li class="nav-item"><a class="nav-link" href = "/Find_Patient/index.php">Find Patient</a></li>
+                <li class="nav-item"><a class="nav-link" href = "/Table_Query/index.php">Show All Data</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <h2>Find/Edit Patient Information</h2>    
-        <form name = "form1" action="" method = "post" enctype = "multipart/form-data" >    
-            <div class = "container">    
-                <div class = "form_group">    
-                    <label>First Name:</label>    
-                    <input type = "text" name = "first_name" value = "" />    
-                </div>      
-                <div class = "form_group">    
-                    <label>Last Name:</label>    
-                    <input type = "text" name = "last_name" value = "" />    
+    <h1>Find/Edit Patient Information</h1>
+    <div class="container">
+        <form form name = "form1" action="insert.php" method = "post" enctype = "multipart/form-data" >
+            <div class="row">
+<!--left column -->
+                <div class="col-6">
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-5 col-form-label">First Name:</label>
+                        <div class="col-sm-7">
+                            <input type="text" name = "first_name" class="form-control" id="fname" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="number" class="col-sm-5 col-form-label">Number:</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="number">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="ssn" class="col-sm-5 col-form-label">SSN:</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="ssn">
+                        </div>
+                    </div>                    
+<!-- right column -->
+                <div class="col-6">
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-5 col-form-label">Last Name:</label>
+                        <div class="col-sm-7">
+                            <input type="text" name = "last_name" class="form-control" id="email" value="" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-5 col-form-label">Email:</label>
+                        <div class="col-sm-7">
+                            <input type="text" name = "email" class="form-control" id="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="drivers_license" class="col-sm-5 col-form-label">License:</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="drivers_license">
+                        </div>
+                    </div>
                 </div>
-                <div class = "form_group">    
-                    <label>Email:</label>    
-                    <input type = "text" name = "email" value = "" />    
-                </div> 
-                <div class = "form_group">    
-                    <label>Drivers License:</label>    
-                    <input type = "text" name = "Drivers_License" value = "" />    
-                </div> 
-                <div class = "form_group">    
-                    <input type="submit" value="Search" name="submit">    
-                </div>
-            </div>    
-        </form>    
+            </div>
+            <input type="submit" class="btn btn-info btn-block" value="Search">              
+        </form> 
+    </div>
+        
     </body>    
 </html>    
 

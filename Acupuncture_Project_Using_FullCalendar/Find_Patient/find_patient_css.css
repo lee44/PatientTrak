@@ -1,60 +1,41 @@
-.container {  
-  max-width: 1350px;  
-  width: 100%;  
-  margin: 50px;  
-  height: auto;  
-  display: block;  
-}  
-  
-body {  
-  color: white;  
-  font-size: 20px;  
-  font-family: Verdana;  
-  background-color: grey;  
-}  
-  
-h2 {  
-  text-align: center;  
-}  
-  
-.form_group {  
-  padding: 10px; 
-}  
-  
-label {  
-  line-height: 15%;  
-  width: 200px;  
-}   
+@media (min-width: 1200px) { .container { width: 925px !important; } }
 
-/* Add a black background color to the top navigation */
-.topnav 
+.navbar, .navbar-brand 
 {
-    background-color: #333;
-    overflow: hidden;
-    margin:30px 30px 0px 30px;
+  font-size: 20px;
+  text-transform: uppercase;
 }
 
-/* Style the links inside the navigation bar */
-.topnav a 
+/*Commas means applying one rule to multiple classes*/
+.navbar,.navbar-expand-lg,.navbar-light,.bglight 
 {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
+  background-color: #333 !important;
+}
+/*Spaces means give all nav-link's that are inside all nav-bar's that are inside all navbar-lights's */
+.navbar-light .navbar-nav .nav-link 
+{
+  color: white !important;
 }
 
-/* Change the color of links on hover */
-.topnav a:hover 
+.navbar-nav 
 {
-    background-color: #ddd;
-    color: black;
+  margin: auto !important; /*auto means to find margins for top and bot. !important means this rule takes precedence over all rules*/
+  display: flex;
+  justify-content: space-between;
 }
 
-/* Add a color to the active/current link */
-.topnav a.active 
-{
-    background-color: #4CAF50;
-    color: white;
-}
+.nav-item a:hover { background-color: #1e7e34; }
+
+li { margin-left: 5px; }
+
+h1 { text-align: center; margin: 1rem 0 2rem 0 !important;}
+
+h4 { margin: 1rem 0 1rem 0;}
+
+label {text-align:right; margin-bottom: 0 !important;}
+
+.uploadFile h2 { text-align: center; margin: 1rem 0 2rem 0;}
+
+input[type="file"] { font-size:1em; margin: 0 0 1rem 0;}
+
+input[type="submit"] { margin-top: 30px; font-size:1.1em; }
