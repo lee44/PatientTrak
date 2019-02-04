@@ -30,6 +30,8 @@ li { margin-left: 5px; }
 
 h1 { text-align: center; margin: 1rem 0 2rem 0 !important;}
 
+h4 { margin: 1rem 0 1rem 0;}
+
 label {text-align:right;margin-bottom: 0 !important;}
 
 .row{ margin-right: 10px !important;}
@@ -41,3 +43,16 @@ input[type="date"]
     -moz-appearance: textfield;
     min-height: 2.5em;
 }
+
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
+.uploadFile h2 { text-align: center; margin: 1rem 0 2rem 0;}
+
+input[type="file"] { font-size:1em; margin: 0 0 1rem 0;}
+
+textarea { resize: none; width:100%;}
+
+input[type="submit"] { margin-top: 30px; font-size:1.1em; }
