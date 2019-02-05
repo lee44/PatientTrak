@@ -2,7 +2,7 @@
 <head>    
     <title>Find/Edit Patient</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href = "find_patient_css.css" type = "text/css" rel = "stylesheet" /> 
+    <link href = "find_patient.css" type = "text/css" rel = "stylesheet" /> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"> -->
     <link href='/lib/bootstrap.min.css' rel="stylesheet" />
@@ -119,7 +119,7 @@
                 echo "<td>".$patients['Social_Security_Number']."</td>";
                 echo "<td>".$patients['Drivers_License']."</td>";
                 echo "<td>".$patients['Birthday']."</td>";
-                echo "<td><form action='fetch_Patient_Record_Form.php' method='POST'>
+                echo "<td><form action='/Edit_Patient/index.php' method='POST'>
                       <input type='hidden' name='CustomerID' value='".$patients["CustomerID"]."'/>
                       <input type='submit' name='edit' value='Edit' /></form></td>";
                 echo "</tr>";

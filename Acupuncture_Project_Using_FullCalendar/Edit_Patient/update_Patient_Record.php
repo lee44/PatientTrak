@@ -12,7 +12,7 @@ $customer_id = mysqli_real_escape_string($link, $_REQUEST['ID']);
 $first_name = mysqli_real_escape_string($link, $_REQUEST['first_name']);
 $last_name = mysqli_real_escape_string($link, $_REQUEST['last_name']);
 $email = mysqli_real_escape_string($link, $_REQUEST['email']);
-$Drivers_License = mysqli_real_escape_string($link, $_REQUEST['drivers_license']);
+$Drivers_License = mysqli_real_escape_string($link, $_REQUEST['license']);
 
 $update_sql = "UPDATE patients SET First_Name = '$first_name', Last_Name = '$last_name', Email = '$email', Drivers_License = '$Drivers_License' WHERE CustomerID = '$customer_id'";
 if(mysqli_query($link, $update_sql)){
@@ -23,7 +23,7 @@ if(mysqli_query($link, $update_sql)){
 
 mysqli_close($link);
 
-header("refresh:2;url= http://192.168.1.136:5558/");
+header("refresh:2;url= http://192.168.1.136:5555/Find_Patient/index.php");
 //header("Location: http://192.168.1.136:5557/");
 exit();
 ?>
