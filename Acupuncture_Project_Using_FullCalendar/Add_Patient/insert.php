@@ -4,7 +4,7 @@ $file_name = $file['name'];
 $file_type = $file ['type'];
 $file_size = $file ['size'];
 $file_path = $file ['tmp_name'];
-$description= $_POST['description_entered'];
+$description= $_POST['description'];
 
 /* Attempt MySQL server connection.  */
 $link = mysqli_connect("localhost", "root", "", "acupuncture");
@@ -31,7 +31,7 @@ if(mysqli_query($link, $sql2)){
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
- header("refresh:2;url= http://192.168.1.136:5555/");
+header("refresh:2;url= http://192.168.1.136:5555/Add_Patient/index.php");
 // close connection
 mysqli_close($link);
 ?>

@@ -1,64 +1,56 @@
-body
+@media (min-width: 1200px) { .container { width: 925px !important; } }
+
+.navbar, .navbar-brand 
 {
-    background-color: gray;
+  font-size: 20px;
+  text-transform: uppercase;
 }
 
-/* Add a black background color to the top navigation */
-.navTop 
+/*Commas means applying one rule to multiple classes*/
+.navbar,.navbar-expand-lg,.navbar-light,.bglight 
 {
-    background-color: #333;
-    overflow: hidden;
-    margin:0px 0px 0px 0px;
-    width: 100%;
+  background-color: #333 !important;
 }
-/* Style the links inside the navigation bar */
-.navTop a 
+/*Spaces means give all nav-link's that are inside all nav-bar's that are inside all navbar-lights's */
+.navbar-light .navbar-nav .nav-link 
 {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
+  color: white !important;
 }
-/* Change the color of links on hover */
-.navTop a:hover 
+
+.navbar-nav 
 {
-    background-color: #ddd;
-    color: black;
-}
-/* Add a color to the active/current link */
-.navTop a.active 
-{
-    background-color: #4CAF50;
-    color: white;
-}
-.page 
-{
+  margin: auto !important; /*auto means to find margins for top and bot. !important means this rule takes precedence over all rules*/
   display: flex;
-  flex-flow: column;
-  height: 97vh;
+  justify-content: space-between;
 }
 
-.menu 
+.nav-item a:hover { background-color: #1e7e34; }
+
+li { margin-left: 5px; }
+
+h1 { text-align: center; margin: .25rem 0 .25rem 0 !important;}
+
+h2 { margin: .15rem 0 .25rem 0 !important;}
+
+label {text-align:right; margin-bottom: 0 !important;}
+
+input[type="date"]
 {
-  /*
-    0 means dont grow 
-    1 means skrink 
-    50px means minimum length 
-
-    Since flex-flow is column it means dont grow but shrink to 50px vertically
-  */
-  flex: 0 1 50px;
+    display:block;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    min-height: 2.5em;
 }
 
-.content 
-{
-  margin:10px 0px 0px 0px;
-  flex-grow : 1;
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
 }
 
-input#title,input#title2
-{
-  width:317px;
-}
+.uploadFile h2 { text-align: center; margin: 1rem 0 2rem 0;}
+
+input[type="file"] { font-size:1em; margin: 0 0 1rem 0;}
+
+textarea { resize: none !important; width:100%;}
+
+input[type="submit"] { margin-top: 2.5px; font-size:1.1em; }

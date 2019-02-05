@@ -1,8 +1,18 @@
 <html>    
 <head>    
     <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   	<link href='./lib/fullcalendar.css' rel='stylesheet'/> <!-- Dont Touch -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href = "main_page.css" type = "text/css" rel = "stylesheet" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"> -->
+    <link href='/lib/bootstrap.min.css' rel="stylesheet" />
+    <script src='/lib/jquery-3.3.1.slim.min.js'></script>
+    <script src='/lib/popper.min.js'></script>
+    <script src='/lib/bootstrap.min.js'></script> 
+
     <script src='./lib/jquery.min.js'></script> <!-- Dont Touch -->
   	<script src='./lib/moment.min.js'></script> <!-- Dont Touch -->
     <script src='./lib/fullcalendar.min.js'></script> <!-- Dont Touch --> 
@@ -194,23 +204,24 @@
     });
   </script>  
 </head>    
+    <body>    		
+		<nav class="navbar navbar-expand-lg navbar-light bglight">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+          <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <body>    
-        <link href = "main_page.css" type = "text/css" rel = "stylesheet" />
-		
-		<div class = "page">
-			<div class = "page menu">
-				<div class = "navTop">
-					<a class = "active" href="#home">Home</a>
-					<a href = "/Add_Patient/index.php">Add Patient</a>
-					<a href = "/Find_Patient/index.php">Find Patient</a>
-					<a href = "/Table_Query/index.php">Show All Data</a>
-				</div>
-			</div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav justify-content-between">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link " href="Add_Patient/index.php">Add Patient</a></li>
+          <li class="nav-item"><a class="nav-link" href="/Find_Patient/index.php">Find Patient</a></li>
+          <li class="nav-item"><a class="nav-link" href="/Table_Query/index.php">Show All Data</a></li>
+        </ul>
+      </div>
+    </nav>
 
-			<div class='page content'>
-				<div id="calendar"></div>
-			</div>
+			<div id="calendar"></div>
+
 <!-- Appointment Modal Dialog -->
       <div id="dialog-form" title="Create Appointment">
         <form id = "appointmentForm">
@@ -229,7 +240,6 @@
             <textarea id = "edit_delete_description" form="usrform" class="text ui-widget-content ui-corner-all" rows="6" cols="37" style="resize:none"></textarea>
          </form>
       </div>
-		</div> 
 		
     </body>    
 </html> 
