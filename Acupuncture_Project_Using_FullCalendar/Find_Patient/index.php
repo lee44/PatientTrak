@@ -28,121 +28,109 @@
 
     <h1>Find/Edit Patient Information</h1>
     <div class="container">
-        <form form name = "form1" action="insert.php" method = "post" enctype = "multipart/form-data" >
-            <div class="row">
-<!--left column -->
-                <div class="col-6">
-                    <div class="form-group row">
-                        <label for="fname" class="col-sm-5 col-form-label">First Name:</label>
-                        <div class="col-sm-7">
-                            <input type="text" name = "first_name" class="form-control" id="fname" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="number" class="col-sm-5 col-form-label">Number:</label>
-                        <div class="col-sm-7">
-                            <input type="text" class="form-control" id="number">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="ssn" class="col-sm-5 col-form-label">SSN:</label>
-                        <div class="col-sm-7">
-                            <input type="text" class="form-control" id="ssn">
-                        </div>
-                    </div>                    
-<!-- right column -->
-                <div class="col-6">
-                    <div class="form-group row">
-                        <label for="email" class="col-sm-5 col-form-label">Last Name:</label>
-                        <div class="col-sm-7">
-                            <input type="text" name = "last_name" class="form-control" id="email" value="" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="email" class="col-sm-5 col-form-label">Email:</label>
-                        <div class="col-sm-7">
-                            <input type="text" name = "email" class="form-control" id="email" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="drivers_license" class="col-sm-5 col-form-label">License:</label>
-                        <div class="col-sm-7">
-                            <input type="text" class="form-control" id="drivers_license">
-                        </div>
-                    </div>
-                </div>
+        <form form name = "form1" action="" method = "post" enctype = "multipart/form-data" >
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="first_name">First Name</label>
+                <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="last_name">Last Name</label>
+                <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+              </div>
             </div>
-            <input type="submit" class="btn btn-info btn-block" value="Search">              
-        </form> 
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" placeholder="Email">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="number">Number</label>
+                <input type="number" class="form-control" name="number" placeholder="Number">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="license">License</label>
+                <input type="text" class="form-control" name="license" placeholder="License">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="ssn">SSN</label>
+                <input type="number" class="form-control" name="ssn" placeholder="SSN">
+              </div>
+            </div>
+            <input type="submit" class="btn btn-info btn-block" value="Search" name="submit">                              
+        </form>
     </div>
-        
+    <div class="container-fluid"> 
+    <?php
+        if(isset($_POST['submit']))
+        {
+            /* Attempt MySQL server connection.  */
+            $link = mysqli_connect("localhost", "root", "", "acupuncture");
+             
+            // Check connection
+            if($link === false){
+                die("ERROR: Could not connect. " . mysqli_connect_error());
+            }
+             
+            // The mysqli_real_escape_string() function escapes special characters in a string and create a legal SQL string to provide security against SQL injection.
+            $first_name = mysqli_real_escape_string($link, $_REQUEST['first_name']);
+            $last_name = mysqli_real_escape_string($link, $_REQUEST['last_name']);
+            $email = mysqli_real_escape_string($link, $_REQUEST['email']);
+            $drivers_license = mysqli_real_escape_string($link, $_REQUEST['license']);
+            // attempt insert query execution
+            $sql = "SELECT CustomerID,First_Name,Last_Name,Address,City,State,Zip,Phone_Number,Email,Social_Security_Number,
+                           Drivers_License,Birthday FROM patients WHERE First_Name = '$first_name' OR Last_Name = '$last_name' OR Email = '$email' ";
+
+            $result = mysqli_query($link,$sql); 
+            echo '
+            <div class="table-responsive">
+                <table class = "table">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Zip</th>
+                            <th>Number</th>
+                            <th>Email</th>
+                            <th>SSN</th>
+                            <th>License</th>
+                            <th>Birthday</th>
+                            <th>Edit?</th>
+                        </tr>
+                    </thead>';
+
+            while ($patients = mysqli_fetch_array($result)) 
+            {
+                echo "<tbody>";
+                echo "<tr>";
+                echo "<td>".$patients['First_Name']."</td>";
+                echo "<td>".$patients['Last_Name']."</td>";
+                echo "<td>".$patients['Address']."</td>";
+                echo "<td>".$patients['City']."</td>";
+                echo "<td>".$patients['State']."</td>";
+                echo "<td>".$patients['Zip']."</td>";
+                echo "<td>".$patients['Phone_Number']."</td>";
+                echo "<td>".$patients['Email']."</td>";
+                echo "<td>".$patients['Social_Security_Number']."</td>";
+                echo "<td>".$patients['Drivers_License']."</td>";
+                echo "<td>".$patients['Birthday']."</td>";
+                echo "<td><form action='fetch_Patient_Record_Form.php' method='POST'>
+                      <input type='hidden' name='CustomerID' value='".$patients["CustomerID"]."'/>
+                      <input type='submit' name='edit' value='Edit' /></form></td>";
+                echo "</tr>";
+            }
+                echo "</tbody>
+                      </table>
+                      </div>";
+            mysqli_close($link);
+        }
+    ?>    
+    </div>
     </body>    
 </html>    
 
-<?php
-if(isset($_POST['submit']))
-{
-    if(empty($_POST['first_name']))
-        echo "Enter a search term";
-    else
-    {
-                /* Attempt MySQL server connection.  */
-        $link = mysqli_connect("localhost", "root", "", "acupuncture");
-         
-        // Check connection
-        if($link === false){
-            die("ERROR: Could not connect. " . mysqli_connect_error());
-        }
-         
-        // The mysqli_real_escape_string() function escapes special characters in a string and create a legal SQL string to provide security against SQL injection.
-        $first_name = mysqli_real_escape_string($link, $_REQUEST['first_name']);
-        $last_name = mysqli_real_escape_string($link, $_REQUEST['last_name']);
-        $email = mysqli_real_escape_string($link, $_REQUEST['email']);
-        $drivers_license = mysqli_real_escape_string($link, $_REQUEST['Drivers_License']);
-        // attempt insert query execution
-        $sql = "SELECT CustomerID,First_Name,Last_Name,Address,City,State,Zip,Phone_Number,Email,Social_Security_Number,
-                       Drivers_License,Birthday FROM patients WHERE First_Name = '$first_name' OR Last_Name = '$last_name' OR Email = '$email' ";
-
-        $result = mysqli_query($link,$sql); 
-        echo '
-        <table width="600" border="2" cellpadding="4" cellspacing="2" style="white-space: nowrap;">
-        <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Address</th>
-        <th>City</th>
-        <th>State</th>
-        <th>Zip</th>
-        <th>Phone Number</th>
-        <th>Email</th>
-        <th>SSN</th>
-        <th>Drivers License</th>
-        <th>BirthDay</th>
-        <th>Edit</th>
-        </tr>';
-
-        while ($patients = mysqli_fetch_array($result)) 
-        {
-            echo "<tr>";
-            echo "<td>".$patients['First_Name']."</td>";
-            echo "<td>".$patients['Last_Name']."</td>";
-            echo "<td>".$patients['Address']."</td>";
-            echo "<td>".$patients['City']."</td>";
-            echo "<td>".$patients['State']."</td>";
-            echo "<td>".$patients['Zip']."</td>";
-            echo "<td>".$patients['Phone_Number']."</td>";
-            echo "<td>".$patients['Email']."</td>";
-            echo "<td>".$patients['Social_Security_Number']."</td>";
-            echo "<td>".$patients['Drivers_License']."</td>";
-            echo "<td>".$patients['Birthday']."</td>";
-            echo "<td><form action='fetch_Patient_Record_Form.php' method='POST'>
-                  <input type='hidden' name='CustomerID' value='".$patients["CustomerID"]."'/>
-                  <input type='submit' name='edit' value='Edit' /></form></td>";
-            echo "<tr>";
-        }
-        mysqli_close($link);
-    }
-}
-?>
