@@ -1,4 +1,3 @@
-
 <?php
 /* Attempt MySQL server connection.  */
 $link = mysqli_connect("localhost", "root", "", "acupuncture");
@@ -8,13 +7,28 @@ if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
-$customer_id = mysqli_real_escape_string($link, $_REQUEST['ID']);
-$first_name = mysqli_real_escape_string($link, $_REQUEST['first_name']);
-$last_name = mysqli_real_escape_string($link, $_REQUEST['last_name']);
-$email = mysqli_real_escape_string($link, $_REQUEST['email']);
-$Drivers_License = mysqli_real_escape_string($link, $_REQUEST['license']);
+$customer_id = $_POST['ID'];
+$first_name = $_POST['first_name'];
+$last_name = $_POST['last_name'];
+$email = $_POST['email'];
+$address = $_POST['address'];
+$city = $_POST['city'];
+$state = $_POST['state'];
+$zip = $_POST['zip'];
+$employer = $_POST['employer'];
+$occupation = $_POST['occupation'];
+$phonenumber = $_POST['number'];
+$license = $_POST['license'];
+$ssn = $_POST['ssn'];
+$birthday = $_POST['birthday'];
+$gender = $_POST['gender'];
 
-$update_sql = "UPDATE patients SET First_Name = '$first_name', Last_Name = '$last_name', Email = '$email', Drivers_License = '$Drivers_License' WHERE CustomerID = '$customer_id'";
+$update_sql = "UPDATE patients 
+               SET First_Name = '$first_name', Last_Name = '$last_name', Email = '$email', License = '$license', Address = '$address',
+               City = '$city', State = '$state', Zip = '$zip', Employer = '$employer', Occupation = '$occupation', Phone_Number = '$phonenumber',
+               SSN = '$ssn', Birthday = '$birthday', Sex = '$gender'
+               WHERE CustomerID = '$customer_id'";
+
 if(mysqli_query($link, $update_sql)){
     echo "<h2>Records were updated successfully.</h2>";
 } else {

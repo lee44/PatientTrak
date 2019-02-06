@@ -4,7 +4,7 @@ $file_name = $file['name'];
 $file_type = $file ['type'];
 $file_size = $file ['size'];
 $file_path = $file ['tmp_name'];
-$description= $_POST['description'];
+
 
 /* Attempt MySQL server connection.  */
 $link = mysqli_connect("localhost", "root", "", "acupuncture");
@@ -31,17 +31,18 @@ $license = $_POST['license'];
 $ssn = $_POST['ssn'];
 $birthday = $_POST['birthday'];
 $gender = $_POST['gender'];
+$notes= $_POST['notes'];
 
 if(move_uploaded_file ($file_path,'uploads/'.$file_name))//"images" is just a folder name here we will load the file. 
     echo "File Uploaded";
  
 // attempt insert query execution
-$sql = "INSERT INTO patients (first_name,last_name,email,address,city,state,zip,employer,occupation,phone_number,license,ssn,birthday,sex) 
+$sql = "INSERT INTO patients (first_name,last_name,email,address,city,state,zip,employer,occupation,phone_number,license,ssn,birthday,sex,notes) 
         VALUES ('$first_name','$last_name','$email','$address','$city','$state','$zip','$employer','$occupation','$phonenumber','$license',
-        	    '$ssn','$birthday','$gender')";
+        	    '$ssn','$birthday','$gender','$notes')";
 
 mysqli_query($link, $sql);
-$sql2 = "INSERT INTO files (description,filename) VALUES ('$description','$file_name')";
+$sql2 = "INSERT INTO files (filename) VALUES ('$file_name')";
 if(mysqli_query($link, $sql2)){
     echo "<h1 style='text-align:center'>Records added successfully.</h1>";
 } else{

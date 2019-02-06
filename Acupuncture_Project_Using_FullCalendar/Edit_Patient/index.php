@@ -11,14 +11,18 @@ if($link === false){
 $customer_id = mysqli_real_escape_string($link, $_REQUEST['CustomerID']);
 
 // attempt insert query execution
-$sql = "SELECT CustomerID,First_Name,Last_Name,Address,City,State,Zip,Phone_Number,Email,Social_Security_Number,
-			   Drivers_License,Birthday FROM patients WHERE CustomerID = '$customer_id'";
+$sql = "SELECT * FROM patients WHERE CustomerID = '$customer_id'";
 
 $result = mysqli_query($link,$sql);
 
+$male = ''; $female = '';
 while ($patients = mysqli_fetch_array($result)) 
 {
-	echo "
+  if($patients['Sex'] == 'Male' || $patients['Sex'] == 'M') 
+    $male = 'checked';
+  else
+    $female = 'checked';
+  echo "
     <html>    
     <head>    
         <title>Edit Patient</title>
@@ -65,30 +69,30 @@ while ($patients = mysqli_fetch_array($result))
             </div>
             <div class='form-group'>
               <label for='inputAddress'>Address</label>
-              <input type='text' class='form-control' name='inputAddress' placeholder='1234 Main St'>
+              <input type='text' class='form-control' name='inputAddress' placeholder='1234 Main St' value = '".$patients['Address']."'>
             </div>
             <div class='form-row'>
               <div class='form-group col-md-6'>
                 <label for='inputCity'>City</label>
-                <input type='text' class='form-control' name='inputCity' placeholder='City'>
+                <input type='text' class='form-control' name='inputCity' placeholder='City' value = '".$patients['City']."'>
               </div>
               <div class='form-group col-md-4'>
                 <label for='inputState'>State</label>
-                <input type='text' class='form-control' name='state' placeholder='State'>
+                <input type='text' class='form-control' name='state' placeholder='State' value = '".$patients['State']."'>
               </div>
               <div class='form-group col-md-2'>
                 <label for='inputZip'>Zip</label>
-                <input type='text' class='form-control' name='inputZip' placeholder='Zip'>
+                <input type='text' class='form-control' name='inputZip' placeholder='Zip' value = '".$patients['Zip']."'>
               </div>
             </div>
             <div class='form-row'>
               <div class='form-group col-md-6'>
                 <label for='employer'>Employer</label>
-                <input type='text' class='form-control' name='employer' placeholder='Employer'>
+                <input type='text' class='form-control' name='employer' placeholder='Employer' value = '".$patients['Employer']."'>
               </div>
               <div class='form-group col-md-6'>
                 <label for='occupation'>Occupation</label>
-                <input type='text' class='form-control' name='occupation' placeholder='Occupation'>
+                <input type='text' class='form-control' name='occupation' placeholder='Occupation' value = '".$patients['Occupation']."'>
               </div>
             </div>
             <div class='form-row'>
@@ -98,7 +102,7 @@ while ($patients = mysqli_fetch_array($result))
               </div>
               <div class='form-group col-md-6'>
                 <label for='number'>Number</label>
-                <input type='number' class='form-control' name='number' placeholder='Number'>
+                <input type='number' class='form-control' name='number' placeholder='Number' value = '".$patients['Phone_Number']."'>
               </div>
             </div>
             <div class='form-row'>
@@ -108,13 +112,13 @@ while ($patients = mysqli_fetch_array($result))
               </div>
               <div class='form-group col-md-6'>
                 <label for='ssn'>SSN</label>
-                <input type='number' class='form-control' name='ssn' placeholder='SSN'>
+                <input type='number' class='form-control' name='ssn' placeholder='SSN' value = '".$patients['SSN']."'>
               </div>
             </div>
             <div class='form-row'>
               <div class='form-group col-md-6'>
                 <label for='birthday'>Birthday</label>
-                <input type='date' class='form-control' name='birthday' placeholder='Birthday'>
+                <input type='date' class='form-control' name='birthday' placeholder='Birthday' value = '".$patients['Birthday']."'>
               </div>
               
               <div class='form-group col-md-6'>
@@ -124,12 +128,12 @@ while ($patients = mysqli_fetch_array($result))
                   <div class='form-row'>
                     <div class='form-group col-sm-6'>
                       <label class='form-check-label radio-inline control-label' for='gridRadios1'>
-                        <input class='form-check-input' type='radio' name='gender' id='gridRadios1' value='male' checked> Male
+                        <input class='form-check-input' type='radio' name='gender' id='gridRadios1' value='male ' ".$male."> Male
                       </label>
                     </div>
                     <div class='form-group col-sm-6'>
                     <label class='form-check-label radio-inline control-label' for='gridRadios2'>
-                      <input class='form-check-input' type='radio' name='gender' id='gridRadios2' value='female'>Female
+                      <input class='form-check-input' type='radio' name='gender' id='gridRadios2' value='female ' ".$female.">Female
                     </label>
                     </div>
                   </div>
@@ -148,37 +152,7 @@ while ($patients = mysqli_fetch_array($result))
         </div>
         </body>    
     </html>
-	";    
+  ";    
 }
 mysqli_close($link);
 ?>
-
-<!-- echo "
-    <link href ='registration.css' type = 'text/css' rel = 'stylesheet' />
-    <form name = 'form2' action='update_Patient_Record' method = 'post' enctype = 'multipart/form-data' >    
-        <div class = 'container'>
-            <div class = 'form_group'>    
-                <label>Customer ID:</label>    
-                <input type = 'text' name = 'ID' value = '".$patients['CustomerID']."' readonly />    
-            </div>    
-            <div class = 'form_group'>    
-                <label>First Name:</label>    
-                <input type = 'text' name = 'first_name' value = '".$patients['First_Name']."' />    
-            </div>      
-            <div class = 'form_group'>    
-                <label>Last Name:</label>    
-                <input type = 'text' name = 'last_name' value = '".$patients['Last_Name']."' />    
-            </div>
-            <div class = 'form_group'>    
-                <label>Email:</label>    
-                <input type = 'text' name = 'email' value = '".$patients['Email']."' />    
-            </div> 
-            <div class = 'form_group'>    
-                <label>Drivers License:</label>    
-                <input type = 'text' name = 'drivers_license' value = '".$patients['Drivers_License']."' />    
-            </div> 
-            <div class = 'form_group'>    
-                <input type='submit' value='Update' name='Update'>    
-            </div>
-        </div>    
-    </form>";  -->   

@@ -32,31 +32,31 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="first_name">First Name</label>
-                <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
+                <input type="text" class="form-control" name="first_name" placeholder="First Name" value = "">
               </div>
               <div class="form-group col-md-6">
                 <label for="last_name">Last Name</label>
-                <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+                <input type="text" class="form-control" name="last_name" placeholder="Last Name" value = "">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" placeholder="Email">
+                <input type="email" class="form-control" name="email" placeholder="Email" value = "">
               </div>
               <div class="form-group col-md-6">
                 <label for="number">Number</label>
-                <input type="number" class="form-control" name="number" placeholder="Number">
+                <input type="number" class="form-control" name="number" placeholder="Number" value = "">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="license">License</label>
-                <input type="text" class="form-control" name="license" placeholder="License">
+                <input type="text" class="form-control" name="license" placeholder="License" value = "">
               </div>
               <div class="form-group col-md-6">
                 <label for="ssn">SSN</label>
-                <input type="number" class="form-control" name="ssn" placeholder="SSN">
+                <input type="number" class="form-control" name="ssn" placeholder="SSN" value = "">
               </div>
             </div>
             <input type="submit" class="btn btn-info btn-block" value="Search" name="submit">                              
@@ -79,14 +79,14 @@
             $last_name = mysqli_real_escape_string($link, $_REQUEST['last_name']);
             $email = mysqli_real_escape_string($link, $_REQUEST['email']);
             $drivers_license = mysqli_real_escape_string($link, $_REQUEST['license']);
+
             // attempt insert query execution
-            $sql = "SELECT CustomerID,First_Name,Last_Name,Address,City,State,Zip,Phone_Number,Email,Social_Security_Number,
-                           Drivers_License,Birthday FROM patients WHERE First_Name = '$first_name' OR Last_Name = '$last_name' OR Email = '$email' ";
+            $sql = "SELECT * FROM patients WHERE First_Name = '$first_name' OR Last_Name = '$last_name' OR Email = '$email' ";
 
             $result = mysqli_query($link,$sql); 
             echo '
             <div class="table-responsive">
-                <table class = "table">
+                <table class = "table table-striped">
                     <thead>
                         <tr>
                             <th>First Name</th>
