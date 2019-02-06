@@ -9,7 +9,17 @@
     <link href='/lib/bootstrap.min.css' rel="stylesheet" />
     <script src='/lib/jquery-3.3.1.slim.min.js'></script>
     <script src='/lib/popper.min.js'></script>
-    <script src='/lib/bootstrap.min.js'></script>    
+    <script src='/lib/bootstrap.min.js'></script>
+    <script src='/lib/jquery.min.js'></script>
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js'></script>
+    <script>
+    $(document).ready(function () 
+    {
+      $("#phone").inputmask({"mask": "(999) 999-9999"});
+      $("#ssn").inputmask({"mask": "999-99-9999"});
+    });
+    </script>   
+
 </head>    
     <body>        
     <nav class="navbar navbar-expand-lg navbar-light bglight">
@@ -75,7 +85,7 @@
           </div>
           <div class="form-group col-md-6">
             <label for="number">Number</label>
-            <input type="number" class="form-control" name="number" placeholder="Number" value = "">
+            <input type="text" class="form-control" id = "phone" name="number" placeholder="Number" value = "">
           </div>
         </div>
         <div class="form-row">
@@ -85,7 +95,7 @@
           </div>
           <div class="form-group col-md-6">
             <label for="ssn">SSN</label>
-            <input type="number" class="form-control" name="ssn" placeholder="SSN" value = "">
+            <input type="text" class="form-control" id="ssn" name="ssn" placeholder="SSN" value = "">
           </div>
         </div>
         <div class="form-row">
