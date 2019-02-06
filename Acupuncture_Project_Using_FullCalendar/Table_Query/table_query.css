@@ -1,0 +1,41 @@
+@media (min-width: 1200px) { .container { width: 925px !important; } }
+
+.navbar, .navbar-brand 
+{
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+/*Commas means applying one rule to multiple classes*/
+.navbar,.navbar-expand-lg,.navbar-light,.bglight 
+{
+  background-color: #333 !important;
+}
+/*Spaces means give all nav-link's that are inside all nav-bar's that are inside all navbar-lights's */
+.navbar-light .navbar-nav .nav-link 
+{
+  color: white !important;
+}
+
+.navbar-nav 
+{
+  margin: auto !important; /*auto means to find margins for top and bot. !important means this rule takes precedence over all rules*/
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-item a:hover { background-color: #1e7e34; }
+
+li { margin-left: 5px; }
+
+h1 { text-align: center; margin: .25rem 0 .25rem 0 !important;}
+
+h4 { margin: 1rem 0 1rem 0;}
+
+label {text-align:right; margin-bottom: 0 !important;}
+
+.uploadFile h2 { text-align: center; margin: 1rem 0 2rem 0;}
+
+input[type="file"] { font-size:1em; margin: 0 0 1rem 0;}
+
+input[type="submit"] { margin: 2.5px; font-size:1.1em; }

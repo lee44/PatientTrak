@@ -41,20 +41,20 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="inputAddress">Address</label>
+          <label for="address">Address</label>
           <input type="text" class="form-control" name="address" placeholder="1234 Main St">
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="inputCity">City</label>
+            <label for="city">City</label>
             <input type="text" class="form-control" name="city" placeholder="City">
           </div>
           <div class="form-group col-md-4">
-            <label for="inputState">State</label>
+            <label for="state">State</label>
             <input type="text" class="form-control" name="state" placeholder="State">
           </div>
           <div class="form-group col-md-2">
-            <label for="inputZip">Zip</label>
+            <label for="zip">Zip</label>
             <input type="number" class="form-control" name="zip" placeholder="Zip">
           </div>
         </div>
@@ -101,12 +101,12 @@
               <div class="form-row">
                 <div class="form-group col-sm-6">
                   <label class="form-check-label radio-inline control-label" for="gridRadios1">
-                    <input class="form-check-input" type="radio" name="gender" id="gridRadios1" value="male" checked> Male
+                    <input class="form-check-input" type="radio" name="gender" id="gridRadios1" value="Male" checked> Male
                   </label>
                 </div>
                 <div class="form-group col-sm-6">
                 <label class="form-check-label radio-inline control-label" for="gridRadios2">
-                  <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="female">Female
+                  <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="Female">Female
                 </label>
                 </div>
               </div>

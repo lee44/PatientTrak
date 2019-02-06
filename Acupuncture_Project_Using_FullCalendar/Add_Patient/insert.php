@@ -26,32 +26,28 @@ $state = $_POST['state'];
 $zip = $_POST['zip'];
 $employer = $_POST['employer'];
 $occupation = $_POST['occupation'];
-$email = $_POST['email'];
 $phonenumber = $_POST['number'];
 $license = $_POST['license'];
 $ssn = $_POST['ssn'];
 $birthday = $_POST['birthday'];
-if($_POST['gender'] == "Male")
-	$gender = "Male";
-else
-	$gender = "Female";
-
-
+$gender = $_POST['gender'];
 
 if(move_uploaded_file ($file_path,'uploads/'.$file_name))//"images" is just a folder name here we will load the file. 
     echo "File Uploaded";
  
 // attempt insert query execution
-$sql = "INSERT INTO patients (first_name,last_name,email,address,city,state,zip,employer,occupation,phone_number,license,ssn,birthday,gender) 
-        VALUES ('$first_name','$last_name','$email','$address','$city','$state','$zip','$employer','$occupation','$phonenumber','$license','$ssn','$birthday','$gender')";
+$sql = "INSERT INTO patients (first_name,last_name,email,address,city,state,zip,employer,occupation,phone_number,license,ssn,birthday,sex) 
+        VALUES ('$first_name','$last_name','$email','$address','$city','$state','$zip','$employer','$occupation','$phonenumber','$license',
+        	    '$ssn','$birthday','$gender')";
+
 mysqli_query($link, $sql);
 $sql2 = "INSERT INTO files (description,filename) VALUES ('$description','$file_name')";
 if(mysqli_query($link, $sql2)){
-    echo "<h2>Records added successfully.</h2>";
+    echo "<h1 style='text-align:center'>Records added successfully.</h1>";
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
-header("refresh:2;url= http://192.168.1.136:5555/Add_Patient/index.php");
+header("refresh:2;url= http://76.91.29.148:5555/Add_Patient/index.php");
 // close connection
 mysqli_close($link);
 ?>

@@ -116,8 +116,8 @@
                 echo "<td>".$patients['Zip']."</td>";
                 echo "<td>".$patients['Phone_Number']."</td>";
                 echo "<td>".$patients['Email']."</td>";
-                echo "<td>".$patients['Social_Security_Number']."</td>";
-                echo "<td>".$patients['Drivers_License']."</td>";
+                echo "<td>".$patients['SSN']."</td>";
+                echo "<td>".$patients['License']."</td>";
                 echo "<td>".$patients['Birthday']."</td>";
                 echo "<td><form action='/Edit_Patient/index.php' method='POST'>
                       <input type='hidden' name='CustomerID' value='".$patients["CustomerID"]."'/>
