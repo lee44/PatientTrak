@@ -154,7 +154,7 @@ while ($patients = mysqli_fetch_array($result))
               <h2>Upload File</h2>
               <input type='file' name='file' id='fileSelect'/>
               <h4>Description of File:</h4> 
-              <textarea name='description' value='' rows='4' cols='40'></textarea>
+              <textarea name='description' value = '".$patients['Notes']."' rows='4' cols='40'></textarea>
             </div>
             <input type='submit' class='btn btn-info btn-block' value='Update'>      
           </form>
