@@ -104,7 +104,7 @@ while ($patients = mysqli_fetch_array($result))
             <div class='form-row'>
               <div class='form-group col-md-6'>
                 <label for='license'>License</label>
-                <input type='text' class='form-control' name='license' placeholder='License' value = '".$patients['Drivers_License']."'>
+                <input type='text' class='form-control' name='license' placeholder='License' value = '".$patients['License']."'>
               </div>
               <div class='form-group col-md-6'>
                 <label for='ssn'>SSN</label>

@@ -42,12 +42,12 @@
         </div>
         <div class="form-group">
           <label for="inputAddress">Address</label>
-          <input type="text" class="form-control" name="inputAddress" placeholder="1234 Main St">
+          <input type="text" class="form-control" name="address" placeholder="1234 Main St">
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputCity">City</label>
-            <input type="text" class="form-control" name="inputCity" placeholder="City">
+            <input type="text" class="form-control" name="city" placeholder="City">
           </div>
           <div class="form-group col-md-4">
             <label for="inputState">State</label>
@@ -55,7 +55,7 @@
           </div>
           <div class="form-group col-md-2">
             <label for="inputZip">Zip</label>
-            <input type="text" class="form-control" name="inputZip" placeholder="Zip">
+            <input type="number" class="form-control" name="zip" placeholder="Zip">
           </div>
         </div>
         <div class="form-row">
