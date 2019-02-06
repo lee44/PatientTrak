@@ -69,12 +69,12 @@ while ($patients = mysqli_fetch_array($result))
             </div>
             <div class='form-group'>
               <label for='inputAddress'>Address</label>
-              <input type='text' class='form-control' name='inputAddress' placeholder='1234 Main St' value = '".$patients['Address']."'>
+              <input type='text' class='form-control' name='address' placeholder='1234 Main St' value = '".$patients['Address']."'>
             </div>
             <div class='form-row'>
               <div class='form-group col-md-6'>
                 <label for='inputCity'>City</label>
-                <input type='text' class='form-control' name='inputCity' placeholder='City' value = '".$patients['City']."'>
+                <input type='text' class='form-control' name='city' placeholder='City' value = '".$patients['City']."'>
               </div>
               <div class='form-group col-md-4'>
                 <label for='inputState'>State</label>
@@ -82,7 +82,7 @@ while ($patients = mysqli_fetch_array($result))
               </div>
               <div class='form-group col-md-2'>
                 <label for='inputZip'>Zip</label>
-                <input type='text' class='form-control' name='inputZip' placeholder='Zip' value = '".$patients['Zip']."'>
+                <input type='text' class='form-control' name='zip' placeholder='Zip' value = '".$patients['Zip']."'>
               </div>
             </div>
             <div class='form-row'>
@@ -112,7 +112,7 @@ while ($patients = mysqli_fetch_array($result))
               </div>
               <div class='form-group col-md-6'>
                 <label for='ssn'>SSN</label>
-                <input type='number' class='form-control' name='ssn' placeholder='SSN' value = '".$patients['SSN']."'>
+                <input type='text' class='form-control' name='ssn' placeholder='SSN' value = '".$patients['SSN']."'>
               </div>
             </div>
             <div class='form-row'>
