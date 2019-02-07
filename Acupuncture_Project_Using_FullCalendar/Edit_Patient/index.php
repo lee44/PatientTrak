@@ -19,9 +19,14 @@ $sql =
  WHERE P.customer_id = '$customer_id'";
 
 $result = mysqli_query($link,$sql);
+$patients = mysqli_fetch_array($result);
+
+//mysqli_fetch_array only grabs the first row of the query. To get all the rows, you would put it in a while loop but we only need
+//the file name of the second row.
 $files = array();
-while($patients = mysqli_fetch_array($result))
-  array_push($files,$patients['file_name']);
+array_push($files,$patients['file_name']);
+while($f = mysqli_fetch_array($result))
+  array_push($files,$f['file_name']);
 
 $male = ''; $female = '';
 
@@ -29,6 +34,7 @@ if($patients['sex'] == 'Male' || $patients['sex'] == 'M')
 $male = 'checked';
 else
 $female = 'checked';
+
 echo "
 <html>    
 <head>    
@@ -161,9 +167,12 @@ $(document).ready(function ()
         <div class = 'uploadFile'>    
           <h2>Upload File</h2>
           <h4>Current Files:</h4>";
-          foreach($files as $file_name)
-            echo "<a href = 'http://76.91.29.148:5555/Add_Patient/Uploads/".$file_name."'>".$file_name."</a><br>";
-          echo "<br>
+          if(!is_null($files[0]))
+            foreach($files as $file_name)
+              echo "<a style='font-size:17px;' href = 'http://76.91.29.148:5555/Add_Patient/Uploads/".$file_name."'>".$file_name."</a><br>";
+          else
+              echo "<p>No files attached</p>";
+          echo "
           <input type='file' name='file' id='fileSelect'/>
           <h4>Description of File:</h4> 
           <textarea name='description' value = '".$patients['notes']."' rows='4' cols='40'></textarea>

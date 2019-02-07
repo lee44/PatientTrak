@@ -56,7 +56,7 @@ $result = mysqli_query($conn,$sql);
                     <th>SSN</th>
                     <th>License</th>
                     <th>Birthday</th>
-                    <th>Edit?</th>
+                    <th>Edit/View?</th>
                 </tr>
             </thead>
 
@@ -78,7 +78,7 @@ while ($patients = mysqli_fetch_array($result))
     echo "<td>".$patients['birthday']."</td>";
     echo "<td><form action='/Edit_Patient/index.php' method='POST'>
           <input type='hidden' name='customer_id' value='".$patients["customer_id"]."'/>
-          <input type='submit' name='edit' value='Edit' /></form></td>";
+          <input type='submit' name='edit' value='Edit/View' /></form></td>";
     echo "</tr>";
 }
     echo "</tbody>
