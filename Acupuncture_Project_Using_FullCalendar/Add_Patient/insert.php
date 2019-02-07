@@ -3,18 +3,13 @@ $file = $_FILES['file'];
 $file_name = $file['name'];
 $file_type = $file ['type'];
 $file_size = $file ['size'];
-$file_path = $file ['tmp_name'];
 
 /* Attempt MySQL server connection.  */
 $link = mysqli_connect("localhost", "root", "", "acupuncture");
  
 // Check connection
-if($link === false){
+if($link === false)
     die("ERROR: Could not connect. " . mysqli_connect_error());
-}
- 
-// The mysqli_real_escape_string() function escapes special characters in a string and create a legal SQL string to provide security against SQL injection.
-//$first_name = mysqli_real_escape_string($link, $_REQUEST['first_name']);
 
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
@@ -33,6 +28,25 @@ $gender = $_POST['gender'];
 $notes= $_POST['notes'];
 date_default_timezone_set('America/Los_Angeles');
 $created_at = date('Y-m-d H:i:s');
+
+// Count # of uploaded files in array
+$total = count($_FILES['upload']['name']);
+
+// Loop through each file
+for( $i=0 ; $i < $total ; $i++ ) 
+{
+  //Get the temp file path
+  $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
+
+  //Make sure we have a file path
+  if ($tmpFilePath != ""){
+    //Setup our new file path
+    $newFilePath = "./uploadFiles/" . $_FILES['upload']['name'][$i];
+
+    //Upload the file into the temp dir
+    if(move_uploaded_file($tmpFilePath, $newFilePath)) 
+      echo "File Uploaded";
+}
 
 if(move_uploaded_file ($file_path,'uploads/'.$file_name))//"images" is just a folder name here we will load the file. 
     echo "File Uploaded";

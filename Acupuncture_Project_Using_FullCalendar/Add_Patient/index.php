@@ -126,7 +126,7 @@
         </div>
         <div class = 'uploadFile'>    
           <h2>Upload File</h2>
-          <input type="file" name="file" id="fileSelect"/>
+          <input type="file" name="upload[]" multiple="multiple" id="fileSelect"/>
           <h4>Notes:</h4> 
           <textarea name="notes" value="" rows='4' cols='40'></textarea>
         </div>
