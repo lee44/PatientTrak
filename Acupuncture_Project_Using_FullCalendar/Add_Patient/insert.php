@@ -29,41 +29,35 @@ $notes= $_POST['notes'];
 date_default_timezone_set('America/Los_Angeles');
 $created_at = date('Y-m-d H:i:s');
 
-// Count # of uploaded files in array
-$total = count($_FILES['upload']['name']);
-
-// Loop through each file
-for( $i=0 ; $i < $total ; $i++ ) 
-{
-  //Get the temp file path
-  $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
-
-  //Make sure we have a file path
-  if ($tmpFilePath != ""){
-    //Setup our new file path
-    $newFilePath = "./uploadFiles/" . $_FILES['upload']['name'][$i];
-
-    //Upload the file into the temp dir
-    if(move_uploaded_file($tmpFilePath, $newFilePath)) 
-      echo "File Uploaded";
-}
-
-if(move_uploaded_file ($file_path,'uploads/'.$file_name))//"images" is just a folder name here we will load the file. 
-    echo "File Uploaded";
- 
 // attempt insert query execution
 $sql = "INSERT INTO patients (first_name,last_name,email,address,city,state,zip,employer,occupation,phone_number,license,ssn,birthday,sex,notes,created_at) 
         VALUES ('$first_name','$last_name','$email','$address','$city','$state','$zip','$employer','$occupation','$phonenumber','$license',
         	    '$ssn','$birthday','$gender','$notes','$created_at')";
 mysqli_query($link, $sql);
 
-if(isset($filename))
+
+if(isset($_FILES['upload']['name']))
 {
-	$sql2 = "INSERT INTO files (filename) VALUES ('$file_name')";
-	if(mysqli_query($link, $sql2))
-	    echo "<h1 style='text-align:center'>Records added successfully.</h1>";
-	else
-	    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+	// Count # of uploaded files in array
+	$total = count($_FILES['upload']['name']);
+
+	for( $i=0 ; $i < $total ; $i++ ) 
+	{
+	  	//Get the temp file path
+	  	$tmpFilePath = $_FILES['upload']['tmp_name'][$i];
+	  	$fileName = $_FILES['upload']['name'][$i];
+	  	$fileType = $_FILES['upload']['type'][$i];
+	  	$fileSize = $_FILES['upload']['size'][$i];
+
+		if(move_uploaded_file ($tmpFilePath,'uploads/'.$_FILES['upload']['name'][$i]))
+	    	echo "File Uploaded";
+
+	    $sql2 = "INSERT INTO files (filename,type,size) VALUES ('$fileName','$fileType','$fileSize')";
+	    if(mysqli_query($link, $sql2))
+	    	echo "<h1 style='text-align:center'>Records added successfully.</h1>";
+		else
+	    	echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+	}
 }
 
 header("refresh:2;url= http://76.91.29.148:5555/Add_Patient/index.php");
