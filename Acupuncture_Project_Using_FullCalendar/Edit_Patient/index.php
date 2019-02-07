@@ -8,17 +8,17 @@ if($link === false){
 }
  
 // The mysqli_real_escape_string() function escapes special characters in a string and create a legal SQL string to provide security against SQL injection.
-$customer_id = mysqli_real_escape_string($link, $_REQUEST['CustomerID']);
+$customer_id = mysqli_real_escape_string($link, $_REQUEST['customer_id']);
 
 // attempt insert query execution
-$sql = "SELECT * FROM patients WHERE CustomerID = '$customer_id'";
+$sql = "SELECT * FROM patients WHERE customer_id = '$customer_id'";
 
 $result = mysqli_query($link,$sql);
 
 $male = ''; $female = '';
 while ($patients = mysqli_fetch_array($result)) 
 {
-  if($patients['Sex'] == 'Male' || $patients['Sex'] == 'M') 
+  if($patients['sex'] == 'Male' || $patients['sex'] == 'M') 
     $male = 'checked';
   else
     $female = 'checked';
@@ -66,69 +66,69 @@ while ($patients = mysqli_fetch_array($result))
             <div class='form-row'>
               <div class='form-group col-md-2'>
                 <label for='id'>ID</label>
-                <input type='text' class='form-control' name='ID' value = '".$patients['CustomerID']."' readonly>
+                <input type='text' class='form-control' name='customer_id' value = '".$patients['customer_id']."' readonly>
               </div>
               <div class='form-group col-md-5'>
                 <label for='first_name'>First Name</label>
-                <input type='text' class='form-control' name='first_name' placeholder='First Name' value = '".$patients['First_Name']."' required>
+                <input type='text' class='form-control' name='first_name' placeholder='First Name' value = '".$patients['first_name']."' required>
               </div>
               <div class='form-group col-md-5'>
                 <label for='last_name'>Last Name</label>
-                <input type='text' class='form-control' name='last_name' placeholder='Last Name' value = '".$patients['Last_Name']."' required>
+                <input type='text' class='form-control' name='last_name' placeholder='Last Name' value = '".$patients['last_name']."' required>
               </div>
             </div>
             <div class='form-group'>
               <label for='inputAddress'>Address</label>
-              <input type='text' class='form-control' name='address' placeholder='1234 Main St' value = '".$patients['Address']."'>
+              <input type='text' class='form-control' name='address' placeholder='1234 Main St' value = '".$patients['address']."'>
             </div>
             <div class='form-row'>
               <div class='form-group col-md-6'>
                 <label for='inputCity'>City</label>
-                <input type='text' class='form-control' name='city' placeholder='City' value = '".$patients['City']."'>
+                <input type='text' class='form-control' name='city' placeholder='City' value = '".$patients['city']."'>
               </div>
               <div class='form-group col-md-4'>
                 <label for='inputState'>State</label>
-                <input type='text' class='form-control' name='state' placeholder='State' value = '".$patients['State']."'>
+                <input type='text' class='form-control' name='state' placeholder='State' value = '".$patients['state']."'>
               </div>
               <div class='form-group col-md-2'>
                 <label for='inputZip'>Zip</label>
-                <input type='text' class='form-control' name='zip' placeholder='Zip' value = '".$patients['Zip']."'>
+                <input type='text' class='form-control' name='zip' placeholder='Zip' value = '".$patients['zip']."'>
               </div>
             </div>
             <div class='form-row'>
               <div class='form-group col-md-6'>
                 <label for='employer'>Employer</label>
-                <input type='text' class='form-control' name='employer' placeholder='Employer' value = '".$patients['Employer']."'>
+                <input type='text' class='form-control' name='employer' placeholder='Employer' value = '".$patients['employer']."'>
               </div>
               <div class='form-group col-md-6'>
                 <label for='occupation'>Occupation</label>
-                <input type='text' class='form-control' name='occupation' placeholder='Occupation' value = '".$patients['Occupation']."'>
+                <input type='text' class='form-control' name='occupation' placeholder='Occupation' value = '".$patients['occupation']."'>
               </div>
             </div>
             <div class='form-row'>
               <div class='form-group col-md-6'>
                 <label for='email'>Email</label>
-                <input type='email' class='form-control' name='email' placeholder='Email' value = '".$patients['Email']."' required>
+                <input type='email' class='form-control' name='email' placeholder='Email' value = '".$patients['email']."' required>
               </div>
               <div class='form-group col-md-6'>
                 <label for='number'>Number</label>
-                <input type='text' class='form-control' name='number' id='phone' placeholder='Number' value = '".$patients['Phone_Number']."'>
+                <input type='text' class='form-control' name='number' id='phone' placeholder='Number' value = '".$patients['phone_number']."'>
               </div>
             </div>
             <div class='form-row'>
               <div class='form-group col-md-6'>
                 <label for='license'>License</label>
-                <input type='text' class='form-control' name='license' placeholder='License' value = '".$patients['License']."'>
+                <input type='text' class='form-control' name='license' placeholder='License' value = '".$patients['license']."'>
               </div>
               <div class='form-group col-md-6'>
                 <label for='ssn'>SSN</label>
-                <input type='text' class='form-control' name='ssn' id='ssn' placeholder='SSN' value = '".$patients['SSN']."'>
+                <input type='text' class='form-control' name='ssn' id='ssn' placeholder='SSN' value = '".$patients['ssn']."'>
               </div>
             </div>
             <div class='form-row'>
               <div class='form-group col-md-6'>
                 <label for='birthday'>Birthday</label>
-                <input type='date' class='form-control' name='birthday' placeholder='Birthday' value = '".$patients['Birthday']."'>
+                <input type='date' class='form-control' name='birthday' placeholder='Birthday' value = '".$patients['birthday']."'>
               </div>
               
               <div class='form-group col-md-6'>
@@ -155,7 +155,7 @@ while ($patients = mysqli_fetch_array($result))
               <h2>Upload File</h2>
               <input type='file' name='file' id='fileSelect'/>
               <h4>Description of File:</h4> 
-              <textarea name='description' value = '".$patients['Notes']."' rows='4' cols='40'></textarea>
+              <textarea name='description' value = '".$patients['notes']."' rows='4' cols='40'></textarea>
             </div>
             <input type='submit' class='btn btn-info btn-block' value='Update'>      
           </form>

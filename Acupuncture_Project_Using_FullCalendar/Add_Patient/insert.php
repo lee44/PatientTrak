@@ -1,9 +1,4 @@
 <?php
-$file = $_FILES['file'];
-$file_name = $file['name'];
-$file_type = $file ['type'];
-$file_size = $file ['size'];
-
 /* Attempt MySQL server connection.  */
 $link = mysqli_connect("localhost", "root", "", "acupuncture");
  
@@ -35,8 +30,9 @@ $sql = "INSERT INTO patients (first_name,last_name,email,address,city,state,zip,
         	    '$ssn','$birthday','$gender','$notes','$created_at')";
 mysqli_query($link, $sql);
 
+$customer_id = mysqli_insert_id($link);
 
-if(isset($_FILES['upload']['name']))
+if(isset($_FILES['upload']['name'][0]))
 {
 	// Count # of uploaded files in array
 	$total = count($_FILES['upload']['name']);
@@ -49,15 +45,24 @@ if(isset($_FILES['upload']['name']))
 	  	$fileType = $_FILES['upload']['type'][$i];
 	  	$fileSize = $_FILES['upload']['size'][$i];
 
-		if(move_uploaded_file ($tmpFilePath,'uploads/'.$_FILES['upload']['name'][$i]))
+		if(move_uploaded_file ($tmpFilePath,'Uploads/'.$fileName))
 	    	echo "File Uploaded";
 
-	    $sql2 = "INSERT INTO files (filename,type,size) VALUES ('$fileName','$fileType','$fileSize')";
+	    $sql2 = "INSERT INTO files (customer_id,name,type,size,created_at) VALUES ('$customer_id','$fileName','$fileType','$fileSize','$created_at')";
 	    if(mysqli_query($link, $sql2))
 	    	echo "<h1 style='text-align:center'>Records added successfully.</h1>";
 		else
 	    	echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 	}
+}
+else
+{
+	$fileName = "";$fileType = "";$fileSize = "";
+	$sql2 = "INSERT INTO files (customer_id,name,type,size,created_at) VALUES ('$customer_id','$fileName','$fileType','$fileSize','$created_at')";
+    if(mysqli_query($link, $sql2))
+    	echo "<h1 style='text-align:center'>Records added successfully.</h1>";
+	else
+    	echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
 
 header("refresh:2;url= http://76.91.29.148:5555/Add_Patient/index.php");

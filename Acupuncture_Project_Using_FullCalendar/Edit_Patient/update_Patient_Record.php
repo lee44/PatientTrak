@@ -7,7 +7,7 @@ if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
-$customer_id = $_POST['ID'];
+$customer_id = $_POST['customer_id'];
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
 $email = $_POST['email'];
@@ -24,10 +24,10 @@ $birthday = $_POST['birthday'];
 $gender = $_POST['gender'];
 
 $update_sql = "UPDATE patients 
-               SET First_Name = '$first_name', Last_Name = '$last_name', Email = '$email', License = '$license', Address = '$address',
-               City = '$city', State = '$state', Zip = '$zip', Employer = '$employer', Occupation = '$occupation', Phone_Number = '$phonenumber',
-               SSN = '$ssn', Birthday = '$birthday', Sex = '$gender'
-               WHERE CustomerID = '$customer_id'";
+               SET first_name = '$first_name', last_name = '$last_name', email = '$email', license = '$license', address = '$address',
+               city = '$city', state = '$state', zip = '$zip', employer = '$employer', occupation = '$occupation', phone_number = '$phonenumber',
+               ssn = '$ssn', birthday = '$birthday', sex = '$gender'
+               WHERE customer_id = '$customer_id'";
 
 if(mysqli_query($link, $update_sql)){
     echo "<h2>Records were updated successfully.</h2>";

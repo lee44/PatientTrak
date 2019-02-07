@@ -65,19 +65,19 @@ while ($patients = mysqli_fetch_array($result))
 {
     echo "<tbody>";
     echo "<tr>";
-    echo "<td>".$patients['First_Name']."</td>";
-    echo "<td>".$patients['Last_Name']."</td>";
-    echo "<td>".$patients['Address']."</td>";
-    echo "<td>".$patients['City']."</td>";
-    echo "<td>".$patients['State']."</td>";
-    echo "<td>".$patients['Zip']."</td>";
-    echo "<td>".$patients['Phone_Number']."</td>";
-    echo "<td>".$patients['Email']."</td>";
-    echo "<td>".$patients['SSN']."</td>";
-    echo "<td>".$patients['License']."</td>";
-    echo "<td>".$patients['Birthday']."</td>";
+    echo "<td>".$patients['first_name']."</td>";
+    echo "<td>".$patients['last_name']."</td>";
+    echo "<td>".$patients['address']."</td>";
+    echo "<td>".$patients['city']."</td>";
+    echo "<td>".$patients['state']."</td>";
+    echo "<td>".$patients['zip']."</td>";
+    echo "<td>".$patients['phone_number']."</td>";
+    echo "<td>".$patients['email']."</td>";
+    echo "<td>".$patients['ssn']."</td>";
+    echo "<td>".$patients['license']."</td>";
+    echo "<td>".$patients['birthday']."</td>";
     echo "<td><form action='/Edit_Patient/index.php' method='POST'>
-          <input type='hidden' name='CustomerID' value='".$patients["CustomerID"]."'/>
+          <input type='hidden' name='customer_id' value='".$patients["customer_id"]."'/>
           <input type='submit' name='edit' value='Edit' /></form></td>";
     echo "</tr>";
 }
