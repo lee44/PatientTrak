@@ -34,6 +34,8 @@ h1 { text-align: center; margin: .25rem 0 .25rem 0 !important;}
 
 h2 { margin: .15rem 0 .25rem 0 !important;}
 
+h4 {text-align: center;}
+
 label {text-align:right; margin-bottom: 0 !important;}
 
 input[type="date"]

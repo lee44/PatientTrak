@@ -37,7 +37,7 @@ if(mysqli_query($link, $update_sql)){
 
 mysqli_close($link);
 
-header("refresh:2;url= http://76.91.29.148:5555/Find_Patient/index.php");
+header("refresh:1;url= http://76.91.29.148:5555/Find_Patient/index.php");
 //header("Location: http://192.168.1.136:5557/");
 exit();
 ?>
