@@ -16,9 +16,10 @@ $result = mysqli_query($conn,$sql);
 <head>
 	<title>Patient Data</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href = "/Global_CSS/global.css" type = "text/css" rel = "stylesheet" />
     <link href = "table_query.css" type = "text/css" rel = "stylesheet" /> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"> -->
+    
     <link href='/lib/bootstrap.min.css' rel="stylesheet" />
     <script src='/lib/jquery-3.3.1.slim.min.js'></script>
     <script src='/lib/popper.min.js'></script>

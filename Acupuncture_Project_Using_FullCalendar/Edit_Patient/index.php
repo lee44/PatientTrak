@@ -27,6 +27,7 @@ while ($patients = mysqli_fetch_array($result))
     <head>    
         <title>Edit Patient</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link href = '/Global_CSS/global.css' type = 'text/css' rel = 'stylesheet' />
         <link href = 'edit_patient.css' type = 'text/css' rel = 'stylesheet' /> 
         <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
         <link href='/lib/bootstrap.min.css' rel='stylesheet' />

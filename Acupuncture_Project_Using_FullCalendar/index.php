@@ -2,12 +2,12 @@
 <head>    
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  	<link href='./lib/fullcalendar.css' rel='stylesheet'/> <!-- Dont Touch -->
+  	<link href='/lib/fullcalendar.css' rel='stylesheet'/> <!-- Dont Touch -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href = "/Global_CSS/global.css" type = "text/css" rel = "stylesheet" />
     <link href = "main_page.css" type = "text/css" rel = "stylesheet" />
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"> -->
     <link href='/lib/bootstrap.min.css' rel="stylesheet" />
     <script src='/lib/jquery-3.3.1.slim.min.js'></script>
     <script src='/lib/popper.min.js'></script>
