@@ -11,7 +11,12 @@ if($link === false){
 $customer_id = mysqli_real_escape_string($link, $_REQUEST['customer_id']);
 
 // attempt insert query execution
-$sql = "SELECT * FROM patients WHERE customer_id = '$customer_id'";
+$sql =
+"SELECT P.customer_id,P.first_name,P.last_name,P.address,P.city,P.state,P.zip,P.phone_number,P.email,P.ssn,P.license,P.birthday,P.sex,
+        P.employer,P.occupation,P.notes,F.name
+ FROM patients AS P 
+ LEFT JOIN files AS F ON P.customer_id = F.customer_id
+ WHERE P.customer_id = '$customer_id'";
 
 $result = mysqli_query($link,$sql);
 
@@ -159,6 +164,9 @@ while ($patients = mysqli_fetch_array($result))
             </div>
             <input type='submit' class='btn btn-info btn-block' value='Update'>      
           </form>
+          <a href = 'http://76.91.29.148:5555/Add_Patient/Uploads/".$patients['name']."'>".$patients['name']."
+            <img src =../Add_Patient/Uploads/".$patients['name']." width='120' height='100'>
+          </a>
         </div>
         </body>    
     </html>
@@ -166,3 +174,6 @@ while ($patients = mysqli_fetch_array($result))
 }
 mysqli_close($link);
 ?>
+
+<!-- <a href = 'http://76.91.29.148:5555/Add_Patient/Uploads/".$patients['name']."'>".$patients['name']."</a>
+<img src =../Add_Patient/Uploads/".$patients['name']." width='100' height='100'> -->
