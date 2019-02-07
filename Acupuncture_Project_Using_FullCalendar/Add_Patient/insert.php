@@ -48,7 +48,7 @@ if(isset($_FILES['upload']['name'][0]))
 		if(move_uploaded_file ($tmpFilePath,'Uploads/'.$fileName))
 	    	echo "File Uploaded";
 
-	    $sql2 = "INSERT INTO files (customer_id,name,type,size,created_at) VALUES ('$customer_id','$fileName','$fileType','$fileSize','$created_at')";
+	    $sql2 = "INSERT INTO files (customer_id,file_name,type,size,created_at) VALUES ('$customer_id','$fileName','$fileType','$fileSize','$created_at')";
 	    if(mysqli_query($link, $sql2))
 	    	echo "<h1 style='text-align:center'>Records added successfully.</h1>";
 		else
@@ -58,7 +58,7 @@ if(isset($_FILES['upload']['name'][0]))
 else
 {
 	$fileName = "";$fileType = "";$fileSize = "";
-	$sql2 = "INSERT INTO files (customer_id,name,type,size,created_at) VALUES ('$customer_id','$fileName','$fileType','$fileSize','$created_at')";
+	$sql2 = "INSERT INTO files (customer_id,file_name,type,size,created_at) VALUES ('$customer_id','$fileName','$fileType','$fileSize','$created_at')";
     if(mysqli_query($link, $sql2))
     	echo "<h1 style='text-align:center'>Records added successfully.</h1>";
 	else
