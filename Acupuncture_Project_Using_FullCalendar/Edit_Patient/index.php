@@ -21,8 +21,8 @@ $sql =
 $result = mysqli_query($link,$sql);
 
 $male = ''; $female = '';
-while ($patients = mysqli_fetch_array($result)) 
-{
+$patients = mysqli_fetch_array($result);
+
   if($patients['sex'] == 'Male' || $patients['sex'] == 'M') 
     $male = 'checked';
   else
@@ -158,22 +158,34 @@ while ($patients = mysqli_fetch_array($result))
             </div>
             <div class = 'uploadFile'>    
               <h2>Upload File</h2>
+              <h4>Current Files:</h4>";
+              
+              echo "<a href = 'http://76.91.29.148:5555/Add_Patient/Uploads/".$patients['name']."'>".$patients['name']."</a>";
+              
+              echo "<br>
               <input type='file' name='file' id='fileSelect'/>
               <h4>Description of File:</h4> 
               <textarea name='description' value = '".$patients['notes']."' rows='4' cols='40'></textarea>
             </div>
             <input type='submit' class='btn btn-info btn-block' value='Update'>      
           </form>
-          <a href = 'http://76.91.29.148:5555/Add_Patient/Uploads/".$patients['name']."'>".$patients['name']."
-            <img src =../Add_Patient/Uploads/".$patients['name']." width='120' height='100'>
-          </a>
         </div>
         </body>    
     </html>
   ";    
-}
+
 mysqli_close($link);
 ?>
 
-<!-- <a href = 'http://76.91.29.148:5555/Add_Patient/Uploads/".$patients['name']."'>".$patients['name']."</a>
-<img src =../Add_Patient/Uploads/".$patients['name']." width='100' height='100'> -->
+<!-- 
+<a href = 'http://76.91.29.148:5555/Add_Patient/Uploads/".$patients['name']."'>".$patients['name']."</a>
+<img src =../Add_Patient/Uploads/".$patients['name']." width='100' height='100'> 
+
+<a href = 'http://76.91.29.148:5555/Add_Patient/Uploads/".$patients['name']."'>".$patients['name']."
+  <img src =../Add_Patient/Uploads/".$patients['name']." width='120' height='100'>
+</a>  
+
+Only JPG, PNG, or any image type will show pic.
+Word and Excel dont show image but ask to download once you click on them
+PDF doesnt show image but does show it if you click the link which takes you to another tab.
+-->

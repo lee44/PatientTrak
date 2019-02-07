@@ -51,6 +51,12 @@ input[type=date]::-webkit-inner-spin-button {
 
 input[type="file"] { font-size:1em; margin: 0 0 1rem 0;}
 
-textarea { resize: none !important; width:100%;}
+textarea 
+{ 
+  resize: none !important; 
+  height: 4em !important;
+  width: 100% !important;
+
+}
 
 input[type="submit"] { margin-top: 1.5px; font-size:1.1em; }
