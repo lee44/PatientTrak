@@ -94,30 +94,30 @@ $(document).ready(function ()
         </div>
         <div class='form-group'>
           <label for='inputAddress'>Address</label>
-          <input type='text' class='form-control' name='address' placeholder='1234 Main St' value = '".$patients['address']."'>
+          <input type='text' class='form-control' name='address' placeholder='1234 Main St' value = '".$patients['address']."' required>
         </div>
         <div class='form-row'>
           <div class='form-group col-md-6'>
             <label for='inputCity'>City</label>
-            <input type='text' class='form-control' name='city' placeholder='City' value = '".$patients['city']."'>
+            <input type='text' class='form-control' name='city' placeholder='City' value = '".$patients['city']."' required>
           </div>
           <div class='form-group col-md-4'>
             <label for='inputState'>State</label>
-            <input type='text' class='form-control' name='state' placeholder='State' value = '".$patients['state']."'>
+            <input type='text' class='form-control' name='state' placeholder='State' value = '".$patients['state']."' required>
           </div>
           <div class='form-group col-md-2'>
             <label for='inputZip'>Zip</label>
-            <input type='text' class='form-control' name='zip' placeholder='Zip' value = '".$patients['zip']."'>
+            <input type='text' class='form-control' name='zip' placeholder='Zip' value = '".$patients['zip']."' required>
           </div>
         </div>
         <div class='form-row'>
           <div class='form-group col-md-6'>
             <label for='employer'>Employer</label>
-            <input type='text' class='form-control' name='employer' placeholder='Employer' value = '".$patients['employer']."'>
+            <input type='text' class='form-control' name='employer' placeholder='Employer' value = '".$patients['employer']."' required>
           </div>
           <div class='form-group col-md-6'>
             <label for='occupation'>Occupation</label>
-            <input type='text' class='form-control' name='occupation' placeholder='Occupation' value = '".$patients['occupation']."'>
+            <input type='text' class='form-control' name='occupation' placeholder='Occupation' value = '".$patients['occupation']."' required>
           </div>
         </div>
         <div class='form-row'>
@@ -127,23 +127,23 @@ $(document).ready(function ()
           </div>
           <div class='form-group col-md-6'>
             <label for='number'>Number</label>
-            <input type='text' class='form-control' name='number' id='phone' placeholder='Number' value = '".$patients['phone_number']."'>
+            <input type='text' class='form-control' name='number' id='phone' placeholder='Number' value = '".$patients['phone_number']."' required>
           </div>
         </div>
         <div class='form-row'>
           <div class='form-group col-md-6'>
             <label for='license'>License</label>
-            <input type='text' class='form-control' name='license' placeholder='License' value = '".$patients['license']."'>
+            <input type='text' class='form-control' name='license' placeholder='License' value = '".$patients['license']."' required>
           </div>
           <div class='form-group col-md-6'>
             <label for='ssn'>SSN</label>
-            <input type='text' class='form-control' name='ssn' id='ssn' placeholder='SSN' value = '".$patients['ssn']."'>
+            <input type='text' class='form-control' name='ssn' id='ssn' placeholder='SSN' value = '".$patients['ssn']."' required>
           </div>
         </div>
         <div class='form-row'>
           <div class='form-group col-md-6'>
             <label for='birthday'>Birthday</label>
-            <input type='date' class='form-control' name='birthday' placeholder='Birthday' value = '".$patients['birthday']."'>
+            <input type='date' class='form-control' name='birthday' placeholder='Birthday' value = '".$patients['birthday']."' required>
           </div>
           
           <div class='form-group col-md-6'>

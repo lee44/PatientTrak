@@ -55,30 +55,30 @@
         </div>
         <div class="form-group">
           <label for="address">Address</label>
-          <input type="text" class="form-control" name="address" placeholder="1234 Main St">
+          <input type="text" class="form-control" name="address" placeholder="1234 Main St" required>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="city">City</label>
-            <input type="text" class="form-control" name="city" placeholder="City">
+            <input type="text" class="form-control" name="city" placeholder="City" required>
           </div>
           <div class="form-group col-md-4">
             <label for="state">State</label>
-            <input type="text" class="form-control" name="state" placeholder="State">
+            <input type="text" class="form-control" name="state" placeholder="State" required>
           </div>
           <div class="form-group col-md-2">
             <label for="zip">Zip</label>
-            <input type="number" class="form-control" name="zip" placeholder="Zip">
+            <input type="number" class="form-control" name="zip" placeholder="Zip" required>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="employer">Employer</label>
-            <input type="text" class="form-control" name="employer" placeholder="Employer">
+            <input type="text" class="form-control" name="employer" placeholder="Employer" required>
           </div>
           <div class="form-group col-md-6">
             <label for="occupation">Occupation</label>
-            <input type="text" class="form-control" name="occupation" placeholder="Occupation">
+            <input type="text" class="form-control" name="occupation" placeholder="Occupation" required>
           </div>
         </div>
         <div class="form-row">
@@ -88,23 +88,23 @@
           </div>
           <div class="form-group col-md-6">
             <label for="number">Number</label>
-            <input type="text" class="form-control" id = "phone" name="number" placeholder="Number">
+            <input type="text" class="form-control" id = "phone" name="number" placeholder="Number" required>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="license">License</label>
-            <input type="text" class="form-control" name="license" placeholder="License">
+            <input type="text" class="form-control" name="license" placeholder="License" required>
           </div>
           <div class="form-group col-md-6">
             <label for="ssn">SSN</label>
-            <input type="text" class="form-control" id="ssn" name="ssn" placeholder="SSN">
+            <input type="text" class="form-control" id="ssn" name="ssn" placeholder="SSN" required>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="birthday">Birthday</label>
-            <input type="date" class="form-control" name="birthday" placeholder="Birthday">
+            <input type="date" class="form-control" name="birthday" placeholder="Birthday" required>
           </div>
           
           <div class="form-group col-md-6">
