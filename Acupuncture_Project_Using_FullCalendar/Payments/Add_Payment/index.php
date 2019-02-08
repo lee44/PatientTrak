@@ -19,50 +19,65 @@
             if(!isNaN($("#quantity").val()) && $("#quantity").val().length != 0 && !isNaN($("#base_price").val()) && $("#base_price").val().length != 0)
             {
                 var total = $("#quantity").val() * $("#base_price").val();
-                $("#total").val("$"+total.toFixed(2)); 
-            }  
+                $("#total").val(total.toFixed(2));  
+            }
+            else 
+                $("input[name=total]").val(0);
+            calculateSum();
         });
         $("#quantity2, #base_price2").keyup(function () 
         {
-            if(!isNaN($("#quantity").val()) && $("#quantity").val().length != 0 && !isNaN($("#base_price2").val()) && $("#base_price2").val().length != 0)
+            if(!isNaN($("#quantity2").val()) && $("#quantity2").val().length != 0 && !isNaN($("#base_price2").val()) && $("#base_price2").val().length != 0)
             {
                 var total = $("#quantity2").val() * $("#base_price2").val();
-                $("#total2").val("$"+total.toFixed(2));
+                $("input[name=total2]").val(total.toFixed(2));
             }
+            else 
+                $("input[name=total2]").val(0);
+            calculateSum();
         });
         $("#quantity3, #base_price3").keyup(function () 
         {
-            if(!isNaN($("#quantity").val()) && $("#quantity").val().length != 0 && !isNaN($("#base_price3").val()) && $("#base_price3").val().length != 0)
+            if(!isNaN($("#quantity3").val()) && $("#quantity3").val().length != 0 && !isNaN($("#base_price3").val()) && $("#base_price3").val().length != 0)
             {
                 var total = $("#quantity3").val() * $("#base_price3").val();
-                $("#total3").val("$"+total.toFixed(2));
+                $("input[name=total3]").val(total.toFixed(2));
             }
+            else 
+                $("input[name=total3]").val(0);
+            calculateSum();
         });
         $("#quantity4, #base_price4").keyup(function () 
         {
-            if(!isNaN($("#quantity").val()) && $("#quantity").val().length != 0 && !isNaN($("#base_price4").val()) && $("#base_price4").val().length != 0)
+            if(!isNaN($("#quantity4").val()) && $("#quantity4").val().length != 0 && !isNaN($("#base_price4").val()) && $("#base_price4").val().length != 0)
             {
                 var total = $("#quantity4").val() * $("#base_price4").val();
-                $("#total4").val("$"+total.toFixed(2));
+                $("input[name=total4]").val(total.toFixed(2));
             }
+            else 
+                $("input[name=total4]").val(0);
+            calculateSum();
         });
         $("#quantity5, #base_price5").keyup(function () 
         {
-            if(!isNaN($("#quantity").val()) && $("#quantity").val().length != 0 && !isNaN($("#base_price5").val()) && $("#base_price5").val().length != 0)
+            if(!isNaN($("#quantity5").val()) && $("#quantity5").val().length != 0 && !isNaN($("#base_price5").val()) && $("#base_price5").val().length != 0)
             {
                 var total = $("#quantity5").val() * $("#base_price5").val();
-                $("#total5").val("$"+total.toFixed(2));
+                $("input[name=total5]").val(total.toFixed(2));
             }
+            else 
+                $("input[name=total5]").val(0);
+            calculateSum();
         });
 
         function calculateSum() 
         {
             var sum = 0;
             
-            $(".txt").each(function() 
+            $(".total").each(function() 
             {
-                if(!isNaN(this.value) && this.value.length!=0) 
-                    sum += parseFloat(this.value);
+                if(!isNaN(this.value) && this.value.length!=0)
+                    sum += parseFloat(this.value);     
             });
             
             $("#subtotal").html(sum.toFixed(2));
@@ -105,31 +120,31 @@
                         <td class="col-5"><input type="text"   id="description" class="form-control" name="description"></td>
                         <td class="col-2"><input type="number" id="quantity"    class="form-control" name="quantity"></td>
                         <td class="col-2"><input type="number" id="base_price"  class="form-control" name="base_price"></td>
-                        <td class="col-3"><input type="text"   id="total"       class="form-control" name="total1" readonly ></td>
+                        <td class="col-3"><input type="text"   id="total"       class="form-control total" name="total" readonly ></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-5"><input type="text"   id="description2" class="form-control" name="description2"></td>
                         <td class="col-2"><input type="number" id="quantity2"    class="form-control" name="quantity2"></td>
                         <td class="col-2"><input type="number" id="base_price2"  class="form-control" name="base_price2"></td>
-                        <td class="col-3"><input type="text"   id="total"        class="form-control" name="total2" readonly ></td>
+                        <td class="col-3"><input type="text"   id="total"        class="form-control total" name="total2" readonly ></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-5"><input type="text"   id="description3" class="form-control" name="description3"></td>
                         <td class="col-2"><input type="number" id="quantity3"    class="form-control" name="quantity3"></td>
                         <td class="col-2"><input type="number" id="base_price3"  class="form-control" name="base_price3"></td>
-                        <td class="col-3"><input type="text"   id="total"        class="form-control" name="total3" readonly ></td>
+                        <td class="col-3"><input type="text"   id="total"        class="form-control total" name="total3" readonly ></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-5"><input type="text"   id="description4" class="form-control" name="description4"></td>
                         <td class="col-2"><input type="number" id="quantity4"    class="form-control" name="quantity4"></td>
                         <td class="col-2"><input type="number" id="base_price4"  class="form-control" name="base_price4"></td>
-                        <td class="col-3"><input type="text"   id="total"        class="form-control" name="total4" readonly ></td>
+                        <td class="col-3"><input type="text"   id="total"        class="form-control total" name="total4" readonly ></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-5"><input type="text"   id="description5" class="form-control" name="description5"></td>
                         <td class="col-2"><input type="number" id="quantity5"    class="form-control" name="quantity5"></td>
                         <td class="col-2"><input type="number" id="base_price5"  class="form-control" name="base_price5"></td>
-                        <td class="col-3"><input type="text"   id="total"        class="form-control" name="total5" readonly ></td>
+                        <td class="col-3"><input type="text"   id="total"        class="form-control total" name="total5" readonly ></td>
                     </tr>
                 </tbody>
             </table> 
@@ -138,25 +153,25 @@
                     <tr class="d-flex">
                         <td class="col-5"></td>
                         <td class="col-2"></td>
-                        <td class="col-2 misc">SUBTOTAL</td>
+                        <td class="col-2">SUBTOTAL</td>
                         <td class="col-3 amount" id="subtotal"></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-5"></td>
                         <td class="col-2"></td>
-                        <td class="col-2 misc">CO PAY</td>
-                        <td class="col-3 amount" id="co_pay"></td>
+                        <td class="col-2">CO PAY</td>
+                        <td class="col-3" id="co_pay"></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-5"></td>
                         <td class="col-2"></td>
-                        <td class="col-2 misc">TAXES</td>
-                        <td class="col-3 amount" id="taxes"></td>
+                        <td class="col-2">TAXES</td>
+                        <td class="col-3" id="taxes"></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-5"></td>
                         <td class="col-2"></td>
-                        <td class="col-2 misc">TOTAL</td>
+                        <td class="col-2">TOTAL</td>
                         <td class="col-3 amount" id="grand_total"></td>
                     </tr>
                     
