@@ -1,8 +1,9 @@
 <html>    
 <head>    
-    <title>Find/Edit Patient</title>
+    <title>Birthday Report</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href = "/Global_CSS/global.css" type = "text/css" rel = "stylesheet" />
+    <link href = "/Reports/Customer_Reports/Birthday_Report/birthday_report.css" type = "text/css" rel = "stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='/lib/bootstrap.min.css' rel="stylesheet" />
     <script src='/lib/jquery-3.3.1.slim.min.js'></script>
@@ -27,18 +28,29 @@
         </div>
     </nav>
 
-<h1>Birthday Report</h1>
+<h1>Birthday Report By Month</h1>
     <div class="container">
       <form form name="form1" action="" method="post" enctype="multipart/form-data">
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="starting_date">Starting Date</label>
-            <input type="date" class="form-control" name="starting_date" required>
+            <label id="choose_month" for="months">Choose Month</label>
+            <br>
+            <select name="Months" id = "months">
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+            </select>
           </div>
-          <div class="form-group col-md-6">
-            <label for="ending_date">Ending Date</label>
-            <input type="date" class="form-control" name="ending_date" required>
-          </div>
+          <div class="form-group col-md-6"></div>
         </div>
         <input type="submit" class="btn btn-info btn-block" name="search" value="Search">
       </form>
@@ -52,10 +64,9 @@
             if($link === false)
                 die("ERROR: Could not connect. " . mysqli_connect_error());
             
-            $starting_date = $_POST['starting_date'];
-            $ending_date = $_POST['ending_date'];
+            $month = $_POST['Months'];
 
-            $sql = "SELECT * FROM patients WHERE birthday >= '$starting_date' AND birthday <= '$ending_date'";
+            $sql = "SELECT * FROM patients WHERE MONTHNAME(birthday) = '$month' ";
 
             $result = mysqli_query($link,$sql); 
             echo '

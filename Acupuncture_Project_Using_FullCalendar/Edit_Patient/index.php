@@ -167,15 +167,15 @@ $(document).ready(function ()
           </div>
         </div>
         <div class = 'uploadFile'>    
-          <h2>Upload File</h2>
-          <h4>Current Files:</h4>";
+          <h2>Upload File</h2>";
           if(!is_null($files[0]))
+          {  
+            echo "<h4>Current Files:</h4>";
             foreach($files as $file_name)
               echo "<a style='font-size:17px;' href = 'http://76.91.29.148:5555/Add_Patient/Uploads/".$file_name."'>".$file_name."</a><br>";
-          else
-              echo "<p>No files attached</p>";
+          }
           echo "
-          <input type='file' name='file' id='fileSelect'/>
+          <input type='file' name='upload[]' multiple='multiple' id='fileSelect'/>
           <h4>Description of File:</h4> 
           <textarea name='description' value = '".$patients['notes']."' rows='4' cols='40'></textarea>
         </div>

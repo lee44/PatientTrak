@@ -34,7 +34,7 @@
           <div class="form-group col-md-4">
             <h4>Customer Reports</h4>
             <ul class="navbar-nav justify-content-between">
-                <li><a href = "/Reports/Customer_Reports/Birthday_Report/index.php">Birthday Report</a></li>
+                <li><a href = "/Reports/Customer_Reports/Birthday_Report/index.php">Birthday Report by Month</a></li>
             </ul>
           </div>
           <div class="form-group col-md-4">
