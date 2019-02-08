@@ -1,0 +1,4 @@
+echo '<option value="'.$value.'"'.$selected.'>'.$label.'</option>';
+
+In PHP, use single quotes as much as you can because they are more efficient. When double quotes are used, PHP has to parse the string
+to look for PHP variables.

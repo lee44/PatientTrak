@@ -121,27 +121,29 @@
 
             while ($patients = mysqli_fetch_array($result)) 
             {
-                echo "<tbody>";
-                echo "<tr>";
-                echo "<td>".$patients['first_name']."</td>";
-                echo "<td>".$patients['last_name']."</td>";
-                echo "<td>".$patients['address']."</td>";
-                echo "<td>".$patients['city']."</td>";
-                echo "<td>".$patients['state']."</td>";
-                echo "<td>".$patients['zip']."</td>";
-                echo "<td>".$patients['phone_number']."</td>";
-                echo "<td>".$patients['email']."</td>";
-                echo "<td>".$patients['ssn']."</td>";
-                echo "<td>".$patients['license']."</td>";
-                echo "<td>".$patients['birthday']."</td>";
-                echo "<td><form action='/Edit_Patient/index.php' method='POST'>
-                      <input type='hidden' name='customer_id' value='".$patients["customer_id"]."'/>
-                      <input type='submit' name='edit' value='Edit/View' /></form></td>";
-                echo "</tr>";
+                echo 
+                '<tbody>
+                 <tr>
+                 <td>'.$patients['first_name'].'</td>
+                 <td>'.$patients['last_name'].'</td>
+                 <td>'.$patients['address'].'</td>
+                 <td>'.$patients['city'].'</td>
+                 <td>'.$patients['state'].'</td>
+                 <td>'.$patients['zip'].'</td>
+                 <td>'.$patients['phone_number'].'</td>
+                 <td>'.$patients['email'].'</td>
+                 <td>'.$patients['ssn'].'</td>
+                 <td>'.$patients['license'].'</td>
+                 <td>'.$patients['birthday'].'</td>
+                 <td><form action="/Edit_Patient/index.php" method="POST">
+                      <input type="hidden" name="customer_id" value="'.$patients["customer_id"].'"/>
+                      <input type="submit" name="edit" value="Edit/View" /></form>
+                 </td>
+                 </tr>';
             }
-                echo "</tbody>
+                echo '</tbody>
                       </table>
-                      </div>";
+                      </div>';
             mysqli_close($link);
         }
     ?>    

@@ -35,29 +35,31 @@
           <div class="form-group col-md-6">
             <label id="choose_month" for="months">Choose Month</label>
             <br>
-            <select name="Months" id = "months">
-                <option value="January">January</option>
-                <option value="February">February</option>
-                <option value="March">March</option>
-                <option value="April">April</option>
-                <option value="May">May</option>
-                <option value="June">June</option>
-                <option value="July">July</option>
-                <option value="August">August</option>
-                <option value="September">September</option>
-                <option value="October">October</option>
-                <option value="November">November</option>
-                <option value="December">December</option>
+            <!-- onchange will excecute the javascript function, this.form.submit(). This function is equivalent to submit button.
+
+             -->
+            <?php
+                $options = array(1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 5 => 'May', 6 => 'June', 7 => 'July',
+                                 8 => 'August', 9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December');
+            ?>
+            <select name="Months" id = "months" onchange="this.form.submit();">
+            <?php
+            foreach($options as $value => $label) 
+            {
+                $selected = (isset($_POST['Months']) && intval($_POST['Months']) === $value) ? ' selected="selected"' : ''; 
+                echo '<option value="'.$value.'"'.$selected.'>'.$label.'</option>';
+            }
+            ?>    
             </select>
+
           </div>
           <div class="form-group col-md-6"></div>
         </div>
-        <input type="submit" class="btn btn-info btn-block" name="search" value="Search">
       </form>
     </div>
     <div class="container-fluid"> 
     <?php
-        if(isset($_POST['search']))
+        if(isset($_POST['Months']))
         {
             $link = mysqli_connect("localhost", "root", "", "acupuncture");
              
@@ -66,7 +68,7 @@
             
             $month = $_POST['Months'];
 
-            $sql = "SELECT * FROM patients WHERE MONTHNAME(birthday) = '$month' ";
+            $sql = "SELECT * FROM patients WHERE MONTH(birthday) = '$month' ";
 
             $result = mysqli_query($link,$sql); 
             echo '
@@ -88,27 +90,28 @@
                     </thead>';
             while ($patients = mysqli_fetch_array($result)) 
             {
-                echo "<tbody>";
-                echo "<tr>";
-                echo "<td>".$patients['first_name']."</td>";
-                echo "<td>".$patients['last_name']."</td>";
-                echo "<td>".$patients['address']."</td>";
-                echo "<td>".$patients['city']."</td>";
-                echo "<td>".$patients['state']."</td>";
-                echo "<td>".$patients['zip']."</td>";
-                echo "<td>".$patients['phone_number']."</td>";
-                echo "<td>".$patients['email']."</td>";
-                echo "<td>".$patients['birthday']."</td>";                
+                echo 
+                '<tbody>
+                 <tr>
+                 <td>'.$patients['first_name'].'</td>
+                 <td>'.$patients['last_name'].'</td>
+                 <td>'.$patients['address'].'</td>
+                 <td>'.$patients['city'].'</td>
+                 <td>'.$patients['state'].'</td>
+                 <td>'.$patients['zip'].'</td>
+                 <td>'.$patients['phone_number'].'</td>
+                 <td>'.$patients['email'].'</td>
+                 <td>'.$patients['birthday'].'</td>';                
 
                 $birthday = new DateTime($patients['birthday']);
                 $now = new DateTime();
                 $interval  = date_diff($birthday,$now);
-                echo "<td>".$interval->format('%y')."</td>";
-                echo "</tr>";
+                echo '<td>'.$interval->format('%y').'</td>
+                </tr>';
             }
-                echo "</tbody>
+                echo '</tbody>
                       </table>
-                      </div>";
+                      </div>';
             mysqli_close($link);
         }
     ?>    
