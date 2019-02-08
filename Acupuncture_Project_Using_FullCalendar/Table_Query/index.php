@@ -37,6 +37,7 @@ $result = mysqli_query($conn,$sql);
                 <li class="nav-item"><a class="nav-link" href = "/index.php">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="/Add_Patient/index.php">Add Patient</a></li>
                 <li class="nav-item"><a class="nav-link" href = "/Find_Patient/index.php">Find Patient</a></li>
+                <li class="nav-item"><a class="nav-link" href = "/Payments/index.php">Payments</a></li>
                 <li class="nav-item"><a class="nav-link" href="/Reports/index.php">Reports</a></li>
                 <li class="nav-item"><a class="nav-link" href = "#home">Show All Data</a></li>
             </ul>

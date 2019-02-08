@@ -65,7 +65,7 @@ else
     	echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
 
-header("refresh:2;url= http://76.91.29.148:5555/Add_Patient/index.php");
+header("refresh:2;url= http://192.168.1.136:5555/Add_Patient/index.php");
 // close connection
 mysqli_close($link);
 ?>

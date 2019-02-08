@@ -33,6 +33,7 @@
           <li class="nav-item"><a class="nav-link" href="/index.php">Home</a></li>
           <li class="nav-item"><a class="nav-link active" href="#home">Add Patient</a></li>
           <li class="nav-item"><a class="nav-link" href="/Find_Patient/index.php">Find Patient</a></li>
+          <li class="nav-item"><a class="nav-link" href = "/Payments/index.php">Payments</a></li>
           <li class="nav-item"><a class="nav-link" href="/Reports/index.php">Reports</a></li>
           <li class="nav-item"><a class="nav-link" href="/Table_Query/index.php">Show All Data</a></li>
         </ul>
@@ -45,65 +46,65 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="first_name">First Name</label>
-            <input type="text" class="form-control" name="first_name" placeholder="First Name" value = "" required>
+            <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
           </div>
           <div class="form-group col-md-6">
             <label for="last_name">Last Name</label>
-            <input type="text" class="form-control" name="last_name" placeholder="Last Name" value = "" required>
+            <input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
           </div>
         </div>
         <div class="form-group">
           <label for="address">Address</label>
-          <input type="text" class="form-control" name="address" placeholder="1234 Main St" value = "">
+          <input type="text" class="form-control" name="address" placeholder="1234 Main St">
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="city">City</label>
-            <input type="text" class="form-control" name="city" placeholder="City" value = "">
+            <input type="text" class="form-control" name="city" placeholder="City">
           </div>
           <div class="form-group col-md-4">
             <label for="state">State</label>
-            <input type="text" class="form-control" name="state" placeholder="State" value = "">
+            <input type="text" class="form-control" name="state" placeholder="State">
           </div>
           <div class="form-group col-md-2">
             <label for="zip">Zip</label>
-            <input type="number" class="form-control" name="zip" placeholder="Zip" value = "">
+            <input type="number" class="form-control" name="zip" placeholder="Zip">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="employer">Employer</label>
-            <input type="text" class="form-control" name="employer" placeholder="Employer" value = "">
+            <input type="text" class="form-control" name="employer" placeholder="Employer">
           </div>
           <div class="form-group col-md-6">
             <label for="occupation">Occupation</label>
-            <input type="text" class="form-control" name="occupation" placeholder="Occupation" value = "">
+            <input type="text" class="form-control" name="occupation" placeholder="Occupation">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="email">Email</label>
-            <input type="email" class="form-control" name="email" placeholder="Email" value = "" required>
+            <input type="email" class="form-control" name="email" placeholder="Email" required>
           </div>
           <div class="form-group col-md-6">
             <label for="number">Number</label>
-            <input type="text" class="form-control" id = "phone" name="number" placeholder="Number" value = "">
+            <input type="text" class="form-control" id = "phone" name="number" placeholder="Number">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="license">License</label>
-            <input type="text" class="form-control" name="license" placeholder="License" value = "">
+            <input type="text" class="form-control" name="license" placeholder="License">
           </div>
           <div class="form-group col-md-6">
             <label for="ssn">SSN</label>
-            <input type="text" class="form-control" id="ssn" name="ssn" placeholder="SSN" value = "">
+            <input type="text" class="form-control" id="ssn" name="ssn" placeholder="SSN">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="birthday">Birthday</label>
-            <input type="date" class="form-control" name="birthday" placeholder="Birthday" value = "">
+            <input type="date" class="form-control" name="birthday" placeholder="Birthday">
           </div>
           
           <div class="form-group col-md-6">
