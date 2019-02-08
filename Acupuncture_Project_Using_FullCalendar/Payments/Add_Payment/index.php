@@ -22,8 +22,8 @@
                 $("#total").val(total.toFixed(2));  
             }
             else 
-                $("input[name=total]").val(0);
-            calculateSum();
+                $("input[name=total]").val(0.00);
+            calculateSubtotal();
         });
         $("#quantity2, #base_price2").keyup(function () 
         {
@@ -33,8 +33,8 @@
                 $("input[name=total2]").val(total.toFixed(2));
             }
             else 
-                $("input[name=total2]").val(0);
-            calculateSum();
+                $("input[name=total2]").val(0.00);
+            calculateSubtotal();
         });
         $("#quantity3, #base_price3").keyup(function () 
         {
@@ -44,8 +44,8 @@
                 $("input[name=total3]").val(total.toFixed(2));
             }
             else 
-                $("input[name=total3]").val(0);
-            calculateSum();
+                $("input[name=total3]").val(0.00);
+            calculateSubtotal();
         });
         $("#quantity4, #base_price4").keyup(function () 
         {
@@ -55,8 +55,8 @@
                 $("input[name=total4]").val(total.toFixed(2));
             }
             else 
-                $("input[name=total4]").val(0);
-            calculateSum();
+                $("input[name=total4]").val(0.00);
+            calculateSubtotal();
         });
         $("#quantity5, #base_price5").keyup(function () 
         {
@@ -66,11 +66,21 @@
                 $("input[name=total5]").val(total.toFixed(2));
             }
             else 
-                $("input[name=total5]").val(0);
-            calculateSum();
+                $("input[name=total5]").val(0.00);
+            calculateSubtotal();
+        });
+        $("#co_pay").keyup(function () 
+        {
+            if(!isNaN($("#co_pay").val()) && $("#co_pay").val().length != 0)
+                calculateTotal(0.00);
+        });
+        $("#taxes").keyup(function () 
+        {
+            if(!isNaN($("#taxes").val()) && $("#taxes").val().length != 0)
+                calculateTotal(0.00);
         });
 
-        function calculateSum() 
+        function calculateSubtotal() 
         {
             var sum = 0;
             
@@ -81,6 +91,20 @@
             });
             
             $("#subtotal").html(sum.toFixed(2));
+            calculateTotal(sum);
+        }
+
+        function calculateTotal(amount) 
+        {
+            var sum = 0;
+            
+            $(".misc_amount").each(function() 
+            {
+                if(!isNaN(this.value) && this.value.length!=0)
+                    sum += parseFloat(this.value);     
+            });
+            sum += amount;
+            $("#grand_total").html(sum.toFixed(2));
         }
     });
     </script>       
@@ -153,26 +177,26 @@
                     <tr class="d-flex">
                         <td class="col-5"></td>
                         <td class="col-2"></td>
-                        <td class="col-2">SUBTOTAL</td>
-                        <td class="col-3 amount" id="subtotal"></td>
+                        <td class="col-2 misc_label">SUBTOTAL</td>
+                        <td class="col-3" id="subtotal">0.00</td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-5"></td>
                         <td class="col-2"></td>
-                        <td class="col-2">CO PAY</td>
-                        <td class="col-3" id="co_pay"></td>
+                        <td class="col-2 misc_label">CO PAY</td>
+                        <td class="col-3"><input type="number" id="co_pay" class="form-control misc_amount" name="co_pay" required></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-5"></td>
                         <td class="col-2"></td>
-                        <td class="col-2">TAXES</td>
-                        <td class="col-3" id="taxes"></td>
+                        <td class="col-2 misc_label">TAXES</td>
+                        <td class="col-3"><input type="number" id="taxes" class="form-control misc_amount" name="taxes" required></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-5"></td>
                         <td class="col-2"></td>
-                        <td class="col-2">TOTAL</td>
-                        <td class="col-3 amount" id="grand_total"></td>
+                        <td class="col-2 misc_label">TOTAL</td>
+                        <td class="col-3" id="grand_total">0.00</td>
                     </tr>
                     
                 </tbody>
@@ -181,35 +205,3 @@
     </div>
     </body>    
 </html>    
-
-<!-- <div class="container">
-        <form form name = "form1" action="" method = "post" enctype = "multipart/form-data" >
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="electric_accupuncture">Electric Accupuncture</label>
-                $<input type="number" min="0.01" step="0.01" max="2500" class="form-control" name="electric_accupuncture">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="mox">Mox</label>
-                $<input type="number" min="0.01" step="0.01" max="2500" class="form-control" name="mox">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="cup">Cup</label>
-                $<input type="number" min="0.01" step="0.01" max="2500" class="form-control" name="cup">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="Manip">Manip</label>
-                $<input type="number" min="0.01" step="0.01" max="2500" class="form-control" name="Manip">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="herb">Herb</label>
-                $<input type="number" min="0.01" step="0.01" max="2500" class="form-control" name="herb">
-              </div>
-            </div>
-            <input type="submit" class="btn btn-info btn-block" value="Search" name="submit">                              
-        </form>
-    </div> -->
