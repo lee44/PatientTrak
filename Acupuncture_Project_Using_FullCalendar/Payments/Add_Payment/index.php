@@ -99,31 +99,32 @@
                 <tbody>
                     <tr class="d-flex">
                         <td class="col-5"><input type="text" id="description" class="form-control" name="description"></td>
-                        <td class="col-2"><input type="number" maxlength="2" id="quantity" class="form-control" name="quantity"></td>
+                        <td class="col-2">
+                            <input type="number" maxlength="1" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="quantity" class="form-control" name="quantity"></td>
                         <td class="col-2"><input type="number" maxlength="6" id="base_price" class="form-control" name="base_price"></td>
                         <td class="col-3"><input type="text" id="total" class="form-control" name="total1" readonly ></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-5"><input type="text" id="description2" class="form-control" name="description2"></td>
-                        <td class="col-2"><input type="number" maxlength="2" id="quantity2" class="form-control" name="quantity2"></td>
+                        <td class="col-2"><input type="number" maxlength="1" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="quantity2" class="form-control" name="quantity2"></td>
                         <td class="col-2"><input type="number" maxlength="6" id="base_price2" class="form-control" name="base_price2"></td>
                         <td class="col-3"><input type="text" id="total2" class="form-control" name="total2" readonly ></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-5"><input type="text" id="description3" class="form-control" name="description3"></td>
-                        <td class="col-2"><input type="number" maxlength="2" id="quantity3" class="form-control" name="quantity3"></td>
+                        <td class="col-2"><input type="number" maxlength="1" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="quantity3" class="form-control" name="quantity3"></td>
                         <td class="col-2"><input type="number" maxlength="6" id="base_price3" class="form-control" name="base_price3"></td>
                         <td class="col-3"><input type="text" id="total3" class="form-control" name="total3" readonly ></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-5"><input type="text" id="description4" class="form-control" name="description4"></td>
-                        <td class="col-2"><input type="number" maxlength="2" id="quantity4" class="form-control" name="quantity4"></td>
+                        <td class="col-2"><input type="number" maxlength="1" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="quantity4" class="form-control" name="quantity4"></td>
                         <td class="col-2"><input type="number" maxlength="6" id="base_price4" class="form-control" name="base_price4"></td>
                         <td class="col-3"><input type="text" id="total4" class="form-control" name="total4" readonly ></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-5"><input type="text" id="description5" class="form-control" name="description5"></td>
-                        <td class="col-2"><input type="number" maxlength="2" id="quantity5" class="form-control" name="quantity5"></td>
+                        <td class="col-2"><input type="number" maxlength="1" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="quantity5" class="form-control" name="quantity5"></td>
                         <td class="col-2"><input type="number" maxlength="6" id="base_price5" class="form-control" name="base_price5"></td>
                         <td class="col-3"><input type="text" id="total5" class="form-control" name="total5" readonly ></td>
                     </tr>
