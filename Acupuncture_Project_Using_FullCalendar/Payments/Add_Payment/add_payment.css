@@ -1,0 +1,36 @@
+input[type = "number"]{	text-align: center; }
+
+th{	text-align: center !important; }
+
+#total, #total2, #total3, #total4, #total5{ text-align: center; }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.misc 
+{
+	text-align: right;
+	font-weight: bold;
+	font-size: 1.1rem;
+}
+
+#amount
+{
+	text-align: center;
+}
+
+table { margin-bottom: 0px !important;}
+
+.table td#grand_total  {
+  border-top: 2px solid black !important;
+}
+
+.amount
+{
+	text-align: center;
+	font-weight: bold;
+}
