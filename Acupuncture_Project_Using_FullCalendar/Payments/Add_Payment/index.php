@@ -14,98 +14,27 @@
     <script>
     $(document).ready(function () 
     {
-        $("#quantity, #base_price").keyup(function () 
+        //iterate through each textboxes and add keyup handler to trigger sum event
+        $(".charge").each(function () 
         {
-            if(!isNaN($("#quantity").val()) && $("#quantity").val().length != 0 && !isNaN($("#base_price").val()) && $("#base_price").val().length != 0)
+            $(this).keyup(function()
             {
-                var total = $("#quantity").val() * $("#base_price").val();
-                $("#total").val(total.toFixed(2));  
-            }
-            else 
-                $("input[name=total]").val(0.00);
-            calculateSubtotal();
-        });
-        $("#quantity2, #base_price2").keyup(function () 
-        {
-            if(!isNaN($("#quantity2").val()) && $("#quantity2").val().length != 0 && !isNaN($("#base_price2").val()) && $("#base_price2").val().length != 0)
-            {
-                var total = $("#quantity2").val() * $("#base_price2").val();
-                $("input[name=total2]").val(total.toFixed(2));
-            }
-            else 
-                $("input[name=total2]").val(0.00);
-            calculateSubtotal();
-        });
-        $("#quantity3, #base_price3").keyup(function () 
-        {
-            if(!isNaN($("#quantity3").val()) && $("#quantity3").val().length != 0 && !isNaN($("#base_price3").val()) && $("#base_price3").val().length != 0)
-            {
-                var total = $("#quantity3").val() * $("#base_price3").val();
-                $("input[name=total3]").val(total.toFixed(2));
-            }
-            else 
-                $("input[name=total3]").val(0.00);
-            calculateSubtotal();
-        });
-        $("#quantity4, #base_price4").keyup(function () 
-        {
-            if(!isNaN($("#quantity4").val()) && $("#quantity4").val().length != 0 && !isNaN($("#base_price4").val()) && $("#base_price4").val().length != 0)
-            {
-                var total = $("#quantity4").val() * $("#base_price4").val();
-                $("input[name=total4]").val(total.toFixed(2));
-            }
-            else 
-                $("input[name=total4]").val(0.00);
-            calculateSubtotal();
-        });
-        $("#quantity5, #base_price5").keyup(function () 
-        {
-            if(!isNaN($("#quantity5").val()) && $("#quantity5").val().length != 0 && !isNaN($("#base_price5").val()) && $("#base_price5").val().length != 0)
-            {
-                var total = $("#quantity5").val() * $("#base_price5").val();
-                $("input[name=total5]").val(total.toFixed(2));
-            }
-            else 
-                $("input[name=total5]").val(0.00);
-            calculateSubtotal();
-        });
-        $("#co_pay").keyup(function () 
-        {
-            if(!isNaN($("#co_pay").val()) && $("#co_pay").val().length != 0)
-                calculateTotal(0.00);
-        });
-        $("#taxes").keyup(function () 
-        {
-            if(!isNaN($("#taxes").val()) && $("#taxes").val().length != 0)
-                calculateTotal(0.00);
-        });
-
-        function calculateSubtotal() 
-        {
-            var sum = 0;
+                var subtotal = 0, grand_total = 0;
             
-            $(".total").each(function() 
-            {
-                if(!isNaN(this.value) && this.value.length!=0)
-                    sum += parseFloat(this.value);     
+                $(".charge").each(function() 
+                {
+                    //In a method, this refers to the owner object which is the element that has the class charge.
+                    //$(this).attr is still referring to the owner object. attr is a jquery method and you can't get the attribute using this.attr
+                    //$(".charge").attr doesn't work cuz we have 5 elements with class = charge. Thats why you use $(this) since we are cycling thru all 5 elements
+                    if(!isNaN(this.value) && this.value.length!=0 && $(this).attr('id') != 'co_pay' && $(this).attr('id') != 'taxes')
+                        subtotal += parseFloat(this.value);
+                    if(!isNaN(this.value) && this.value.length!=0)
+                        grand_total += parseFloat(this.value);
+                });
+                $("#subtotal").html(subtotal.toFixed(2));
+                $("#grand_total").html(grand_total.toFixed(2));
             });
-            
-            $("#subtotal").html(sum.toFixed(2));
-            calculateTotal(sum);
-        }
-
-        function calculateTotal(amount) 
-        {
-            var sum = 0;
-            
-            $(".misc_amount").each(function() 
-            {
-                if(!isNaN(this.value) && this.value.length!=0)
-                    sum += parseFloat(this.value);     
-            });
-            sum += amount;
-            $("#grand_total").html(sum.toFixed(2));
-        }
+        });
     });
     </script>       
 </head>    
@@ -133,74 +62,69 @@
             <table class="table table-bordered">
                 <thead>
                     <tr class="d-flex">
-                        <th class="col-5">DESCRIPTION</th>
-                        <th class="col-2">QUANTITY</th>
-                        <th class="col-2">BASE PRICE</th>
-                        <th class="col-3">TOTAL</th>
+                        <th class="col-3">DATE</th>
+                        <th class="col-7">DESCRIPTION</th>
+                        <th class="col-2">CHARGE</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="d-flex">
-                        <td class="col-5"><input type="text"   id="description" class="form-control" name="description"></td>
-                        <td class="col-2"><input type="number" id="quantity"    class="form-control" name="quantity"></td>
-                        <td class="col-2"><input type="number" id="base_price"  class="form-control" name="base_price"></td>
-                        <td class="col-3"><input type="text"   id="total"       class="form-control total" name="total" readonly ></td>
+                        <td class="col-3"><input type="date"                    class="form-control" name="date" required></td>
+                        <td class="col-7"><input type="text"   id="description" class="form-control" name="description"></td>
+                        <td class="col-2"><input type="number" id=""            class="form-control charge" name="charge"></td>
                     </tr>
                     <tr class="d-flex">
-                        <td class="col-5"><input type="text"   id="description2" class="form-control" name="description2"></td>
-                        <td class="col-2"><input type="number" id="quantity2"    class="form-control" name="quantity2"></td>
-                        <td class="col-2"><input type="number" id="base_price2"  class="form-control" name="base_price2"></td>
-                        <td class="col-3"><input type="text"   id="total"        class="form-control total" name="total2" readonly ></td>
+                        <td class="col-3"><input type="date"                    class="form-control" name="date" required></td>
+                        <td class="col-7"><input type="text"   id="description" class="form-control" name="description2"></td>
+                        <td class="col-2"><input type="number" id="charge"      class="form-control charge" name="charge"></td>
                     </tr>
                     <tr class="d-flex">
-                        <td class="col-5"><input type="text"   id="description3" class="form-control" name="description3"></td>
-                        <td class="col-2"><input type="number" id="quantity3"    class="form-control" name="quantity3"></td>
-                        <td class="col-2"><input type="number" id="base_price3"  class="form-control" name="base_price3"></td>
-                        <td class="col-3"><input type="text"   id="total"        class="form-control total" name="total3" readonly ></td>
+                        <td class="col-3"><input type="date"                    class="form-control" name="date" required></td>
+                        <td class="col-7"><input type="text"   id="description" class="form-control" name="description3"></td>
+                        <td class="col-2"><input type="number" id="charge"      class="form-control charge" name="charge"></td>
                     </tr>
                     <tr class="d-flex">
-                        <td class="col-5"><input type="text"   id="description4" class="form-control" name="description4"></td>
-                        <td class="col-2"><input type="number" id="quantity4"    class="form-control" name="quantity4"></td>
-                        <td class="col-2"><input type="number" id="base_price4"  class="form-control" name="base_price4"></td>
-                        <td class="col-3"><input type="text"   id="total"        class="form-control total" name="total4" readonly ></td>
+                        <td class="col-3"><input type="date"                    class="form-control" name="date" required></td>
+                        <td class="col-7"><input type="text"   id="description" class="form-control" name="description4"></td>
+                        <td class="col-2"><input type="number" id="charge"      class="form-control charge" name="charge"></td>
                     </tr>
                     <tr class="d-flex">
-                        <td class="col-5"><input type="text"   id="description5" class="form-control" name="description5"></td>
-                        <td class="col-2"><input type="number" id="quantity5"    class="form-control" name="quantity5"></td>
-                        <td class="col-2"><input type="number" id="base_price5"  class="form-control" name="base_price5"></td>
-                        <td class="col-3"><input type="text"   id="total"        class="form-control total" name="total5" readonly ></td>
+                        <td class="col-3"><input type="date"                    class="form-control" name="date" required></td>
+                        <td class="col-7"><input type="text"   id="description" class="form-control" name="description5"></td>
+                        <td class="col-2"><input type="number" id="charge"      class="form-control charge" name="charge"></td>
                     </tr>
                 </tbody>
             </table> 
             <table class="table">
                 <tbody>
                     <tr class="d-flex">
-                        <td class="col-5"></td>
-                        <td class="col-2"></td>
-                        <td class="col-2 misc_label">SUBTOTAL</td>
-                        <td class="col-3" id="subtotal">0.00</td>
+                        <td class="col-3"></td>
+                        <td class="col-7 misc_label">SUBTOTAL</td>
+                        <td class="col-2" id="subtotal">0.00</td>
                     </tr>
                     <tr class="d-flex">
-                        <td class="col-5"></td>
-                        <td class="col-2"></td>
-                        <td class="col-2 misc_label">CO PAY</td>
-                        <td class="col-3"><input type="number" id="co_pay" class="form-control misc_amount" name="co_pay" required></td>
+                        <td class="col-3"></td>
+                        <td class="col-7 misc_label">CO PAY</td>
+                        <td class="col-2"><input type="number" id="co_pay" class="form-control charge" name="co_pay" required></td>
                     </tr>
                     <tr class="d-flex">
-                        <td class="col-5"></td>
-                        <td class="col-2"></td>
-                        <td class="col-2 misc_label">TAXES</td>
-                        <td class="col-3"><input type="number" id="taxes" class="form-control misc_amount" name="taxes" required></td>
+                        <td class="col-3"></td>
+                        <td class="col-7 misc_label">TAXES</td>
+                        <td class="col-2"><input type="number" id="taxes" class="form-control charge" name="taxes" required></td>
                     </tr>
                     <tr class="d-flex">
-                        <td class="col-5"></td>
-                        <td class="col-2"></td>
-                        <td class="col-2 misc_label">TOTAL</td>
-                        <td class="col-3" id="grand_total">0.00</td>
+                        <td class="col-3"></td>
+                        <td class="col-7 misc_label">TOTAL</td>
+                        <td class="col-2" id="grand_total">0.00</td>
                     </tr>
-                    
                 </tbody>
-            </table>                            
+            </table> 
+            <div class="form-row">
+                <div class="form-group col-3"></div>
+                <div class="form-group col-6"><input type="submit" class="btn btn-info btn-block" value="Submit"></div>
+                <div class="form-group col-3"></div>
+            </div> 
+                                      
         </form>
     </div>
     </body>    

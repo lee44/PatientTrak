@@ -36,3 +36,16 @@ table { margin-bottom: 0px !important;}
 	font-weight: bold;
 	color:red;
 }
+
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+input[type=date]{
+	text-align: center !important;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+    -webkit-appearance: none;
+    display: none;
+}
