@@ -35,19 +35,22 @@
           <div class="form-group col-md-6">
             <label id="choose_month" for="months">Choose Month</label>
             <br>
-            <!-- onchange will excecute the javascript function, this.form.submit(). This function is equivalent to submit button.
-
-             -->
+<!-- 
+onchange will excecute the javascript function, this.form.submit() when an option from drop down list is chosen. This function is like the submit button.
+The array has all the options to be displayed and foreach loop will echo the option elements when page is loaded. However when page is first
+loaded, $selected = '' because no value has been passed by POST method. When a option is selected, the page reloads cuz of this.form.submit() and
+$_POST['Month'] = 0 because when page was loaded for first time value="0". 
+ -->
             <?php
-                $options = array(1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 5 => 'May', 6 => 'June', 7 => 'July',
+                $options = array(0 => '...', 1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 5 => 'May', 6 => 'June', 7 => 'July',
                                  8 => 'August', 9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December');
             ?>
             <select name="Months" id = "months" onchange="this.form.submit();">
             <?php
-            foreach($options as $value => $label) 
+            foreach($options as $key => $value) 
             {
-                $selected = (isset($_POST['Months']) && intval($_POST['Months']) === $value) ? ' selected="selected"' : ''; 
-                echo '<option value="'.$value.'"'.$selected.'>'.$label.'</option>';
+                $selected = (isset($_POST['Months']) && intval($_POST['Months']) === $key) ? ' selected="selected"' : ''; 
+                echo '<option value="'.$key.'"'.$selected.'>'.$value.'</option>';
             }
             ?>    
             </select>
