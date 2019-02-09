@@ -54,56 +54,111 @@
 
                 $result = mysqli_query($link,$sql); 
                 echo '
-                <div class="table-responsive">
-                    <table class = "table table-striped">
-                        <thead>
-                            <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Address</th>
-                                <th>City</th>
-                                <th>State</th>
-                                <th>Zip</th>
-                                <th>Number</th>
-                                <th>Email</th>
-                                <th>SSN</th>
-                                <th>License</th>
-                                <th>Birthday</th>
-                                <th>Add Payments</th>
-                                <th>Edit Payments</th>
-                            </tr>
-                        </thead>';
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="d-flex">
+                            <th class="col-3">DATE</th>
+                            <th class="col-7">DESCRIPTION</th>
+                            <th class="col-2">CHARGE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="d-flex">
+                            <td class="col-3"><input type="date"   class="form-control"        name="created_at[]" required></td>
+                            <td class="col-7"><input type="text"   class="form-control"        name="description[]" required></td>
+                            <td class="col-2"><input type="number" class="form-control charge" name="charge[]" step="any" min="0" max="100" required></td>
+                        </tr>
+                        <tr class="d-flex">
+                            <td class="col-3"><input type="date"   class="form-control"        name="created_at[]"></td>
+                            <td class="col-7"><input type="text"   class="form-control"        name="description[]"></td>
+                            <td class="col-2"><input type="number" class="form-control charge" name="charge[]" step="any" min="0" max="100" ></td>
+                        </tr>
+                        <tr class="d-flex">
+                            <td class="col-3"><input type="date"   class="form-control"        name="created_at[]"></td>
+                            <td class="col-7"><input type="text"   class="form-control"        name="description[]"></td>
+                            <td class="col-2"><input type="number" class="form-control charge" name="charge[]" step="any" min="0" max="100"></td>
+                        </tr>
+                        <tr class="d-flex">
+                            <td class="col-3"><input type="date"   class="form-control"        name="created_at[]"></td>
+                            <td class="col-7"><input type="text"   class="form-control"        name="description[]"></td>
+                            <td class="col-2"><input type="number" class="form-control charge" name="charge[]" step="any" min="0" max="100"></td>
+                        </tr>
+                        <tr class="d-flex">
+                            <td class="col-3"><input type="date"   class="form-control"        name="created_at[]"></td>
+                            <td class="col-7"><input type="text"   class="form-control"        name="description[]"></td>
+                            <td class="col-2"><input type="number" class="form-control charge" name="charge[]" step="any" min="0" max="100"></td>
+                        </tr>
+                    </tbody>
+                </table> 
+                <table class="table">
+                    <tbody>
+                        <tr class="d-flex">
+                            <td class="col-3"></td>
+                            <td class="col-7 misc_label">SUBTOTAL</td>
+                            <td class="col-2">
+                                <input type="text" id="subtotal" class="form-control" name="subtotal" readonly>
+                            </td>
+                        </tr>
+                        <tr class="d-flex">
+                            <td class="col-3"></td>
+                            <td class="col-7 misc_label">CO PAY</td>
+                            <td class="col-2"><input type="number" id="co_pay" class="form-control charge" name="co_pay" step="any" min="0" max="100"></td>
+                        </tr>
+                        <tr class="d-flex">
+                            <td class="col-3"></td>
+                            <td class="col-7 misc_label">TAXES</td>
+                            <td class="col-2"><input type="number" id="taxes" class="form-control charge" name="taxes" step="any" min="0" max="100"></td>
+                        </tr>
+                        <tr class="d-flex">
+                            <td class="col-3"></td>
+                            <td class="col-7 misc_label">TOTAL</td>
+                            <td class="col-2">
+                                <input type="text" id="grand_total" class="form-control" name="grand_total" readonly>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> 
+                <div class="form-row">
+                    <div class="form-group col-3"></div>
+                    <div class="form-group col-6"><input type="submit" class="btn btn-info btn-block" value="Submit"></div>
+                    <div class="form-group col-3"></div>
+                </div> 
+                ';
 
                 while ($patients = mysqli_fetch_array($result)) 
                 {
-                    echo "<tbody>";
-                    echo "<tr>";
-                    echo "<td>".$patients['first_name']."</td>";
-                    echo "<td>".$patients['last_name']."</td>";
-                    echo "<td>".$patients['address']."</td>";
-                    echo "<td>".$patients['city']."</td>";
-                    echo "<td>".$patients['state']."</td>";
-                    echo "<td>".$patients['zip']."</td>";
-                    echo "<td>".$patients['phone_number']."</td>";
-                    echo "<td>".$patients['email']."</td>";
-                    echo "<td>".$patients['ssn']."</td>";
-                    echo "<td>".$patients['license']."</td>";
-                    echo "<td>".$patients['birthday']."</td>";
-                    echo "<td><form action='/Payments/Add_Payment/index.php' method='POST'>
-                          <input type='hidden' name='customer_id' value='".$patients["customer_id"]."'/>
-                          <input type='submit' name='add' value='Add' /></form></td>";
-                    echo "<td><form action='/Payments/Edit_Payment/index.php' method='POST'>
-                          <input type='hidden' name='customer_id' value='".$patients["customer_id"]."'/>
-                          <input type='submit' name='edit' value='Edit' /></form></td>";
-                    echo "</tr>";
+                    echo 
+                    '<tbody>
+                     <tr>
+                     <td>'.$patients['first_name'].'</td>
+                     <td>'.$patients['last_name'].'</td>
+                     <td>'.$patients['address'].'</td>
+                     <td>'.$patients['city'].'</td>
+                     <td>'.$patients['state'].'</td>
+                     <td>'.$patients['zip'].'</td>
+                     <td>'.$patients['phone_number'].'</td>
+                     <td>'.$patients['email'].'</td>
+                     <td>'.$patients['ssn'].'</td>
+                     <td>'.$patients['license'].'</td>
+                     <td>'.$patients['birthday'].'</td>
+                     <td><form action="/Payments/Add_Payment/index.php" method="POST">
+                          <input type="hidden" name="customer_id" value="'.$patients['customer_id'].'"/>
+                          <input type="submit" name="add" value="Add"/></form></td>
+                     <td><form action="/Payments/Edit_Payment/index.php" method="POST">
+                          <input type="hidden" name="customer_id" value="'.$patients['customer_id'].'"/>
+                          <input type="submit" name="edit" value="Edit"/></form></td>
+                     </tr>';
                 }
-                    echo "</tbody>
-                          </table>
-                          </div>";
+                    echo
+                    '</tbody>
+                     </table>
+                     </div>';
                 mysqli_close($link);
-            }                       
-            </form>
-        </div>
+            }  
+        echo
+        '                       
+        </form>
+        </div>';
         ?>
     </body>    
 </html>
