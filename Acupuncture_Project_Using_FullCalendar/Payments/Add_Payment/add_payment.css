@@ -1,6 +1,16 @@
-input[type = "number"]{	text-align: center; }
+.misc_label
+{
+	text-align: right;
+	font-weight: bold;
+	font-size: 1.1rem;
+}
 
-th{	text-align: center !important; }
+#grand_total, #subtotal
+{
+	text-align: center;
+	font-weight: bold;
+	color:red;
+}
 
 #total, #total2, #total3, #total4, #total5{ text-align: center; }
 
@@ -11,12 +21,7 @@ input::-webkit-inner-spin-button {
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
-.misc_label
-{
-	text-align: right;
-	font-weight: bold;
-	font-size: 1.1rem;
-}
+th{	text-align: center !important; }
 
 table { margin-bottom: 0px !important;}
 
@@ -24,18 +29,7 @@ table { margin-bottom: 0px !important;}
   border-top: 2px solid black !important;
 }
 
-.misc_amount
-{
-	text-align: center;
-	font-weight: bold;
-}
-
-#grand_total, #subtotal
-{
-	text-align: center;
-	font-weight: bold;
-	color:red;
-}
+input[type = "number"]{	text-align: center; }
 
 input[type=date]::-webkit-inner-spin-button {
     -webkit-appearance: none;

@@ -30,9 +30,10 @@
                         subtotal += parseFloat(this.value);
                     if(!isNaN(this.value) && this.value.length!=0)
                         grand_total += parseFloat(this.value);
+                    
                 });
-                $("#subtotal").html(subtotal.toFixed(2));
-                $("#grand_total").html(grand_total.toFixed(2));
+                $("#subtotal").val('$'+subtotal.toFixed(2));
+                $("#grand_total").val('$'+grand_total.toFixed(2));
             });
         });
     });
@@ -58,7 +59,8 @@
 
 <h1>Add Payments</h1>
     <div class="container">
-        <form form name = "form1" action="" method = "post" enctype = "multipart/form-data" >
+        <form form name = "form1" action="insert_payment.php" method = "POST" enctype = "multipart/form-data" >
+            <?php echo '<input type="hidden" name="customer_id" value="'.$_POST['customer_id'].'"/>';?>
             <table class="table table-bordered">
                 <thead>
                     <tr class="d-flex">
@@ -69,29 +71,29 @@
                 </thead>
                 <tbody>
                     <tr class="d-flex">
-                        <td class="col-3"><input type="date"                    class="form-control" name="date" required></td>
-                        <td class="col-7"><input type="text"   id="description" class="form-control" name="description"></td>
-                        <td class="col-2"><input type="number" id=""            class="form-control charge" name="charge"></td>
+                        <td class="col-3"><input type="date"   class="form-control"        name="created_at[]" required></td>
+                        <td class="col-7"><input type="text"   class="form-control"        name="description[]" required></td>
+                        <td class="col-2"><input type="number" class="form-control charge" name="charge[]" step="any" min="0" max="100" required></td>
                     </tr>
                     <tr class="d-flex">
-                        <td class="col-3"><input type="date"                    class="form-control" name="date" required></td>
-                        <td class="col-7"><input type="text"   id="description" class="form-control" name="description2"></td>
-                        <td class="col-2"><input type="number" id="charge"      class="form-control charge" name="charge"></td>
+                        <td class="col-3"><input type="date"   class="form-control"        name="created_at[]"></td>
+                        <td class="col-7"><input type="text"   class="form-control"        name="description[]"></td>
+                        <td class="col-2"><input type="number" class="form-control charge" name="charge[]" step="any" min="0" max="100" ></td>
                     </tr>
                     <tr class="d-flex">
-                        <td class="col-3"><input type="date"                    class="form-control" name="date" required></td>
-                        <td class="col-7"><input type="text"   id="description" class="form-control" name="description3"></td>
-                        <td class="col-2"><input type="number" id="charge"      class="form-control charge" name="charge"></td>
+                        <td class="col-3"><input type="date"   class="form-control"        name="created_at[]"></td>
+                        <td class="col-7"><input type="text"   class="form-control"        name="description[]"></td>
+                        <td class="col-2"><input type="number" class="form-control charge" name="charge[]" step="any" min="0" max="100"></td>
                     </tr>
                     <tr class="d-flex">
-                        <td class="col-3"><input type="date"                    class="form-control" name="date" required></td>
-                        <td class="col-7"><input type="text"   id="description" class="form-control" name="description4"></td>
-                        <td class="col-2"><input type="number" id="charge"      class="form-control charge" name="charge"></td>
+                        <td class="col-3"><input type="date"   class="form-control"        name="created_at[]"></td>
+                        <td class="col-7"><input type="text"   class="form-control"        name="description[]"></td>
+                        <td class="col-2"><input type="number" class="form-control charge" name="charge[]" step="any" min="0" max="100"></td>
                     </tr>
                     <tr class="d-flex">
-                        <td class="col-3"><input type="date"                    class="form-control" name="date" required></td>
-                        <td class="col-7"><input type="text"   id="description" class="form-control" name="description5"></td>
-                        <td class="col-2"><input type="number" id="charge"      class="form-control charge" name="charge"></td>
+                        <td class="col-3"><input type="date"   class="form-control"        name="created_at[]"></td>
+                        <td class="col-7"><input type="text"   class="form-control"        name="description[]"></td>
+                        <td class="col-2"><input type="number" class="form-control charge" name="charge[]" step="any" min="0" max="100"></td>
                     </tr>
                 </tbody>
             </table> 
@@ -100,22 +102,26 @@
                     <tr class="d-flex">
                         <td class="col-3"></td>
                         <td class="col-7 misc_label">SUBTOTAL</td>
-                        <td class="col-2" id="subtotal">0.00</td>
+                        <td class="col-2">
+                            <input type="text" id="subtotal" class="form-control" name="subtotal" readonly>
+                        </td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-3"></td>
                         <td class="col-7 misc_label">CO PAY</td>
-                        <td class="col-2"><input type="number" id="co_pay" class="form-control charge" name="co_pay" required></td>
+                        <td class="col-2"><input type="number" id="co_pay" class="form-control charge" name="co_pay" step="any" min="0" max="100"></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-3"></td>
                         <td class="col-7 misc_label">TAXES</td>
-                        <td class="col-2"><input type="number" id="taxes" class="form-control charge" name="taxes" required></td>
+                        <td class="col-2"><input type="number" id="taxes" class="form-control charge" name="taxes" step="any" min="0" max="100"></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-3"></td>
                         <td class="col-7 misc_label">TOTAL</td>
-                        <td class="col-2" id="grand_total">0.00</td>
+                        <td class="col-2">
+                            <input type="text" id="grand_total" class="form-control" name="grand_total" readonly>
+                        </td>
                     </tr>
                 </tbody>
             </table> 
@@ -124,7 +130,6 @@
                 <div class="form-group col-6"><input type="submit" class="btn btn-info btn-block" value="Submit"></div>
                 <div class="form-group col-3"></div>
             </div> 
-                                      
         </form>
     </div>
     </body>    
