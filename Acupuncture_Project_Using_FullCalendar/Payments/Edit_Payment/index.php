@@ -13,62 +13,97 @@
     <script>
     $(document).ready(function () 
     {
-      $(function () 
-      {
-        $("#id-1, #id-2").keyup(function () 
-        {
-            $("#id-3").val(+$("#id-1").val() + +$("#id-2").val());
-        });
-      });
+      
     });
     </script>       
 </head>    
     <body>    
-    <nav class="navbar navbar-expand-lg navbar-light bglight">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <nav class="navbar navbar-expand-lg navbar-light bglight">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav justify-content-between">
-                <li class="nav-item"><a class="nav-link" href = "/index.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/Add_Patient/index.php">Add Patient</a></li>
-                <li class="nav-item"><a class="nav-link" href = "/Find_Patient/index.php">Find Patient</a></li>
-                <li class="nav-item"><a class="nav-link" href = "/Payments/index.php">Payments</a></li>
-                <li class="nav-item"><a class="nav-link" href="/Reports/index.php">Reports</a></li>
-                <li class="nav-item"><a class="nav-link" href = "/Table_Query/index.php">Show All Data</a></li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav justify-content-between">
+                    <li class="nav-item"><a class="nav-link" href = "/index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Add_Patient/index.php">Add Patient</a></li>
+                    <li class="nav-item"><a class="nav-link" href = "/Find_Patient/index.php">Find Patient</a></li>
+                    <li class="nav-item"><a class="nav-link" href = "/Payments/index.php">Payments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Reports/index.php">Reports</a></li>
+                    <li class="nav-item"><a class="nav-link" href = "/Table_Query/index.php">Show All Data</a></li>
+                </ul>
+            </div>
+        </nav>
+        <?php
+        echo '
+        <h1>Payments</h1>
+        <div class="container">
+            <form form name = "form1" action="" method = "post" enctype = "multipart/form-data" >
+            <input type="hidden" name="customer_id" value="'.$_POST['customer_id'].'"/>';
+
+            if(isset($_POST['submit']))
+            {
+                $link = mysqli_connect("localhost", "root", "", "acupuncture");
+               
+                if($link === false)
+                    die("ERROR: Could not connect. " . mysqli_connect_error());
+                
+                $customer_id = $_POST['customer_id'];
+
+                $sql = "SELECT * FROM payments WHERE customer_id = '$customer_id'";
+
+                $result = mysqli_query($link,$sql); 
+                echo '
+                <div class="table-responsive">
+                    <table class = "table table-striped">
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Zip</th>
+                                <th>Number</th>
+                                <th>Email</th>
+                                <th>SSN</th>
+                                <th>License</th>
+                                <th>Birthday</th>
+                                <th>Add Payments</th>
+                                <th>Edit Payments</th>
+                            </tr>
+                        </thead>';
+
+                while ($patients = mysqli_fetch_array($result)) 
+                {
+                    echo "<tbody>";
+                    echo "<tr>";
+                    echo "<td>".$patients['first_name']."</td>";
+                    echo "<td>".$patients['last_name']."</td>";
+                    echo "<td>".$patients['address']."</td>";
+                    echo "<td>".$patients['city']."</td>";
+                    echo "<td>".$patients['state']."</td>";
+                    echo "<td>".$patients['zip']."</td>";
+                    echo "<td>".$patients['phone_number']."</td>";
+                    echo "<td>".$patients['email']."</td>";
+                    echo "<td>".$patients['ssn']."</td>";
+                    echo "<td>".$patients['license']."</td>";
+                    echo "<td>".$patients['birthday']."</td>";
+                    echo "<td><form action='/Payments/Add_Payment/index.php' method='POST'>
+                          <input type='hidden' name='customer_id' value='".$patients["customer_id"]."'/>
+                          <input type='submit' name='add' value='Add' /></form></td>";
+                    echo "<td><form action='/Payments/Edit_Payment/index.php' method='POST'>
+                          <input type='hidden' name='customer_id' value='".$patients["customer_id"]."'/>
+                          <input type='submit' name='edit' value='Edit' /></form></td>";
+                    echo "</tr>";
+                }
+                    echo "</tbody>
+                          </table>
+                          </div>";
+                mysqli_close($link);
+            }                       
+            </form>
         </div>
-    </nav>
-
-<h1>Add Payments</h1>
-    <div class="container">
-        <form form name = "form1" action="" method = "post" enctype = "multipart/form-data" >
-            <table id="productSizes" class="table table-bordered">
-                <thead>
-                    <tr class="d-flex">
-                        <th class="col-5">Description</th>
-                        <th class="col-2">Quantity</th>
-                        <th class="col-2">Base Price</th>
-                        <th class="col-3">Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="d-flex">
-                        <td class="col-5"></td>
-                        <td class="col-2"></td>
-                        <td class="col-2"></td>
-                        <td class="col-3"></td>
-                    </tr>
-                    <tr class="d-flex">
-                        <td class="col-5"></td>
-                        <td class="col-2"></td>
-                        <td class="col-2"></td>
-                        <td class="col-3"></td>
-                    </tr>
-                </tbody>
-            </table>                            
-        </form>
-    </div>
+        ?>
     </body>    
 </html>

@@ -3,9 +3,11 @@ $link = mysqli_connect("localhost", "root", "", "acupuncture");
  
 if($link === false) die("ERROR: Could not connect. " . mysqli_connect_error());
 
+// When inserting data into mysql, it will convert the data to the proper datatype. For example, total is a decimal datatype in the DB. As long as the data
+//being inserted doesnt contain any characters other than numbers, it will be accepted.
 $customer_id = $_POST['customer_id']; 
-$total = (float)trim($_POST['grand_total'],'$');
-$subtotal = (float)trim($_POST['subtotal'],'$');
+$total = trim($_POST['grand_total'],'$');
+$subtotal = trim($_POST['subtotal'],'$');
 $co_pay = $_POST['co_pay'];
 $taxes = $_POST['taxes'];
 $description = $_POST['description'];

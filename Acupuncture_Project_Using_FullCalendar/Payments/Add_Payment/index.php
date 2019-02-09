@@ -30,7 +30,6 @@
                         subtotal += parseFloat(this.value);
                     if(!isNaN(this.value) && this.value.length!=0)
                         grand_total += parseFloat(this.value);
-                    
                 });
                 $("#subtotal").val('$'+subtotal.toFixed(2));
                 $("#grand_total").val('$'+grand_total.toFixed(2));

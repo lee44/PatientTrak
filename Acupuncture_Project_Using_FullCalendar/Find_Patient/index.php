@@ -136,7 +136,7 @@
                  <td>'.$patients['license'].'</td>
                  <td>'.$patients['birthday'].'</td>
                  <td><form action="/Edit_Patient/index.php" method="POST">
-                      <input type="hidden" name="customer_id" value="'.$patients["customer_id"].'"/>
+                      <input type="hidden" name="customer_id" value="'.$patients['customer_id'].'"/>
                       <input type="submit" name="edit" value="Edit/View" /></form>
                  </td>
                  </tr>';
