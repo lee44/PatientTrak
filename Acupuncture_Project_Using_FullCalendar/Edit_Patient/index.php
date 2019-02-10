@@ -1,44 +1,36 @@
 <?php
-/* Attempt MySQL server connection.  */
 $link = mysqli_connect("localhost", "root", "", "acupuncture");
  
-// Check connection
-if($link === false){
+if($link === false)
     die("ERROR: Could not connect. " . mysqli_connect_error());
-}
  
-// The mysqli_real_escape_string() function escapes special characters in a string and create a legal SQL string to provide security against SQL injection.
 $customer_id = mysqli_real_escape_string($link, $_REQUEST['customer_id']);
 
-// attempt insert query execution
+//Patient Info
 $sql =
 "SELECT P.customer_id,P.first_name,P.last_name,P.address,P.city,P.state,P.zip,P.phone_number,P.email,P.ssn,P.license,P.birthday,P.sex,
         P.employer,P.occupation,P.notes,F.file_name
  FROM patients AS P 
  LEFT JOIN files AS F ON P.customer_id = F.customer_id
  WHERE P.customer_id = '$customer_id'";
-
 $result = mysqli_query($link,$sql);
 $patients = mysqli_fetch_array($result);
 
 //mysqli_fetch_array only grabs the first row of the query. To get all the rows, you would put it in a while loop but we only need
-//the file name of the second row.
+//the file name of the second,third,fourth row etc .
 $files = array();
 array_push($files,$patients['file_name']);
 while($f = mysqli_fetch_array($result))
   array_push($files,$f['file_name']);
 
-$male = ''; $female = '';
-
-if($patients['sex'] == 'Male' || $patients['sex'] == 'M') 
-$male = 'checked';
-else
-$female = 'checked';
+//Patient Payments
+$sql2 = "SELECT * FROM payments WHERE customer_id = '$customer_id'";
+$result2 = mysqli_query($link,$sql2);
 
 echo "
 <html>    
 <head>    
-    <title>Edit Patient</title>
+    <title>Patient Information</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link href = '/Global_CSS/global.css' type = 'text/css' rel = 'stylesheet' />
     <link href = 'edit_patient.css' type = 'text/css' rel = 'stylesheet' /> 
@@ -75,9 +67,14 @@ $(document).ready(function ()
         </div>
     </nav>
 
-    <h1>Edit Patient Information</h1>
+    <h1>Patient Information</h1>
     <div class='container'>
       <form form name='form1' action='/Edit_Patient/update_Patient_Record.php' method='post' enctype='multipart/form-data'>
+      
+        <div class='form-row'>
+          <div class='form-group col-md-8'></div>
+          <div class='form-group col-md-4'><input type='submit' class='btn btn-info float-right' value='Update'></div>
+        </div>
         <div class='form-row'>
           <div class='form-group col-md-2'>
             <label for='id'>ID</label>
@@ -148,8 +145,13 @@ $(document).ready(function ()
           
           <div class='form-group col-md-6'>
             <label for='gender'>Gender</label>
-            <div class='form-check'>
-            
+            <div class='form-check'>";
+            $male = '';$female = '';
+            if($patients['sex'] == 'Male' || $patients['sex'] == 'M') 
+              $male = 'checked';
+            else
+              $female = 'checked';
+            echo"
               <div class='form-row'>
                 <div class='form-group col-sm-6'>
                   <label class='form-check-label radio-inline control-label' for='gridRadios1'>
@@ -178,13 +180,63 @@ $(document).ready(function ()
           <input type='file' name='upload[]' multiple='multiple' id='fileSelect'/>
           <h4>Description of File:</h4> 
           <textarea name='description' value = '".$patients['notes']."' rows='4' cols='40'></textarea>
-        </div>
-        <input type='submit' class='btn btn-info btn-block' value='Update'>      
+        </div>      
       </form>
-    </div>
-    </body>    
-</html>
-  ";    
+    </div>"; 
+    echo '
+    <div class="container payment_history_container">
+      <h2 id="payment_history_header">Payment History</h2>
+
+      <form action="/Payments/Add_Payment/index.php" method="POST">
+        <div class="form-row">
+            <div class="form-group col-md-8"><input type="hidden" name="customer_id" value="'.$_POST['customer_id'].'"/></div>
+            <div class="form-group col-md-4"><input type="submit" class="btn btn-info float-right" value="Add">
+        </div>
+      </form>
+      
+      <div class="table-responsive">
+          <table class = "table table-striped">
+              <thead>
+                  <tr>
+                      <th>Date Created</th>
+                      <th>Description</th>
+                      <th>Total</th>
+                      <th>Subtotal</th>
+                      <th>Charges</th>
+                      <th>Co Pay</th>
+                      <th>Taxes</th>
+                      <th>Edit?</th>
+                  </tr>
+              </thead>';
+
+      while ($payments = mysqli_fetch_array($result2)) 
+      {
+          echo 
+          '<tbody>
+           <tr>
+           <td>'.date_format(new DateTime($payments['created_at']),"m/d/Y").'</td>
+           <td>'.$payments['description'].'</td>
+           <td>$'.$payments['total'].'</td>
+           <td>$'.$payments['subtotal'].'</td>
+           <td>$'.$payments['charges'].'</td>
+           <td>$'.$payments['co_pay'].'</td>
+           <td>$'.$payments['taxes'].'</td>
+           <td><form action="/Payments/Edit_Payment/index.php" method="POST">
+                <input type="hidden" name="customer_id" value="'.$_POST['customer_id'].'"/>
+                <input type="hidden" name="created_at" value="'.$payments['created_at'].'"/>
+                <input type="submit" name="edit" value="Edit" /></form>
+           </td>
+           </tr>';
+      }
+      echo '
+          </tbody>
+        </table>
+      </div>
+    </div>';
+
+echo "
+</body>    
+</html>";
 
 mysqli_close($link);
 ?>

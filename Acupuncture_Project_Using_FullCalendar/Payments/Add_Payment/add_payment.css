@@ -5,12 +5,14 @@
 	font-size: 1.1rem;
 }
 
-#grand_total, #subtotal
+#grand_total, #subtotal, #balance
 {
 	text-align: center;
 	font-weight: bold;
 	color:red;
 }
+
+#total_payment { text-align: center; font-weight: bold; }
 
 #total, #total2, #total3, #total4, #total5{ text-align: center; }
 
@@ -43,3 +45,5 @@ input[type=date]::-webkit-calendar-picker-indicator {
     -webkit-appearance: none;
     display: none;
 }
+
+td { padding:6px 6px !important;}

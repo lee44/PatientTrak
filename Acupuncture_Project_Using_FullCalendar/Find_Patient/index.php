@@ -115,7 +115,7 @@
                             <th>SSN</th>
                             <th>License</th>
                             <th>Birthday</th>
-                            <th>Edit/View?</th>
+                            <th>View?</th>
                         </tr>
                     </thead>';
 
@@ -134,10 +134,10 @@
                  <td>'.$patients['email'].'</td>
                  <td>'.$patients['ssn'].'</td>
                  <td>'.$patients['license'].'</td>
-                 <td>'.$patients['birthday'].'</td>
+                 <td>'.date_format(new DateTime($patients['birthday']),"m/d/Y").'</td>
                  <td><form action="/Edit_Patient/index.php" method="POST">
                       <input type="hidden" name="customer_id" value="'.$patients['customer_id'].'"/>
-                      <input type="submit" name="edit" value="Edit/View" /></form>
+                      <input type="submit" name="edit" value="View" /></form>
                  </td>
                  </tr>';
             }

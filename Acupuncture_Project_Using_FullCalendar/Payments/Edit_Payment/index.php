@@ -41,7 +41,7 @@
             <form form name = "form1" action="" method = "post" enctype = "multipart/form-data" >
             <input type="hidden" name="customer_id" value="'.$_POST['customer_id'].'"/>';
 
-            if(isset($_POST['submit']))
+            if(isset($_POST['edit']))
             {
                 $link = mysqli_connect("localhost", "root", "", "acupuncture");
                
