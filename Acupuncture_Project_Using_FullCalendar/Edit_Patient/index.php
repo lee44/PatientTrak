@@ -24,7 +24,7 @@ while($f = mysqli_fetch_array($result))
   array_push($files,$f['file_name']);
 
 //Patient Payments
-$sql2 = "SELECT * FROM payments WHERE customer_id = '$customer_id'";
+$sql2 = "SELECT * FROM payments AS P INNER JOIN charges AS C ON P.charge_id = C.charge_id WHERE P.customer_id = '$customer_id'";
 $result2 = mysqli_query($link,$sql2);
 
 echo "
@@ -199,12 +199,12 @@ $(document).ready(function ()
               <thead>
                   <tr>
                       <th>Date Created</th>
-                      <th>Description</th>
-                      <th>Total</th>
-                      <th>Subtotal</th>
-                      <th>Charges</th>
+                      <th>Payment Type</th>
+                      <th>Total Payment</th>
+                      <th>Price</th>
                       <th>Co Pay</th>
                       <th>Taxes</th>
+                      <th>Payment Notes</th>
                       <th>Edit?</th>
                   </tr>
               </thead>';
@@ -214,16 +214,16 @@ $(document).ready(function ()
           echo 
           '<tbody>
            <tr>
-           <td>'.date_format(new DateTime($payments['created_at']),"m/d/Y").'</td>
-           <td>'.$payments['description'].'</td>
-           <td>$'.$payments['total'].'</td>
-           <td>$'.$payments['subtotal'].'</td>
-           <td>$'.$payments['charges'].'</td>
+           <td>'.date_format(new DateTime($payments['payment_created_at']),"m/d/Y").'</td>
+           <td>'.$payments['payment_type'].'</td>
+           <td>$'.$payments['total_payments'].'</td>
+           <td>$'.$payments['total_charges'].'</td>
            <td>$'.$payments['co_pay'].'</td>
            <td>$'.$payments['taxes'].'</td>
+           <td>'.$payments['payment_notes'].'</td>
            <td><form action="/Payments/Edit_Payment/index.php" method="POST">
                 <input type="hidden" name="customer_id" value="'.$_POST['customer_id'].'"/>
-                <input type="hidden" name="created_at" value="'.$payments['created_at'].'"/>
+                <input type="hidden" name="created_at" value="'.$payments['payment_created_at'].'"/>
                 <input type="submit" name="edit" value="Edit" /></form>
            </td>
            </tr>';

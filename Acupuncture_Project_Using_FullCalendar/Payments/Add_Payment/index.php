@@ -39,7 +39,7 @@
                 total_payments = payment + payment2;
                 balance = grand_total - total_payments;
                 $("#subtotal").val('$'+subtotal.toFixed(2));
-                $("#grand_total").val('$'+grand_total.toFixed(2));
+                $("#total_charges").val('$'+grand_total.toFixed(2));
                 $("#total_payment").val('$'+total_payments.toFixed(2));
 
                 $("#balance").val('$'+balance.toFixed(2));
@@ -86,18 +86,6 @@
                         <td class="col-2"><input type="number" class="form-control charge" name="charges[]" step="any" min="0" max="100" required></td>
                         <td class="col-4"><input type="text"   class="form-control"        name="charge_notes[]"></td>
                     </tr>
-                    <tr class="d-flex">
-                        <td class="col-3"><input type="date"   class="form-control"        name="created_at[]"></td>
-                        <td class="col-3"><input type="text"   class="form-control"        name="charge_descriptions[]"></td>
-                        <td class="col-2"><input type="number" class="form-control charge" name="charges[]" step="any" min="0" max="100" ></td>
-                        <td class="col-4"><input type="text"   class="form-control"        name="charge_notes[]"></td>
-                    </tr>
-                    <tr class="d-flex">
-                        <td class="col-3"><input type="date"   class="form-control"        name="created_at[]"></td>
-                        <td class="col-3"><input type="text"   class="form-control"        name="charge_descriptions[]"></td>
-                        <td class="col-2"><input type="number" class="form-control charge" name="charges[]" step="any" min="0" max="100"></td>
-                        <td class="col-4"><input type="text"   class="form-control"        name="charge_notes[]"></td>
-                    </tr>
                 </tbody>
             </table> 
             <table class="table">
@@ -140,16 +128,10 @@
                 <tbody>
                     <tr class="d-flex">
                         <td class="col-3"><input type="date"   class="form-control"        name="payment_created_at[]" required></td>
-                        <td class="col-3"><input type="text"   class="form-control"        name="payment_type[]" maxlength="10"></td>
+                        <td class="col-3"><input type="text"   class="form-control"        name="payment_type[]" maxlength="11"></td>
                         <td class="col-2"><input type="number" id="payment" class="form-control charge" name="payments[]" step="any" min="0" max="100"></td>
                         <td class="col-4"><input type="text"   class="form-control"        name="payment_notes[]"></td>
-                    </tr>
-                    <tr class="d-flex">
-                        <td class="col-3"><input type="date"   class="form-control"        name="payment_created_at[]"></td>
-                        <td class="col-3"><input type="text"   class="form-control"        name="payment_type[]" maxlength="10"></td>
-                        <td class="col-2"><input type="number" id="payment2" class="form-control charge" name="payments[]" step="any" min="0" max="100" ></td>
-                        <td class="col-4"><input type="text"   class="form-control"        name="payment_notes[]" ></td>
-                    </tr>                    
+                    </tr>                   
                 </tbody>
             </table>
             <table class="table">

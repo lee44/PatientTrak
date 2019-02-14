@@ -16,8 +16,8 @@ $taxes = $_POST['taxes'];
 if(empty($co_pay)) $co_pay = 0.00;
 if(empty($taxes)) $taxes = 0.00;
 
-$charge_id = uniqid()
-for($i = 0; $i < count($charge_created_at); $i++)
+$charge_id = uniqid();
+for($i = 0; $i < count($_POST['charges']); $i++)
 {
 	$sql = "INSERT INTO charges (charge_descriptions,total_charges,charges,subtotal,co_pay,taxes,customer_id,charge_notes,charge_created_at,charge_id) 
 	VALUES ('".$_POST['charge_descriptions'][$i]."','$total_charges','".$_POST['charges'][$i]."','$subtotal','$co_pay','$taxes','$customer_id',
@@ -25,7 +25,7 @@ for($i = 0; $i < count($charge_created_at); $i++)
 	mysqli_query($link, $sql);
 }
 
-for($i = 0; $i < count($payment_created_at); $i++)
+for($i = 0; $i < count($_POST['payments']); $i++)
 {
 	$sql = "INSERT INTO payments (total_payments,payments,payment_type,customer_id,payment_notes,payment_created_at,charge_id) 
 	VALUES ('$total_payment','".$_POST['payments'][$i]."','".$_POST['payment_type'][$i]."','$customer_id',
@@ -35,6 +35,6 @@ for($i = 0; $i < count($payment_created_at); $i++)
 
 $customer_id = mysqli_insert_id($link);
 
-//header("refresh:1;url= http://192.168.1.136:5555/Payments/index.php");
+header("refresh:1;url= http://192.168.1.136:5555/Payments/index.php");
 mysqli_close($link);
 ?>
