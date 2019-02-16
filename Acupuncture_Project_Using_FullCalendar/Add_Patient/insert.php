@@ -32,12 +32,12 @@ mysqli_query($link, $sql);
 
 $customer_id = mysqli_insert_id($link);
 
-if(isset($_FILES['upload']['name'][0]))
-{
-	// Count # of uploaded files in array
-	$total = count($_FILES['upload']['name']);
+// Count # of uploaded files in array
+$total = count($_FILES['upload']['name']);
 
-	for( $i=0 ; $i < $total ; $i++ ) 
+for( $i=0 ; $i < $total ; $i++ ) 
+{
+	if(!empty($_FILES['upload']['name'][$i]))
 	{
 	  	//Get the temp file path
 	  	$tmpFilePath = $_FILES['upload']['tmp_name'][$i];
@@ -46,7 +46,7 @@ if(isset($_FILES['upload']['name'][0]))
 	  	$fileSize = $_FILES['upload']['size'][$i];
 
 		if(move_uploaded_file ($tmpFilePath,'Uploads/'.$fileName))
-	    	echo "File Uploaded";
+	    	;
 
 	    $sql2 = "INSERT INTO files (customer_id,file_name,type,size,created_at) VALUES ('$customer_id','$fileName','$fileType','$fileSize','$created_at')";
 	    if(mysqli_query($link, $sql2))
@@ -55,16 +55,6 @@ if(isset($_FILES['upload']['name'][0]))
 	    	echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 	}
 }
-else
-{
-	$fileName = "";$fileType = "";$fileSize = "";
-	$sql2 = "INSERT INTO files (customer_id,file_name,type,size,created_at) VALUES ('$customer_id','$fileName','$fileType','$fileSize','$created_at')";
-    if(mysqli_query($link, $sql2))
-    	echo "<h1 style='text-align:center'>Records added successfully.</h1>";
-	else
-    	echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
-
 header("refresh:2;url= http://192.168.1.136:5555/Add_Patient/index.php");
 // close connection
 mysqli_close($link);
