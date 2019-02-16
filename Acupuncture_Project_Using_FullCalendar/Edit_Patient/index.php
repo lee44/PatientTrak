@@ -51,12 +51,17 @@ $result2 = mysqli_query($link,$sql2);
     <script src="/lib/popper.min.js"></script>
     <script src="/lib/bootstrap.min.js"></script> 
     <script src="/lib/jquery.min.js"></script>
-<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
 <script>
 $(document).ready(function () 
 {
   $("#phone").inputmask({"mask": "(999) 999-9999"});
   $("#ssn").inputmask({"mask": "999-99-9999"});
+
+  $('.add_more').click(function(e)
+  {        
+    $(this).before("<input name='file[]' type='file' id='fileSelect'/>");
+  });
 });
 </script>          
 </head>    
@@ -79,7 +84,7 @@ $(document).ready(function ()
 
     <h1>Patient Information</h1>
     <div class="container">
-      <form form name="form1" action="/Edit_Patient/update_Patient_Record.php" method="post" enctype="multipart/form-data">
+      <form form name="form1" action="update_Patient_Record.php" method="post" enctype="multipart/form-data">
       
         <div class="form-row">
           <div class="form-group col-md-8"></div>
@@ -189,7 +194,8 @@ $(document).ready(function ()
               echo '<a style="font-size:17px;" href = "http://76.91.29.148:5555/Add_Patient/Uploads/'.$file_name.'">'.$file_name.'</a><br>';
           }
           echo '
-          <input type="file" name="upload[]" multiple="multiple" id="fileSelect"/>
+          <input type="file" name="upload[]" id="fileSelect"/>
+          <button class="add_more" type="button">Add More Files</button>
           <h4>Description of File:</h4> 
           <textarea name="description" value ="'.$patients['notes'].'" rows="4" cols="40"></textarea>
         </div>      

@@ -18,6 +18,11 @@
     {
       $("#phone").inputmask({"mask": "(999) 999-9999"});
       $("#ssn").inputmask({"mask": "999-99-9999"});
+
+      $('.add_more').click(function(e)
+      {        
+        $(this).before("<input name='file[]' type='file' id='fileSelect'/>");
+      });
     });
     </script>   
 
@@ -128,7 +133,8 @@
         </div>
         <div class = 'uploadFile'>    
           <h2>Upload File</h2>
-          <input type="file" name="upload[]" multiple="multiple" id="fileSelect"/>
+          <input type="file" name="upload[]" id="fileSelect"/>
+          <button class="add_more" type="button">Add More Files</button>
           <h4>Notes:</h4> 
           <textarea name="notes" value="" rows='4' cols='40'></textarea>
         </div>
