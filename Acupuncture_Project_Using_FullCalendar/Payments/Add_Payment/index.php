@@ -59,7 +59,6 @@
                 <li class="nav-item"><a class="nav-link" href = "/index.php">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="/Add_Patient/index.php">Add Patient</a></li>
                 <li class="nav-item"><a class="nav-link" href = "/Find_Patient/index.php">Find Patient</a></li>
-                <li class="nav-item"><a class="nav-link" href = "/Payments/index.php">Payments</a></li>
                 <li class="nav-item"><a class="nav-link" href="/Reports/index.php">Reports</a></li>
                 <li class="nav-item"><a class="nav-link" href = "/Table_Query/index.php">Show All Data</a></li>
             </ul>
@@ -82,9 +81,9 @@
                 <tbody>
                     <tr class="d-flex">
                         <td class="col-3"><input type="date"   class="form-control"        name="created_at[]" required></td>
-                        <td class="col-3"><input type="text"   class="form-control"        name="charge_descriptions[]" required></td>
-                        <td class="col-2"><input type="number" class="form-control charge" name="charges[]" step="any" min="0" max="100" required></td>
-                        <td class="col-4"><input type="text"   class="form-control"        name="charge_notes[]"></td>
+                        <td class="col-3"><input type="text"   class="form-control"        name="charge_description[]" required></td>
+                        <td class="col-2"><input type="number" class="form-control charge" name="charge[]" step="any" min="0" max="500" required></td>
+                        <td class="col-4"><input type="text"   class="form-control"        name="charge_note[]"></td>
                     </tr>
                 </tbody>
             </table> 
@@ -100,18 +99,18 @@
                     <tr class="d-flex">
                         <td class="col-3"></td>
                         <td class="col-7 misc_label">CO PAY</td>
-                        <td class="col-2"><input type="number" id="co_pay" class="form-control charge" name="co_pay" step="any" min="0" max="100"></td>
+                        <td class="col-2"><input type="number" id="co_pay" class="form-control charge" name="co_pay" step="any" min="0" max="1000"></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-3"></td>
                         <td class="col-7 misc_label">TAXES</td>
-                        <td class="col-2"><input type="number" id="taxes" class="form-control charge" name="taxes" step="any" min="0" max="100"></td>
+                        <td class="col-2"><input type="number" id="taxes" class="form-control charge" name="tax" step="any" min="0" max="1000"></td>
                     </tr>
                     <tr class="d-flex">
                         <td class="col-3"></td>
                         <td class="col-7 misc_label">TOTAL</td>
                         <td class="col-2">
-                            <input type="text" id="total_charges" class="form-control" name="total_charges" readonly>
+                            <input type="text" id="total_charges" class="form-control" name="total_charge" readonly>
                         </td>
                     </tr>
                 </tbody>
@@ -129,8 +128,8 @@
                     <tr class="d-flex">
                         <td class="col-3"><input type="date"   class="form-control"        name="payment_created_at[]" required></td>
                         <td class="col-3"><input type="text"   class="form-control"        name="payment_type[]" maxlength="11"></td>
-                        <td class="col-2"><input type="number" id="payment" class="form-control charge" name="payments[]" step="any" min="0" max="100"></td>
-                        <td class="col-4"><input type="text"   class="form-control"        name="payment_notes[]"></td>
+                        <td class="col-2"><input type="number" id="payment" class="form-control charge" name="payment[]" step="any" min="0" max="1000"></td>
+                        <td class="col-4"><input type="text"   class="form-control"        name="payment_note[]"></td>
                     </tr>                   
                 </tbody>
             </table>

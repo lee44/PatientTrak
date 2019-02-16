@@ -1,0 +1,49 @@
+.misc_label
+{
+	text-align: right;
+	font-weight: bold;
+	font-size: 1.1rem;
+}
+
+#total_charges, #subtotal, #balance
+{
+	text-align: center;
+	font-weight: bold;
+	color:red;
+}
+
+#total_payment { text-align: center; font-weight: bold; }
+
+#total, #total2, #total3, #total4, #total5{ text-align: center; }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+th{	text-align: center !important; }
+
+table { margin-bottom: 0px !important;}
+
+.table td#grand_total  {
+  border-top: 2px solid black !important;
+}
+
+input[type = "number"]{	text-align: center; }
+
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+input[type=date]{
+	text-align: center !important;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+    -webkit-appearance: none;
+    display: none;
+}
+
+td { padding:6px 6px !important;}

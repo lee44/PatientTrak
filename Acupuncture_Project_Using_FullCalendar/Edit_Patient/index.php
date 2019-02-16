@@ -60,7 +60,6 @@ $(document).ready(function ()
                 <li class='nav-item'><a class='nav-link' href = '/index.php'>Home</a></li>
                 <li class='nav-item'><a class='nav-link' href='/Add_Patient/index.php'>Add Patient</a></li>
                 <li class='nav-item'><a class='nav-link' href = '/Find_Patient/index.php'>Find Patient</a></li>
-                <li class='nav-item'><a class='nav-link' href = '/Payments/index.php'>Payments</a></li>
                 <li class='nav-item'><a class='nav-link' href='/Reports/index.php'>Reports</a></li>
                 <li class='nav-item'><a class='nav-link' href = '/Table_Query/index.php'>Show All Data</a></li>
             </ul>
@@ -216,14 +215,14 @@ $(document).ready(function ()
            <tr>
            <td>'.date_format(new DateTime($payments['payment_created_at']),"m/d/Y").'</td>
            <td>'.$payments['payment_type'].'</td>
-           <td>$'.$payments['total_payments'].'</td>
-           <td>$'.$payments['total_charges'].'</td>
+           <td>$'.$payments['total_payment'].'</td>
+           <td>$'.$payments['total_charge'].'</td>
            <td>$'.$payments['co_pay'].'</td>
-           <td>$'.$payments['taxes'].'</td>
-           <td>'.$payments['payment_notes'].'</td>
+           <td>$'.$payments['tax'].'</td>
+           <td>'.$payments['payment_note'].'</td>
            <td><form action="/Payments/Edit_Payment/index.php" method="POST">
                 <input type="hidden" name="customer_id" value="'.$_POST['customer_id'].'"/>
-                <input type="hidden" name="created_at" value="'.$payments['payment_created_at'].'"/>
+                <input type="hidden" name="charge_id" value="'.$payments['charge_id'].'"/>
                 <input type="submit" name="edit" value="Edit" /></form>
            </td>
            </tr>';
