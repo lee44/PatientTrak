@@ -1,11 +1,12 @@
 <?php
+session_start();
 $link = mysqli_connect("localhost", "root", "", "acupuncture");
  
 if($link === false) die("ERROR: Could not connect. " . mysqli_connect_error());
 
 // When inserting data into mysql, it will convert the data to the proper datatype. For example, total is a decimal datatype in the DB. As long as the data
 //being inserted doesnt contain any characters other than numbers, it will be accepted.
-$customer_id = $_POST['customer_id']; 
+$customer_id = $_SESSION['customer_id']; 
 $total_charge = trim($_POST['total_charge'],'$');
 $subtotal = trim($_POST['subtotal'],'$');
 $balance = trim($_POST['balance'],'$');

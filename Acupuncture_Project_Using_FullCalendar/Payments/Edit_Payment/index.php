@@ -1,10 +1,12 @@
 <?php
+session_start();
+
 $link = mysqli_connect("localhost", "root", "", "acupuncture");
  
 if($link === false)
     die("ERROR: Could not connect. " . mysqli_connect_error());
  
-$customer_id = mysqli_real_escape_string($link, $_REQUEST['customer_id']);
+$customer_id = $_SESSION['customer_id'];
 $charge_id = mysqli_real_escape_string($link, $_REQUEST['charge_id']);
 
 //Charges
@@ -90,7 +92,6 @@ mysqli_close($link);
 <h1>Charges and Payments</h1>
     <div class="container">
         <form form name = "form1" action="update_payment.php" method = "POST" enctype = "multipart/form-data" >
-            <?php echo '<input type="hidden" name="customer_id" value="'.$_POST['customer_id'].'"/>';?>
             <?php echo '<input type="hidden" name="charge_id" value="'.$_POST['charge_id'].'"/>';?>
             <table class="table table-bordered">
                 <thead>

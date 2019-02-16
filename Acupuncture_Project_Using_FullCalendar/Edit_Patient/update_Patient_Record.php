@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 /* Attempt MySQL server connection.  */
 $link = mysqli_connect("localhost", "root", "", "acupuncture");
  
@@ -7,7 +9,7 @@ if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
-$customer_id = $_POST['customer_id'];
+$customer_id = $_SESSION['customer_id'];
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
 $email = $_POST['email'];

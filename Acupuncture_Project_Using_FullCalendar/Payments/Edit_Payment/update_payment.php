@@ -1,9 +1,11 @@
 <?php
+session_start();
+
 $link = mysqli_connect("localhost", "root", "", "acupuncture");
  
 if($link === false) die("ERROR: Could not connect. " . mysqli_connect_error());
 
-$customer_id = $_POST['customer_id']; 
+$customer_id = $_SESSION['customer_id']; 
 $total_charge = trim($_POST['total_charge'],'$');
 $subtotal = trim($_POST['subtotal'],'$');
 $balance = trim($_POST['balance'],'$');
@@ -42,6 +44,6 @@ for($i = 0; $i < count($_POST['payment']); $i++)
 	mysqli_query($link, $sql);
 }
 
-header("refresh:1;url= http://192.168.1.136:5555/Find_Patient/index.php");
+header("refresh:1;url= http://192.168.1.136:5555/Edit_Patient/index.php");
 mysqli_close($link);
 ?>

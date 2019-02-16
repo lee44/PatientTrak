@@ -68,7 +68,6 @@
 <h1>Charges and Payments</h1>
     <div class="container">
         <form form name = "form1" action="insert_payment.php" method = "POST" enctype = "multipart/form-data" >
-            <?php echo '<input type="hidden" name="customer_id" value="'.$_POST['customer_id'].'"/>';?>
             <table class="table table-bordered">
                 <thead>
                     <tr class="d-flex">

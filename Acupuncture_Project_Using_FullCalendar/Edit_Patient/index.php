@@ -1,10 +1,21 @@
 <?php
+session_start();
+
 $link = mysqli_connect("localhost", "root", "", "acupuncture");
  
 if($link === false)
     die("ERROR: Could not connect. " . mysqli_connect_error());
- 
-$customer_id = mysqli_real_escape_string($link, $_REQUEST['customer_id']);
+
+if(isset($_POST['customer_id']))
+{
+  $_SESSION['customer_id'] = $_POST['customer_id'];
+  $customer_id = $_POST['customer_id'];
+}
+else
+{
+  $customer_id = $_SESSION['customer_id'];
+}
+
 
 //Patient Info
 $sql =
@@ -188,7 +199,7 @@ $(document).ready(function ()
 
       <form action="/Payments/Add_Payment/index.php" method="POST">
         <div class="form-row">
-            <div class="form-group col-md-8"><input type="hidden" name="customer_id" value="'.$_POST['customer_id'].'"/></div>
+            <div class="form-group col-md-8"></div>
             <div class="form-group col-md-4"><input type="submit" class="btn btn-info float-right" value="Add">
         </div>
       </form>
@@ -221,7 +232,6 @@ $(document).ready(function ()
            <td>$'.$payments['tax'].'</td>
            <td>'.$payments['payment_note'].'</td>
            <td><form action="/Payments/Edit_Payment/index.php" method="POST">
-                <input type="hidden" name="customer_id" value="'.$_POST['customer_id'].'"/>
                 <input type="hidden" name="charge_id" value="'.$payments['charge_id'].'"/>
                 <input type="submit" name="edit" value="Edit" /></form>
            </td>
