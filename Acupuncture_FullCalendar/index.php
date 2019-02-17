@@ -25,7 +25,47 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
     var j1121 = jQuery.noConflict();
-    </script>
+    </script>  
+</head>    
+    <body>    		
+		<nav class="navbar navbar-expand-lg navbar-light bglight">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav justify-content-between">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link " href="Add_Patient/index.php">Add Patient</a></li>
+          <li class="nav-item"><a class="nav-link" href="/Find_Patient/index.php">Find Patient</a></li>
+          <li class="nav-item"><a class="nav-link" href="/Reports/index.php">Reports</a></li>
+          <li class="nav-item"><a class="nav-link" href="/Table_Query/index.php">Show All Data</a></li>
+        </ul>
+      </div>
+    </nav>
+
+			<div id="calendar"></div>
+
+<!-- Appointment Modal Dialog -->
+      <div id="dialog-form" title="Create Appointment">
+        <form id = "appointmentForm">
+            <h3>Title</h3>
+            <input type="text" name="title" id="title" class="text ui-widget-content ui-corner-all">
+            <h3>Description</h3>
+            <textarea id = "description" form="usrform" class="text ui-widget-content ui-corner-all" rows="6" cols="37" style="resize:none"></textarea>
+         </form>
+      </div>
+<!-- Edit/Delete Existing Modal Dialog -->
+      <div id="dialog-form2" title="Edit/Delete Appointment">
+        <form id = "edit_delete_appointmentForm">
+            <h3>Title</h3>
+            <input type="text" name="edit_delete_title" id="title2" class="text ui-widget-content ui-corner-all">
+            <h3>Description</h3>
+            <textarea id = "edit_delete_description" form="usrform" class="text ui-widget-content ui-corner-all" rows="6" cols="37" style="resize:none"></textarea>
+         </form>
+      </div>
+		
+    </body>    
 
     <script>
     $(document).ready(function () 
@@ -36,15 +76,15 @@
             
       var dialog = j1121( "#dialog-form" ).dialog(
       {
-	      autoOpen: false,
-	      height: 400,
-	      width: 350,
-	      modal: true,
-	      buttons: 
-	      { 
-	        "Add Event": addEvent,
-	        Cancel: function(){dialog.dialog( "close" );}
-	      },
+        autoOpen: false,
+        height: 400,
+        width: 350,
+        modal: true,
+        buttons: 
+        { 
+          "Add Event": addEvent,
+          Cancel: function(){dialog.dialog( "close" );}
+        },
         open: function(){
             jQuery('.ui-widget-overlay').bind('click',function(){
                 jQuery('#dialog-form').dialog('close');
@@ -124,8 +164,8 @@
 
       var calendar = $('#calendar').fullCalendar(
       {
-      	contentHeight: $(window).height()*0.83,
-      	titleRangeSeparator: " - ",
+        contentHeight: $(window).height()*0.83,
+        titleRangeSeparator: " - ",
         minTime: "07:00:00", maxTime: "24:00:00",
         allDaySlot:false,
         editable: true,
@@ -135,7 +175,7 @@
           center: 'title',
           right: 'month,agendaWeek,agendaDay'
         },
-		    selectable: true,
+        selectable: true,
         selectHelper: true,
 
         events: "events.php",
@@ -150,10 +190,10 @@
           }
           else
           {
-      	    starting = fmt(start); ending = fmt(end); isallDay = allDay;
+            starting = fmt(start); ending = fmt(end); isallDay = allDay;
             document.getElementById("appointmentForm").reset();
             $("#description").val('');
-      	    dialog.dialog( "open" );    
+            dialog.dialog( "open" );    
             //calendar.fullCalendar('unselect'); // exits out of the select state
           }
         },
@@ -202,45 +242,5 @@
 
       });
     });
-  </script>  
-</head>    
-    <body>    		
-		<nav class="navbar navbar-expand-lg navbar-light bglight">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav justify-content-between">
-          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link " href="Add_Patient/index.php">Add Patient</a></li>
-          <li class="nav-item"><a class="nav-link" href="/Find_Patient/index.php">Find Patient</a></li>
-          <li class="nav-item"><a class="nav-link" href="/Reports/index.php">Reports</a></li>
-          <li class="nav-item"><a class="nav-link" href="/Table_Query/index.php">Show All Data</a></li>
-        </ul>
-      </div>
-    </nav>
-
-			<div id="calendar"></div>
-
-<!-- Appointment Modal Dialog -->
-      <div id="dialog-form" title="Create Appointment">
-        <form id = "appointmentForm">
-            <h3>Title</h3>
-            <input type="text" name="title" id="title" class="text ui-widget-content ui-corner-all">
-            <h3>Description</h3>
-            <textarea id = "description" form="usrform" class="text ui-widget-content ui-corner-all" rows="6" cols="37" style="resize:none"></textarea>
-         </form>
-      </div>
-<!-- Edit/Delete Existing Modal Dialog -->
-      <div id="dialog-form2" title="Edit/Delete Appointment">
-        <form id = "edit_delete_appointmentForm">
-            <h3>Title</h3>
-            <input type="text" name="edit_delete_title" id="title2" class="text ui-widget-content ui-corner-all">
-            <h3>Description</h3>
-            <textarea id = "edit_delete_description" form="usrform" class="text ui-widget-content ui-corner-all" rows="6" cols="37" style="resize:none"></textarea>
-         </form>
-      </div>
-		
-    </body>    
+  </script>
 </html> 

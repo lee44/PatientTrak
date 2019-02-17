@@ -18,14 +18,6 @@
     {
       $("#phone").inputmask({"mask": "(999) 999-9999"});
       $("#ssn").inputmask({"mask": "999-99-9999"});
-
-      $('.add_more').click(function(e)
-      {
-        var count = $("input:file").length;
-        var input_file = "#fileSelect"+count;
-        var input_html = "<input name='file[]' type='file' id='fileSelect" + (count+1) + "'/><button class='btn' id='x_button' type='button'><i class='fa fa-close'></i></button>";
-        $(input_file).after(input_html);
-      });
     });
     </script>   
 
@@ -140,8 +132,14 @@
           <div class = 'container' >
             <div class="form-row">
               <div class="form-group col-sm-6">
-                <input type="file" name="upload[]" id="fileSelect1"/>
-                <button class="btn" type="button"><i class="fa fa-close"></i></button>
+                <div class="form-row" id = "row1">
+                  <div class="form-group col-sm-6">
+                    <input type="file" name="upload[]">
+                  </div>
+                  <div class="form-group col-sm-6" align="center">
+                    <button class="btn" type="button" id="x_button1" onclick="removeRow(this.id)"><i class="fa fa-close"></i></button>
+                  </div>
+                </div>
               </div>
               <div class="form-group col-sm-6">
                 <button class="add_more" type="button">Add More Files</button>
@@ -155,6 +153,32 @@
         <input type="submit" class="btn btn-info btn-block" value="Submit">      
       </form>
     </div>
+    </body>  
 
-    </body>    
+    <script type="text/javascript">
+      var counter = 1;
+      $('.add_more').click(function(e)
+      {
+        counter++;
+        var row_id = "#row"+counter;
+        var html_file = "<div class='form-row' id = row"+counter+">"+
+                          "<div class='form-group col-sm-6'>"+
+                            "<input name='file[]' type='file'/></div>"+
+                          "<div class='form-group col-sm-6' align='center'>"+
+                            "<button class='btn' type='button' id='x_button"+counter+"' onclick='removeRow(this.id)'><i class='fa fa-close'></i></button>"+
+                          "</div>"+
+                        "</div>";
+
+        $("#row1").after(html_file);
+      });
+
+      function removeRow(id)
+      {
+        if(id != "x_button1")
+        {
+          var res = id.charAt(8);
+          $("#"+id).parents("#row"+res).remove();
+        }
+      }
+    </script>  
 </html>    
