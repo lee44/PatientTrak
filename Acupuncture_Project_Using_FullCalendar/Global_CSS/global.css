@@ -26,7 +26,7 @@
 
 .nav-item a:hover { background-color: #1e7e34; }
 
-.uploadFile h2 { text-align: center; margin: 1rem 0 2rem 0;}
+.uploadFile h2 { text-align: center; margin: 0rem 0 1rem 0 !important; }
 
 li { margin-left: 5px; }
 
@@ -49,7 +49,11 @@ input[type=date]::-webkit-inner-spin-button {
     display: none;
 }
 
-input[type="file"] { font-size:1em; margin: .3rem 0 1rem 0;}
+input[type="file"] 
+{ 
+  font-size: 1em; 
+  margin: 0rem 0rem 1rem 0rem;
+}
 
 input[type="submit"] { margin-top: 1.5px; font-size:1.1em; }
 

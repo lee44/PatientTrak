@@ -20,8 +20,11 @@
       $("#ssn").inputmask({"mask": "999-99-9999"});
 
       $('.add_more').click(function(e)
-      {        
-        $(this).before("<input name='file[]' type='file' id='fileSelect'/>");
+      {
+        var count = $("input:file").length;
+        var input_file = "#fileSelect"+count;
+        var input_html = "<input name='file[]' type='file' id='fileSelect" + (count+1) + "'/><button class='btn' id='x_button' type='button'><i class='fa fa-close'></i></button>";
+        $(input_file).after(input_html);
       });
     });
     </script>   
@@ -133,8 +136,19 @@
         </div>
         <div class = 'uploadFile'>    
           <h2>Upload File</h2>
-          <input type="file" name="upload[]" id="fileSelect"/>
-          <button class="add_more" type="button">Add More Files</button>
+
+          <div class = 'container' >
+            <div class="form-row">
+              <div class="form-group col-sm-6">
+                <input type="file" name="upload[]" id="fileSelect1"/>
+                <button class="btn" type="button"><i class="fa fa-close"></i></button>
+              </div>
+              <div class="form-group col-sm-6">
+                <button class="add_more" type="button">Add More Files</button>
+              </div>
+            </div>
+          </div>
+
           <h4>Notes:</h4> 
           <textarea name="notes" value="" rows='4' cols='40'></textarea>
         </div>
