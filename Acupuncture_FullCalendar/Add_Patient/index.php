@@ -137,12 +137,12 @@
                     <input type="file" name="upload[]">
                   </div>
                   <div class="form-group col-sm-6" align="center">
-                    <button class="btn" type="button" id="x_button1" onclick="removeRow(this.id)"><i class="fa fa-close"></i></button>
+                    <button class="btn btn-danger" type="button" id="x_button1" onclick="removeRow(this.id)"><i class="fa fa-close"></i></button>
                   </div>
                 </div>
               </div>
               <div class="form-group col-sm-6">
-                <button class="add_more" type="button">Add More Files</button>
+                <button class="btn add_more btn-primary" type="button">Add More Files</button>
               </div>
             </div>
           </div>
@@ -150,7 +150,7 @@
           <h4>Notes:</h4> 
           <textarea name="notes" value="" rows='4' cols='40'></textarea>
         </div>
-        <input type="submit" class="btn btn-info btn-block" value="Submit">      
+        <input type="submit" class="btn btn-success btn-block" value="Submit">      
       </form>
     </div>
     </body>  
@@ -165,7 +165,7 @@
                           "<div class='form-group col-sm-6'>"+
                             "<input type='file' name='upload[]'/></div>"+
                           "<div class='form-group col-sm-6' align='center'>"+
-                            "<button class='btn' type='button' id='x_button"+counter+"' onclick='removeRow(this.id)'><i class='fa fa-close'></i></button>"+
+                            "<button class='btn btn-danger' type='button' id='x_button"+counter+"' onclick='removeRow(this.id)'><i class='fa fa-close'></i></button>"+
                           "</div>"+
                         "</div>";
 
