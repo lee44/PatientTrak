@@ -67,7 +67,7 @@
           </div>
           <div class="form-group col-md-2">
             <label for="zip">Zip</label>
-            <input type="number" class="form-control" name="zip" placeholder="Zip" required>
+            <input type="number" class="form-control" name="zip" placeholder="Zip" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==5) return false;" required>
           </div>
         </div>
         <div class="form-row">
@@ -163,7 +163,7 @@
         var row_id = "#row"+counter;
         var html_file = "<div class='form-row' id = row"+counter+">"+
                           "<div class='form-group col-sm-6'>"+
-                            "<input name='file[]' type='file'/></div>"+
+                            "<input type='file' name='upload[]'/></div>"+
                           "<div class='form-group col-sm-6' align='center'>"+
                             "<button class='btn' type='button' id='x_button"+counter+"' onclick='removeRow(this.id)'><i class='fa fa-close'></i></button>"+
                           "</div>"+
