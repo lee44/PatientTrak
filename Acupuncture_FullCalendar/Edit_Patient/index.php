@@ -59,11 +59,6 @@ $(document).ready(function ()
 {
   $("#phone").inputmask({"mask": "(999) 999-9999"});
   $("#ssn").inputmask({"mask": "999-99-9999"});
-
-  $('.add_more').click(function(e)
-  {        
-    $(this).before("<input name='file[]' type='file' id='fileSelect'/>");
-  });
 });
 </script>          
 </head>    
@@ -193,18 +188,31 @@ $(document).ready(function ()
           {  
             echo '<h4>Current Files:</h4>';
             for($i = 0; $i < count($files); $i++)
-              echo '<div class="form-row" id = "row'.$i.'">
-                      <div class="form-group col-sm-3">
+              echo '<div class="form-row" id = "r'.$i.'">
+                      <div class="form-group col-sm-4">
                         <a style="font-size:17px;" href = "http://192.168.1.113:4444/Add_Patient/Uploads/'.$files[$i].'">'.$files[$i].'</a>
                       </div>
-                      <div class="form-group col-sm-9" align="left">
+                      <div class="form-group col-sm-8" align="left">
                         <button class="btn btn-danger" type="button" id="x_button'.$i.'" value="'.$files[$i].'" onclick="deleteFile(this.id,this.value)"><i class="fa fa-close"></i></button>
                       </div>
                     </div>';
           }
           ?>
-          <input type="file" name="upload[]" id="fileSelect"/>
-          <button class="add_more" type="button">Add More Files</button>
+          <div class="form-row">
+            <div class="form-group col-sm-6">
+              <div class="form-row" id = "row1">
+                <div class="form-group col-sm-6">
+                  <input type="file" name="upload[]">
+                </div>
+                <div class="form-group col-sm-6" align="center" id="xbutton">
+                  <button class="btn btn-danger" type="button" id="x_button1" onclick="removeRow(this.id)"><i class="fa fa-close"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-sm-6">
+              <button class="btn add_more btn-primary" type="button">Add More Files</button>
+            </div>
+          </div>
           <h4>Description of File:</h4> 
           <?php echo'<textarea name="description" value ="'.$patients['notes'].'" rows="4" cols="40"></textarea>';?>
         </div>      
@@ -266,7 +274,7 @@ $(document).ready(function ()
     // if(r == true)
     // {
       var res = id.substring(8,id.length);
-      $("#"+id).parents("#row"+res).remove();
+      $("#"+id).parents("#r"+res).remove();
       
       var customer_id = $("#customer_id").val();
       $.ajax(
@@ -274,16 +282,35 @@ $(document).ready(function ()
         type: 'POST',
         url: 'delete_file.php',
         data: '&customer_id=' + customer_id + '&file=' + filename,
-        success: function (response) {
-           
-        },
-        error: function () {
-           // do something
-        }
+        success: function (response) {},
+        error: function () {}
       });
     //}
-
   }
+  var counter = 1;
+      $('.add_more').click(function(e)
+      {
+        counter++;
+        var row_id = "#row"+counter;
+        var html_file = "<div class='form-row' id = row"+counter+">"+
+                          "<div class='form-group col-sm-6'>"+
+                            "<input type='file' name='upload[]'/></div>"+
+                          "<div class='form-group col-sm-6' align='center' id='xbutton'>"+
+                            "<button class='btn btn-danger' type='button' id='x_button"+counter+"' onclick='removeRow(this.id)'><i class='fa fa-close'></i></button>"+
+                          "</div>"+
+                        "</div>";
+
+        $("#row1").after(html_file);
+      });
+
+      function removeRow(id)
+      {
+        if(id != "x_button1")
+        {
+          var res = id.substring(8,id.length);
+          $("#"+id).parents("#row"+res).remove();
+        }
+      }
 </script>      
 </html>
 

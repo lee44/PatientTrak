@@ -52,7 +52,7 @@ input[type=date]::-webkit-inner-spin-button {
 input[type="file"] 
 { 
   font-size: 1em; 
-  margin: 0rem 0rem 1rem 0rem;
+  margin: 0rem 0rem .25rem 0rem;
 }
 
 input[type="submit"] { margin-top: 1.5px; font-size:1.1em; }
