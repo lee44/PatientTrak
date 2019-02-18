@@ -96,7 +96,7 @@ $(document).ready(function ()
         <div class="form-row">
           <div class="form-group col-md-2">
             <label for="id">ID</label>
-            <?php echo'<input type="text" class="form-control" name="customer_id" value ="'.$patients['customer_id'].'" readonly>';?>
+            <?php echo'<input type="text" class="form-control" id="customer_id" name="customer_id" value ="'.$patients['customer_id'].'" readonly>';?>
           </div>
           <div class="form-group col-md-5">
             <label for="first_name">First Name</label>
@@ -267,14 +267,15 @@ $(document).ready(function ()
     // {
       var res = id.substring(8,id.length);
       $("#"+id).parents("#row"+res).remove();
-
+      
+      var customer_id = $("#customer_id").val();
       $.ajax(
       {
-        type: "POST",
+        type: 'POST',
         url: 'delete_file.php',
-        data: "&file=" + filename,
+        data: '&customer_id=' + customer_id + '&file=' + filename,
         success: function (response) {
-           console.log("Sucess");
+           
         },
         error: function () {
            // do something
