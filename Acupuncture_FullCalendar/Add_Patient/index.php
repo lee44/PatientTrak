@@ -176,7 +176,7 @@
       {
         if(id != "x_button1")
         {
-          var res = id.charAt(8);
+          var res = id.substring(8,id.length);
           $("#"+id).parents("#row"+res).remove();
         }
       }

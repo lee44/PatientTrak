@@ -37,6 +37,8 @@ while($f = mysqli_fetch_array($result))
 //Patient Payments
 $sql2 = "SELECT * FROM payments AS P INNER JOIN charges AS C ON P.charge_id = C.charge_id WHERE P.customer_id = '$customer_id'";
 $result2 = mysqli_query($link,$sql2);
+
+mysqli_close($link);
 ?>
 
 <html>    
@@ -90,76 +92,74 @@ $(document).ready(function ()
           <div class="form-group col-md-8"></div>
           <div class="form-group col-md-4"><input type="submit" class="btn btn-info float-right" value="Update"></div>
         </div>
-        <?php
-        echo '
+        
         <div class="form-row">
           <div class="form-group col-md-2">
             <label for="id">ID</label>
-            <input type="text" class="form-control" name="customer_id" value ="'.$patients['customer_id'].'" readonly>
+            <?php echo'<input type="text" class="form-control" name="customer_id" value ="'.$patients['customer_id'].'" readonly>';?>
           </div>
           <div class="form-group col-md-5">
             <label for="first_name">First Name</label>
-            <input type="text" class="form-control" name="first_name" placeholder="First Name" value ="' .$patients['first_name'].'" required>
+            <?php echo'<input type="text" class="form-control" name="first_name" placeholder="First Name" value ="' .$patients['first_name'].'" required>';?>
           </div>
           <div class="form-group col-md-5">
             <label for="last_name">Last Name</label>
-            <input type="text" class="form-control" name="last_name" placeholder="Last Name" value ="' .$patients['last_name'].'" required>
+            <?php echo'<input type="text" class="form-control" name="last_name" placeholder="Last Name" value ="' .$patients['last_name'].'" required>';?>
           </div>
         </div>
         <div class="form-group">
           <label for="inputAddress">Address</label>
-          <input type="text" class="form-control" name="address" placeholder="1234 Main St" value ="' .$patients['address'].'" required>
+          <?php echo'<input type="text" class="form-control" name="address" placeholder="1234 Main St" value ="' .$patients['address'].'" required>';?>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputCity">City</label>
-            <input type="text" class="form-control" name="city" placeholder="City" value ="' .$patients['city'].'" required>
+            <?php echo'<input type="text" class="form-control" name="city" placeholder="City" value ="' .$patients['city'].'" required>';?>
           </div>
           <div class="form-group col-md-4">
             <label for="inputState">State</label>
-            <input type="text" class="form-control" name="state" placeholder="State" value ="' .$patients['state'].'" required>
+            <?php echo'<input type="text" class="form-control" name="state" placeholder="State" value ="' .$patients['state'].'" required>';?>
           </div>
           <div class="form-group col-md-2">
             <label for="inputZip">Zip</label>
-            <input type="text" class="form-control" name="zip" placeholder="Zip" value ="' .$patients['zip'].'" required>
+            <?php echo'<input type="text" class="form-control" name="zip" placeholder="Zip" value ="' .$patients['zip'].'" required>';?>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="employer">Employer</label>
-            <input type="text" class="form-control" name="employer" placeholder="Employer" value ="' .$patients['employer'].'" required>
+            <?php echo'<input type="text" class="form-control" name="employer" placeholder="Employer" value ="' .$patients['employer'].'" required>';?>
           </div>
           <div class="form-group col-md-6">
             <label for="occupation">Occupation</label>
-            <input type="text" class="form-control" name="occupation" placeholder="Occupation" value ="' .$patients['occupation'].'" required>
+            <?php echo'<input type="text" class="form-control" name="occupation" placeholder="Occupation" value ="' .$patients['occupation'].'" required>';?>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="email">Email</label>
-            <input type="email" class="form-control" name="email" placeholder="Email" value ="' .$patients['email'].'" required>
+            <?php echo'<input type="email" class="form-control" name="email" placeholder="Email" value ="' .$patients['email'].'" required>';?>
           </div>
           <div class="form-group col-md-6">
             <label for="number">Number</label>
-            <input type="text" class="form-control" name="number" id="phone" placeholder="Number" value ="' .$patients['phone_number'].'" required>
+            <?php echo'<input type="text" class="form-control" name="number" id="phone" placeholder="Number" value ="' .$patients['phone_number'].'" required>';?>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="license">License</label>
-            <input type="text" class="form-control" name="license" placeholder="License" value ="' .$patients['license'].'" required>
+            <?php echo'<input type="text" class="form-control" name="license" placeholder="License" value ="' .$patients['license'].'" required>';?>
           </div>
           <div class="form-group col-md-6">
             <label for="ssn">SSN</label>
-            <input type="text" class="form-control" name="ssn" id="ssn" placeholder="SSN" value ="' .$patients['ssn'].'" required>
+            <?php echo'<input type="text" class="form-control" name="ssn" id="ssn" placeholder="SSN" value ="' .$patients['ssn'].'" required>';?>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="birthday">Birthday</label>
-            <input type="date" class="form-control" name="birthday" placeholder="Birthday" value ="' .$patients['birthday'].'" required>
-          </div>';
-          ?>
+            <?php echo'<input type="date" class="form-control" name="birthday" placeholder="Birthday" value ="' .$patients['birthday'].'" required>';?>
+          </div>
           <div class="form-group col-md-6">
             <label for="gender">Gender</label>
             <div class="form-check">
@@ -169,16 +169,17 @@ $(document).ready(function ()
               $male = 'checked';
             else
               $female = 'checked';
-            echo'
+            ?>
+            
               <div class="form-row">
                 <div class="form-group col-sm-6">
                   <label class="form-check-label radio-inline control-label" for="gridRadios1">
-                    <input class="form-check-input" type="radio" name="gender" id="gridRadios1" value="male "'.$male.'> Male
+                    <?php echo'<input class="form-check-input" type="radio" name="gender" id="gridRadios1" value="male "'.$male.'> Male';?>
                   </label>
                 </div>
                 <div class="form-group col-sm-6">
                 <label class="form-check-label radio-inline control-label" for="gridRadios2">
-                  <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="female "'.$female.'>Female
+                  <?php echo'<input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="female "'.$female.'>Female';?>
                 </label>
                 </div>
               </div>
@@ -186,22 +187,29 @@ $(document).ready(function ()
           </div>
         </div>
         <div class = "uploadFile">    
-          <h2>Upload File</h2>';
+          <h2>Upload File</h2>
+          <?php
           if(!is_null($files[0]))
           {  
             echo '<h4>Current Files:</h4>';
-            foreach($files as $file_name)
-              echo '<a style="font-size:17px;" href = "http://76.91.29.148:5555/Add_Patient/Uploads/'.$file_name.'">'.$file_name.'</a><br>';
+            for($i = 0; $i < count($files); $i++)
+              echo '<div class="form-row" id = "row'.$i.'">
+                      <div class="form-group col-sm-3">
+                        <a style="font-size:17px;" href = "http://192.168.1.113:4444/Add_Patient/Uploads/'.$files[$i].'">'.$files[$i].'</a>
+                      </div>
+                      <div class="form-group col-sm-9" align="left">
+                        <button class="btn btn-danger" type="button" id="x_button'.$i.'" value="'.$files[$i].'" onclick="deleteFile(this.id,this.value)"><i class="fa fa-close"></i></button>
+                      </div>
+                    </div>';
           }
-          echo '
+          ?>
           <input type="file" name="upload[]" id="fileSelect"/>
           <button class="add_more" type="button">Add More Files</button>
           <h4>Description of File:</h4> 
-          <textarea name="description" value ="'.$patients['notes'].'" rows="4" cols="40"></textarea>
+          <?php echo'<textarea name="description" value ="'.$patients['notes'].'" rows="4" cols="40"></textarea>';?>
         </div>      
       </form>
-    </div>';
-    ?>
+    </div>
     <div class="container payment_history_container">
       <h2 id="payment_history_header">Payment History</h2>
 
@@ -226,37 +234,57 @@ $(document).ready(function ()
                       <th>Edit?</th>
                   </tr>
               </thead>
-      <?php
-      while ($payments = mysqli_fetch_array($result2)) 
-      {
-          echo 
-          '<tbody>
-           <tr>
-           <td>'.date_format(new DateTime($payments['payment_created_at']),"m/d/Y").'</td>
-           <td>'.$payments['payment_type'].'</td>
-           <td>$'.$payments['total_payment'].'</td>
-           <td>$'.$payments['total_charge'].'</td>
-           <td>$'.$payments['co_pay'].'</td>
-           <td>$'.$payments['tax'].'</td>
-           <td>'.$payments['payment_note'].'</td>
-           <td><form action="/Payments/Edit_Payment/index.php" method="POST">
-                <input type="hidden" name="charge_id" value="'.$payments['charge_id'].'"/>
-                <input type="submit" name="edit" value="Edit" /></form>
-           </td>
-           </tr>';
-      }
-      echo '
-          </tbody>
-        </table>
+              <?php
+              while ($payments = mysqli_fetch_array($result2)) 
+              {
+                  echo 
+                  '<tbody>
+                   <tr>
+                   <td>'.date_format(new DateTime($payments['payment_created_at']),"m/d/Y").'</td>
+                   <td>'.$payments['payment_type'].'</td>
+                   <td>$'.$payments['total_payment'].'</td>
+                   <td>$'.$payments['total_charge'].'</td>
+                   <td>$'.$payments['co_pay'].'</td>
+                   <td>$'.$payments['tax'].'</td>
+                   <td>'.$payments['payment_note'].'</td>
+                   <td><form action="/Payments/Edit_Payment/index.php" method="POST">
+                        <input type="hidden" name="charge_id" value="'.$payments['charge_id'].'"/>
+                        <input type="submit" name="edit" value="Edit" /></form>
+                   </td>
+                   </tr>';
+              }
+              ?>
+                  </tbody>
+          </table>
       </div>
-    </div>';
+    </div> 
+</body> 
+<script type="text/javascript">
+  function deleteFile(id,filename)
+  {
+    // var r = confirm("Are you sure you want to delete this file?")
+    // if(r == true)
+    // {
+      var res = id.substring(8,id.length);
+      $("#"+id).parents("#row"+res).remove();
 
-echo "
-</body>    
-</html>";
+      $.ajax(
+      {
+        type: "POST",
+        url: 'delete_file.php',
+        data: "&file=" + filename,
+        success: function (response) {
+           console.log("Sucess");
+        },
+        error: function () {
+           // do something
+        }
+      });
+    //}
 
-mysqli_close($link);
-?>
+  }
+</script>      
+</html>
 
 <!-- 
 <a href = 'http://76.91.29.148:5555/Add_Patient/Uploads/".$patients['name']."'>".$patients['name']."</a>
