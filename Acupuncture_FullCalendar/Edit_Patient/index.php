@@ -198,6 +198,7 @@ $(document).ready(function ()
                     </div>';
           }
           ?>
+          <h4>New Files:</h4>
           <div class="form-row">
             <div class="form-group col-sm-6">
               <div class="form-row" id = "row1">
@@ -270,9 +271,9 @@ $(document).ready(function ()
 <script type="text/javascript">
   function deleteFile(id,filename)
   {
-    // var r = confirm("Are you sure you want to delete this file?")
-    // if(r == true)
-    // {
+    var r = confirm("Are you sure you want to delete this file?")
+    if(r == true)
+    {
       var res = id.substring(8,id.length);
       $("#"+id).parents("#r"+res).remove();
       
@@ -285,7 +286,7 @@ $(document).ready(function ()
         success: function (response) {},
         error: function () {}
       });
-    //}
+    }
   }
   var counter = 1;
       $('.add_more').click(function(e)
@@ -308,7 +309,7 @@ $(document).ready(function ()
         if(id != "x_button1")
         {
           var res = id.substring(8,id.length);
-          $("#"+id).parents("#row"+res).remove();
+          $("#row"+res).remove();
         }
       }
 </script>      
