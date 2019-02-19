@@ -9,6 +9,9 @@ if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
+print_r($_POST);
+print_r($_FILES);
+
 $customer_id = $_SESSION['customer_id'];
 $first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
@@ -62,7 +65,7 @@ for( $i=0 ; $i < $total ; $i++ )
 
 mysqli_close($link);
 
-header("refresh:1;url= http://192.168.1.113:4444/Find_Patient/index.php");
-//header("Location: http://192.168.1.136:5557/");
+header("refresh:1;url= http://192.168.1.113:5555/Find_Patient/index.php");
+//header("refresh:1;url= http://192.168.1.113:4444/Find_Patient/index.php");
 exit();
 ?>

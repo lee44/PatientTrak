@@ -9,5 +9,9 @@ h3 { text-align: center; margin-top: 5px; }
 #xbutton
 {
 	padding:0px 28px 0px 0px !important;
-
+}
+#alertBoxText
+{
+	text-align: center;
+	font-size: 1.5em;
 }

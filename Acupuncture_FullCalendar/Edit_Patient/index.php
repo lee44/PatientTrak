@@ -81,10 +81,11 @@ $(document).ready(function ()
 
     <h1>Patient Information</h1>
     <div class="container">
-      <form form name="form1" action="delete_Patient_Record.php" method="post" enctype="multipart/form-data">
+      <form id="patient_form" action="delete_Patient_Record.php" method="post" enctype="multipart/form-data">
       
         <div class="form-row">
-          <div class="form-group col-md-8"><input type="button" class="btn btn-info" value="Update" onclick="update_Patient()"></div>
+          <div class="form-group col-md-4"><input type="button" class="btn btn-info" value="Update" onclick="update_Patient()"></div>
+          <div class="form-group col-md-4"></div>
           <div class="form-group col-md-4"><input type="submit" class="btn btn-danger float-right" value="Delete"></div>
         </div>
         
@@ -271,18 +272,16 @@ $(document).ready(function ()
 <script type="text/javascript">
   function update_Patient()
   {
-    var fd = new FormData();
-    $.each($("input[type='file']")[0].files, function(i, file) 
-    {
-      fd.append('file', file);
-    });
-
+    var fd = new FormData($('#patient_form')[0]);
+   
     $.ajax(
       {
         type: 'POST',
         url: 'update_Patient_Record.php',
         data: fd,
-        success: function (response) {},
+        contentType: false,
+        processData: false,
+        success: function (response) {success_Alert();},
         error: function () {}
       });
   }
@@ -321,7 +320,6 @@ $(document).ready(function ()
 
     $("#row1").after(html_file);
   });
-
   function removeRow(id)
   {
     if(id != "x_button1")
@@ -330,6 +328,12 @@ $(document).ready(function ()
       $("#row"+res).remove();
     }
   }
+  function success_Alert()
+  {
+    $("h1").before('<div id="alertBox" class="container"><div id="alertBoxText" class="alert alert-success"><strong>Patient Information Updated!!!</strong></div>');
+    $('#alertBox').fadeOut(2200);
+  }
+
 </script>      
 </html>
 
