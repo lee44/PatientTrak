@@ -81,11 +81,11 @@ $(document).ready(function ()
 
     <h1>Patient Information</h1>
     <div class="container">
-      <form form name="form1" action="update_Patient_Record.php" method="post" enctype="multipart/form-data">
+      <form form name="form1" action="delete_Patient_Record.php" method="post" enctype="multipart/form-data">
       
         <div class="form-row">
-          <div class="form-group col-md-8"></div>
-          <div class="form-group col-md-4"><input type="submit" class="btn btn-info float-right" value="Update"></div>
+          <div class="form-group col-md-8"><input type="button" class="btn btn-info" value="Update" onclick="update_Patient()"></div>
+          <div class="form-group col-md-4"><input type="submit" class="btn btn-danger float-right" value="Delete"></div>
         </div>
         
         <div class="form-row">
@@ -269,6 +269,24 @@ $(document).ready(function ()
     </div> 
 </body> 
 <script type="text/javascript">
+  function update_Patient()
+  {
+    var fd = new FormData();
+    $.each($("input[type='file']")[0].files, function(i, file) 
+    {
+      fd.append('file', file);
+    });
+
+    $.ajax(
+      {
+        type: 'POST',
+        url: 'update_Patient_Record.php',
+        data: fd,
+        success: function (response) {},
+        error: function () {}
+      });
+  }
+
   function deleteFile(id,filename)
   {
     var r = confirm("Are you sure you want to delete this file?")
@@ -289,29 +307,29 @@ $(document).ready(function ()
     }
   }
   var counter = 1;
-      $('.add_more').click(function(e)
-      {
-        counter++;
-        var row_id = "#row"+counter;
-        var html_file = "<div class='form-row' id = row"+counter+">"+
-                          "<div class='form-group col-sm-6'>"+
-                            "<input type='file' name='upload[]'/></div>"+
-                          "<div class='form-group col-sm-6' align='center' id='xbutton'>"+
-                            "<button class='btn btn-danger' type='button' id='x_button"+counter+"' onclick='removeRow(this.id)'><i class='fa fa-close'></i></button>"+
-                          "</div>"+
-                        "</div>";
+  $('.add_more').click(function(e)
+  {
+    counter++;
+    var row_id = "#row"+counter;
+    var html_file = "<div class='form-row' id = row"+counter+">"+
+                      "<div class='form-group col-sm-6'>"+
+                        "<input type='file' name='upload[]'/></div>"+
+                      "<div class='form-group col-sm-6' align='center' id='xbutton'>"+
+                        "<button class='btn btn-danger' type='button' id='x_button"+counter+"' onclick='removeRow(this.id)'><i class='fa fa-close'></i></button>"+
+                      "</div>"+
+                    "</div>";
 
-        $("#row1").after(html_file);
-      });
+    $("#row1").after(html_file);
+  });
 
-      function removeRow(id)
-      {
-        if(id != "x_button1")
-        {
-          var res = id.substring(8,id.length);
-          $("#row"+res).remove();
-        }
-      }
+  function removeRow(id)
+  {
+    if(id != "x_button1")
+    {
+      var res = id.substring(8,id.length);
+      $("#row"+res).remove();
+    }
+  }
 </script>      
 </html>
 
