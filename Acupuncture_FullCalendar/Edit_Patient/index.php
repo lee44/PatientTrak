@@ -16,7 +16,6 @@ else
   $customer_id = $_SESSION['customer_id'];
 }
 
-
 //Patient Info
 $sql =
 "SELECT P.customer_id,P.first_name,P.last_name,P.address,P.city,P.state,P.zip,P.phone_number,P.email,P.ssn,P.license,P.birthday,P.sex,
@@ -281,7 +280,7 @@ $(document).ready(function ()
         data: fd,
         contentType: false,
         processData: false,
-        success: function (response) {success_Alert();},
+        success: function (response) {alert_Success();},
         error: function () {}
       });
   }
@@ -328,7 +327,7 @@ $(document).ready(function ()
       $("#row"+res).remove();
     }
   }
-  function success_Alert()
+  function alert_Success()
   {
     $("h1").before('<div id="alertBox" class="container"><div id="alertBoxText" class="alert alert-success"><strong>Patient Information Updated!!!</strong></div>');
     $('#alertBox').fadeOut(2200);

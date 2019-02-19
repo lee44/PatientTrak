@@ -65,7 +65,7 @@ for( $i=0 ; $i < $total ; $i++ )
 
 mysqli_close($link);
 
-header("refresh:1;url= http://192.168.1.113:5555/Find_Patient/index.php");
-//header("refresh:1;url= http://192.168.1.113:4444/Find_Patient/index.php");
+//header("refresh:1;url= http://192.168.1.113:5555/Find_Patient/index.php");
+header("refresh:1;url= http://192.168.1.113:4444/Find_Patient/index.php");
 exit();
 ?>

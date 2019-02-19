@@ -43,7 +43,6 @@ for($i = 0; $i < count($_POST['payment']); $i++)
     WHERE customer_id = '$customer_id' AND charge_id = '".$_POST['charge_id']."'";
 	mysqli_query($link, $sql);
 }
-
-header("refresh:1;url= http://192.168.1.136:5555/Edit_Patient/index.php");
 mysqli_close($link);
+header("refresh:1;url= http://192.168.1.136:5555/Edit_Patient/index.php");
 ?>
