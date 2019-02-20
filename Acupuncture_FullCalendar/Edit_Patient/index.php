@@ -34,7 +34,7 @@ while($f = mysqli_fetch_array($result))
   array_push($files,$f['file_name']);
 
 //Patient Payments
-$sql2 = "SELECT * FROM payments AS P INNER JOIN charges AS C ON P.charge_id = C.charge_id WHERE P.customer_id = '$customer_id'";
+$sql2 = "SELECT * FROM payments AS P WHERE P.customer_id = '$customer_id'";
 $result2 = mysqli_query($link,$sql2);
 
 mysqli_close($link);
@@ -235,10 +235,8 @@ $(document).ready(function ()
                   <tr>
                       <th>Date Created</th>
                       <th>Payment Type</th>
-                      <th>Total Payment</th>
-                      <th>Price</th>
-                      <th>Co Pay</th>
-                      <th>Taxes</th>
+                      <th>Payment</th>
+                      <th>Balance</th>
                       <th>Payment Notes</th>
                       <th>Edit?</th>
                   </tr>
@@ -251,10 +249,8 @@ $(document).ready(function ()
                    <tr>
                    <td>'.date_format(new DateTime($payments['payment_created_at']),"m/d/Y").'</td>
                    <td>'.$payments['payment_type'].'</td>
-                   <td>$'.$payments['total_payment'].'</td>
-                   <td>$'.$payments['total_charge'].'</td>
-                   <td>$'.$payments['co_pay'].'</td>
-                   <td>$'.$payments['tax'].'</td>
+                   <td>$'.$payments['payment'].'</td>
+                   <td>$'.$payments['balance'].'</td>
                    <td>'.$payments['payment_note'].'</td>
                    <td><form action="/Payments/Edit_Payment/index.php" method="POST">
                         <input type="hidden" name="charge_id" value="'.$payments['charge_id'].'"/>
