@@ -36,6 +36,8 @@ for($i = 0; $i < count($_POST['payment']); $i++)
 
 $customer_id = mysqli_insert_id($link);
 
-header("refresh:1;url= http://192.168.1.136:5555/Find_Patient/index.php");
 mysqli_close($link);
+
+//header("refresh:1;url= http://192.168.1.113:5555/Find_Patient/index.php");
+header("refresh:1;url= http://192.168.1.113:4444/Find_Patient/index.php");
 ?>

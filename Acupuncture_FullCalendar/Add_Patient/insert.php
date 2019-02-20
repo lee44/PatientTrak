@@ -57,7 +57,8 @@ for( $i=0 ; $i < $total ; $i++ )
 	    	echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 	}
 }
-//header("refresh:1;url= http://192.168.1.136:4444/Add_Patient/index.php");
+//header("refresh:1;url= http://192.168.1.113:5555/Add_Patient/index.php");
+header("refresh:1;url= http://192.168.1.113:4444/Add_Patient/index.php");
 
 mysqli_close($link);
 ?>

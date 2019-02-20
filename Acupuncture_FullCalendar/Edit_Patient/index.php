@@ -258,7 +258,8 @@ $(document).ready(function ()
                    <td>'.$payments['payment_note'].'</td>
                    <td><form action="/Payments/Edit_Payment/index.php" method="POST">
                         <input type="hidden" name="charge_id" value="'.$payments['charge_id'].'"/>
-                        <input type="submit" name="edit" value="Edit" /></form>
+                        <input type="submit" name="edit" value="Edit"
+                         /></form>
                    </td>
                    </tr>';
               }
@@ -280,7 +281,12 @@ $(document).ready(function ()
         data: fd,
         contentType: false,
         processData: false,
-        success: function (response) {alert_Success();},
+        success: function (response) 
+        {
+          alert_Success();
+          // alert("You will now be redirected.");
+          // window.location = "http://192.168.1.136:5555";
+        },
         error: function () {}
       });
   }

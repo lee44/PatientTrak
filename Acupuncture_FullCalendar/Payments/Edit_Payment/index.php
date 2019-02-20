@@ -19,6 +19,8 @@ $sql2 = "SELECT * FROM payments WHERE customer_id = '$customer_id' AND charge_id
 $result2 = mysqli_query($link,$sql2);
 $payments = mysqli_fetch_array($result2);
 
+$_SESSION['charge_id'] = $payments['charge_id'];
+
 mysqli_close($link);
 ?>
 
@@ -91,7 +93,7 @@ mysqli_close($link);
 
 <h1>Charges and Payments</h1>
     <div class="container">
-        <form form name = "form1" action="update_payment.php" method = "POST" enctype = "multipart/form-data" >
+        <form form name = "form1" action="delete_update_payment.php" method = "POST" enctype = "multipart/form-data" >
             <?php echo '<input type="hidden" name="charge_id" value="'.$_POST['charge_id'].'"/>';?>
             <table class="table table-bordered">
                 <thead>
@@ -188,9 +190,9 @@ mysqli_close($link);
                 </tbody>
             </table>
             <div class="form-row">
-                <div class="form-group col-3"></div>
-                <div class="form-group col-6"><input type="submit" class="btn btn-info btn-block" value="Submit"></div>
-                <div class="form-group col-3"></div>
+                <div class="form-group col-3"><input type="submit" class="btn btn-danger btn-block" name="submit_Delete" value="Delete" onclick="return confirm('Are you sure you want to delete?');"></div>
+                <div class="form-group col-6"></div>
+                <div class="form-group col-3"><input type="submit" class="btn btn-info btn-block" name="submit_Update" value="Update"></div>
             </div> 
         </form>
     </div>
