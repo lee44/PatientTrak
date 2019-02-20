@@ -11,15 +11,14 @@ $total_charge = trim($_POST['total_charge'],'$');
 $subtotal = trim($_POST['subtotal'],'$');
 $balance = trim($_POST['balance'],'$');
 $total_payment = trim($_POST['total_payment'],'$');
-$co_pay = $_POST['co_pay'];
-$tax = $_POST['tax'];
 
-if(empty($co_pay)) $co_pay = 0.00;
-if(empty($tax)) $tax = 0.00;
+if(empty($_POST['co_pay'])) $co_pay = 0.00; else $co_pay = $_POST['co_pay'];
+if(empty($_POST['tax'])) $tax = 0.00; else $tax = $_POST['tax'];
 
 $charge_id = uniqid();
 for($i = 0; $i < count($_POST['charge']); $i++)
 {
+	//print_r($sql."\n");
 	$sql = "INSERT INTO charges (charge_description,total_charge,charge,subtotal,co_pay,tax,customer_id,charge_note,charge_created_at,charge_id) 
 	VALUES ('".$_POST['charge_description'][$i]."','$total_charge','".$_POST['charge'][$i]."','$subtotal','$co_pay','$tax','$customer_id',
 		    '".$_POST['charge_note'][$i]."','".$_POST['created_at'][$i]."','$charge_id')";
@@ -33,11 +32,8 @@ for($i = 0; $i < count($_POST['payment']); $i++)
 		    '".$_POST['payment_note'][$i]."','".$_POST['payment_created_at'][$i]."','$charge_id','$balance')";
 	mysqli_query($link, $sql);
 }
-
-$customer_id = mysqli_insert_id($link);
-
 mysqli_close($link);
 
-//header("refresh:1;url= http://192.168.1.113:5555/Find_Patient/index.php");
-header("refresh:1;url= http://192.168.1.113:4444/Find_Patient/index.php");
+//header("refresh:1;url= http://192.168.1.113:5555/Edit_Patient/index.php");
+header("refresh:1;url= http://192.168.1.113:4444/Edit_Patient/index.php");
 ?>
