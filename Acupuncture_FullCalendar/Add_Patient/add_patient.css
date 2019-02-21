@@ -2,3 +2,20 @@
 {  
   margin: 0rem 0rem 0rem .3rem;
 }
+#radio
+{
+	margin-top: 8px;
+}
+input[type="submit"] { margin: 1rem 0rem 2.5rem 0; font-size:1.1em; }
+
+#patientInfo
+{
+	border: 2px solid red;
+	padding: 10px; 
+	border-radius: 25px;
+}
+#fileUpload
+{
+	border: 1.5px solid grey;
+	border-radius: 25px;
+}

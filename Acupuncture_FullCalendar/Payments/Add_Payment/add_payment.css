@@ -33,17 +33,4 @@ table { margin-bottom: 0px !important;}
 
 input[type = "number"]{	text-align: center; }
 
-input[type=date]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    display: none;
-}
-input[type=date]{
-	text-align: center !important;
-}
-
-input[type=date]::-webkit-calendar-picker-indicator {
-    -webkit-appearance: none;
-    display: none;
-}
-
 td { padding:6px 6px !important;}

@@ -126,8 +126,8 @@
                 </thead>
                 <tbody>
                     <tr class="d-flex" id="payment_row1">
-                        <td class="col-3"><input type="date"   class="form-control"        name="payment_created_at[]" required></td>
-                        <td class="col-3"><input type="text"   class="form-control"        name="payment_type[]" maxlength="11" required></td>
+                        <td class="col-3"><input type="date" class="form-control" name="payment_created_at[]" required></td>
+                        <td class="col-3"><input type="text" class="form-control" name="payment_type[]" maxlength="11" required/></td>
                         <td class="col-2"><input type="number" id="payment" class="form-control charge" name="payment[]" step="any" min="0" max="1000" required></td>
                         <td class="col-4"><input type="text"   class="form-control"        name="payment_note[]"></td>
                     </tr>                   

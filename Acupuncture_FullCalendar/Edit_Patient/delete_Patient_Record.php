@@ -20,7 +20,7 @@ mysqli_query($link, $sql4);
 
 mysqli_close($link);
 
-//header("refresh:1;url= http://192.168.1.113:5555/Find_Patient/index.php");
+//header("refresh:1;url= http://192.168.1.136:5555/Find_Patient/index.php");
 header("refresh:1;url= http://192.168.1.113:4444/Find_Patient/index.php");
 exit();
 ?>

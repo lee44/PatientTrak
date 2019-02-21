@@ -34,6 +34,6 @@ for($i = 0; $i < count($_POST['payment']); $i++)
 }
 mysqli_close($link);
 
-header("refresh:1;url= http://192.168.1.113:5555/Edit_Patient/index.php");
-//header("refresh:1;url= http://192.168.1.113:4444/Edit_Patient/index.php");
+//header("refresh:1;url= http://192.168.1.136:5555/Edit_Patient/index.php");
+header("refresh:1;url= http://192.168.1.113:4444/Edit_Patient/index.php");
 ?>
