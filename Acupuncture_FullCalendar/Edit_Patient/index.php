@@ -58,6 +58,7 @@ $(document).ready(function ()
 {
   $("#phone").inputmask({"mask": "(999) 999-9999"});
   $("#ssn").inputmask({"mask": "999-99-9999"});
+  $("#x_button1").on('click', function() {  $("#file1").val(''); });
 });
 </script>          
 </head>    
@@ -188,12 +189,12 @@ $(document).ready(function ()
           {  
             echo '<h4>Current Files:</h4>';
             for($i = 0; $i < count($files); $i++)
-              echo '<div class="form-row" id = "r'.$i.'">
+              echo '<div class="form-row" id = "r'.($i+2).'">
                       <div class="form-group col-sm-4">
                         <a style="font-size:17px;" href = "http://192.168.1.113:4444/Add_Patient/Uploads/'.$files[$i].'">'.$files[$i].'</a>
                       </div>
                       <div class="form-group col-sm-8" align="left">
-                        <button class="btn btn-danger" type="button" id="x_button'.$i.'" value="'.$files[$i].'" onclick="deleteFile(this.id,this.value)"><i class="fa fa-close"></i></button>
+                        <button class="btn btn-danger" type="button" id="x_button'.($i+2).'" value="'.$files[$i].'" onclick="deleteFile(this.id,this.value)"><i class="fa fa-close"></i></button>
                       </div>
                     </div>';
           }
@@ -203,7 +204,7 @@ $(document).ready(function ()
             <div class="form-group col-xs-6">
               <div class="form-row" id = "row1">
                 <div class="form-group col-xs-6">
-                  <input type="file" name="upload[]">
+                  <input type="file" name="upload[]" id="file1">
                 </div>
                 <div class="form-group col-xs-6" align="center" id="xbutton">
                   <button class="btn btn-danger" type="button" id="x_button1" onclick="removeRow(this.id)"><i class="fa fa-close"></i></button>
@@ -225,7 +226,7 @@ $(document).ready(function ()
       <form action="/Payments/Add_Payment/index.php" method="POST">
         <div class="form-row">
             <div class="form-group col-md-8"></div>
-            <div class="form-group col-md-4"><input type="submit" class="btn btn-info float-right" value="Add">
+            <div class="form-group col-md-4"><input type="submit" class="btn btn-primary float-right" value="Add">
         </div>
       </form>
       
@@ -254,7 +255,7 @@ $(document).ready(function ()
                    <td>'.$payments['payment_note'].'</td>
                    <td><form action="/Payments/Edit_Payment/index.php" method="POST">
                         <input type="hidden" name="charge_id" value="'.$payments['charge_id'].'"/>
-                        <input type="submit" name="edit" value="Edit"
+                        <input type="submit" class="btn btn-info name="edit" value="Edit"
                          /></form>
                    </td>
                    </tr>';
@@ -293,7 +294,7 @@ $(document).ready(function ()
     if(r == true)
     {
       var res = id.substring(8,id.length);
-      $("#"+id).parents("#r"+res).remove();
+      $("#r"+res).remove();
       
       var customer_id = $("#customer_id").val();
       $.ajax(

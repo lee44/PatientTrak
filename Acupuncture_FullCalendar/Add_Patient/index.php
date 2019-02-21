@@ -18,6 +18,7 @@
     {
       $("#phone").inputmask({"mask": "(999) 999-9999"});
       $("#ssn").inputmask({"mask": "999-99-9999"});
+      $("#x_button1").on('click', function() {  $("#file1").val(''); });
     });
     </script>   
 
@@ -134,7 +135,7 @@
               <div class="form-group col-xs-6">
                 <div class="form-row" id = "row1">
                   <div class="form-group col-xs-6">
-                    <input type="file" name="upload[]">
+                    <input type="file" name="upload[]" id="file1">
                   </div>
                   <div class="form-group col-xs-6" align="center">
                     <button class="btn btn-danger" type="button" id="x_button1" onclick="removeRow(this.id)"><i class="fa fa-close"></i></button>
