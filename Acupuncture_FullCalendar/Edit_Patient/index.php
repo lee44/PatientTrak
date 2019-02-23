@@ -1,5 +1,8 @@
 <?php
-header("Cache-Control: no cache");
+// Cache-control is an HTTP header used to specify browser caching policies in both client requests and server responses. In our project, the caching policies are for server responses.
+//Cache-Control: no cache tells the browser it may cache a response, but must first submit a validation request to an origin server
+//header("Cache-Control: no cache");
+// private_no_expire' mode permits the client to cache the response contents(the patient information) and the client will not receive the expired header. All resources stored in cache have two states: fresh or stale. These resources have a expiration time so before expiration time the resource is fresh and after it is stale. The expiration time can be set by three ways: "Cache-control: max-age=some number", expire headers, or last-modified header.
 session_cache_limiter("private_no_expire");
 session_start();
 
@@ -17,6 +20,7 @@ else
 {
   $customer_id = $_SESSION['customer_id'];
 }
+//var_dump($customer_id);
 
 //Patient Info
 $sql =

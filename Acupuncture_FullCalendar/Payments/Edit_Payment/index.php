@@ -1,4 +1,5 @@
 <?php
+session_cache_limiter("private_no_expire");
 session_start();
 
 $link = mysqli_connect("localhost", "root", "", "acupuncture");
@@ -25,7 +26,8 @@ $payments = [];
 while($payments_array = mysqli_fetch_array($result2,MYSQLI_ASSOC))
     array_push($payments, $payments_array);
 
-//var_dump($payments);
+// var_dump($charges);
+// var_dump($payments);
 
 $_SESSION['charge_id'] = $payments[0]['charge_id'];
 
