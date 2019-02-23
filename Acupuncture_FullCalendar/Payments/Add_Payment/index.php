@@ -68,6 +68,11 @@
 <h1>Charges and Payments</h1>
     <div class="container">
         <form form name = "form1" action="insert_payment.php" method = "POST" enctype = "multipart/form-data" >
+            <div class="form-row">
+              <div class="form-group col-md-4"><input type="button" class="btn btn-info" value="Go Back" onclick="previousPage()"></div>
+              <div class="form-group col-md-4"></div>
+              <div class="form-group col-md-4"></div>
+            </div>
             <table class="table table-bordered">
                 <thead>
                     <tr class="d-flex">
@@ -153,7 +158,7 @@
             </table>
             <div class="form-row">
                 <div class="form-group col-3"></div>
-                <div class="form-group col-6"><input type="submit" class="btn btn-info btn-block" value="Submit"></div>
+                <div class="form-group col-6"><input type="submit" class="btn btn-success btn-block" value="Submit"></div>
                 <div class="form-group col-3"></div>
             </div> 
         </form>
@@ -217,6 +222,10 @@
                                 '<td class="col-4"><input type="text"   class="form-control"        name="payment_note[]"></td>'+
                                 '</tr>');
         addKeyUpHandlers();
+    }
+    function previousPage()
+    {
+        window.location = "http://192.168.1.136:5555/Edit_Patient/index.php";
     }
     </script>   
 </html>    
