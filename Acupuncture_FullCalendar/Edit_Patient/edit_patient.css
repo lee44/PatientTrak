@@ -28,3 +28,7 @@ h3 { text-align: center; margin-top: 5px; }
 {  
   margin: 0rem 0rem 0rem 5rem;
 }
+.mx-auto {
+ margin-right: auto !important;
+ margin-left: auto !important;
+}

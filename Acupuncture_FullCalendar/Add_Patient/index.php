@@ -132,17 +132,17 @@
 
           <div class = 'container' >
             <div class="form-row">
-              <div class="form-group col-xs-6">
+              <div class="form-group col-sm-6">
                 <div class="form-row" id = "row1">
-                  <div class="form-group col-xs-6">
+                  <div class="form-group col-sm-6">
                     <input type="file" name="upload[]" id="file1">
                   </div>
-                  <div class="form-group col-xs-6" align="center">
+                  <div class="form-group col-sm-6 text-center">
                     <button class="btn btn-danger" type="button" id="x_button1" onclick="removeRow(this.id)"><i class="fa fa-close"></i></button>
                   </div>
                 </div>
               </div>
-              <div class="form-group col-xs-6">
+              <div class="form-group col-sm-6 mx-auto">
                 <button class="btn add_more btn-primary" type="button">Add More Files</button>
               </div>
             </div>
@@ -163,9 +163,9 @@
         counter++;
         var row_id = "#row"+counter;
         var html_file = "<div class='form-row' id = row"+counter+">"+
-                          "<div class='form-group col-xs-6'>"+
+                          "<div class='form-group col-sm-6'>"+
                             "<input type='file' name='upload[]'/></div>"+
-                          "<div class='form-group col-xs-6' align='center'>"+
+                          "<div class='form-group col-sm-6 text-center'>"+
                             "<button class='btn btn-danger' type='button' id='x_button"+counter+"' onclick='removeRow(this.id)'><i class='fa fa-close'></i></button>"+
                           "</div>"+
                         "</div>";
