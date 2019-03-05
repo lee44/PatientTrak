@@ -90,9 +90,9 @@ $(document).ready(function ()
       <form id="patient_form" action="delete_Patient_Record.php" method="post" enctype="multipart/form-data">
       
         <div class="form-row">
-          <div class="form-group col-md-4"><input type="button" class="btn btn-info" value="Update" onclick="update_Patient()"></div>
-          <div class="form-group col-md-4"></div>
-          <div class="form-group col-md-4"><input type="submit" class="btn btn-danger float-right" value="Delete"></div>
+          <div class="form-group col-4"><input type="button" class="btn btn-info" value="Update" onclick="update_Patient()"></div>
+          <div class="form-group col-4"></div>
+          <div class="form-group col-4"><input type="submit" class="btn btn-danger float-right" value="Delete"></div>
         </div>
         
         <div class="form-row">
@@ -196,10 +196,10 @@ $(document).ready(function ()
             echo '<h4>Current Files:</h4>';
             for($i = 0; $i < count($files); $i++)
               echo '<div class="form-row" id = "r'.($i+2).'">
-                      <div class="form-group col-sm-4">
+                      <div class="form-group col-10">
                         <a style="font-size:17px;" href = "http://192.168.1.113:4444/Add_Patient/Uploads/'.$files[$i].'">'.$files[$i].'</a>
                       </div>
-                      <div class="form-group col-sm-8" align="left">
+                      <div class="form-group col-2 text-right">
                         <button class="btn btn-danger" type="button" id="x_button'.($i+2).'" value="'.$files[$i].'" onclick="deleteFile(this.id,this.value)"><i class="fa fa-close"></i></button>
                       </div>
                     </div>';
@@ -209,15 +209,15 @@ $(document).ready(function ()
           <div class="form-row">
             <div class="form-group col-sm-6">
               <div class="form-row" id = "row1">
-                <div class="form-group col-sm-6">
+                <div class="form-group col-10">
                   <input type="file" name="upload[]" id="file1">
                 </div>
-                <div class="form-group col-sm-6 text-center" id="xbutton">
+                <div class="form-group col-2 text-right" id="xbutton">
                   <button class="btn btn-danger" type="button" id="x_button1" onclick="removeRow(this.id)"><i class="fa fa-close"></i></button>
                 </div>
               </div>
             </div>
-            <div class="form-group col-sm-6 mx-auto">
+            <div class="form-group col-sm-6 text-center">
               <button class="btn add_more btn-primary" type="button">Add More Files</button>
             </div>
           </div>
@@ -319,9 +319,9 @@ $(document).ready(function ()
     counter++;
     var row_id = "#row"+counter;
     var html_file = "<div class='form-row' id = row"+counter+">"+
-                      "<div class='form-group col-sm-6'>"+
+                      "<div class='form-group col-10'>"+
                         "<input type='file' name='upload[]'/></div>"+
-                      "<div class='form-group col-sm-6 text-center' id='xbutton'>"+
+                      "<div class='form-group col-2 text-right' id='xbutton'>"+
                         "<button class='btn btn-danger' type='button' id='x_button"+counter+"' onclick='removeRow(this.id)'><i class='fa fa-close'></i></button>"+
                       "</div>"+
                     "</div>";
