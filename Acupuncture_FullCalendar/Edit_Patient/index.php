@@ -196,12 +196,17 @@ $(document).ready(function ()
             echo '<h4>Current Files:</h4>';
             for($i = 0; $i < count($files); $i++)
               echo '<div class="form-row" id = "r'.($i+2).'">
-                      <div class="form-group col-10">
-                        <a style="font-size:17px;" href = "http://192.168.1.113:4444/Add_Patient/Uploads/'.$files[$i].'">'.$files[$i].'</a>
+                      <div class="form-group col-sm-6" id="current_files">
+                        <div class="form-row">
+                          <div class="form-group col-10">
+                            <a style="font-size:17px;" href = "http://192.168.1.113:4444/Add_Patient/Uploads/'.$files[$i].'">'.$files[$i].'</a>
+                          </div>
+                          <div class="form-group col-2 text-right" id="xbutton">
+                            <button class="btn btn-danger" type="button" id="x_button'.($i+2).'" value="'.$files[$i].'" onclick="deleteFile(this.id,this.value)"><i class="fa fa-close"></i></button>
+                          </div>
+                        </div>
                       </div>
-                      <div class="form-group col-2 text-right">
-                        <button class="btn btn-danger" type="button" id="x_button'.($i+2).'" value="'.$files[$i].'" onclick="deleteFile(this.id,this.value)"><i class="fa fa-close"></i></button>
-                      </div>
+                      <div class="form-group col-sm-6"></div>
                     </div>';
           }
           ?>
