@@ -130,24 +130,22 @@
         <div class = 'uploadFile'>    
           <h2>Upload File</h2>
 
-          <div class = 'container' >
-            <div class="form-row">
-              <div class="form-group col-sm-6">
-                <div class="form-row" id = "row1">
-                  <div class="form-group col-sm-6">
-                    <input type="file" name="upload[]" id="file1">
-                  </div>
-                  <div class="form-group col-sm-6 text-center">
-                    <button class="btn btn-danger" type="button" id="x_button1" onclick="removeRow(this.id)"><i class="fa fa-close"></i></button>
-                  </div>
+          <div class="form-row">
+            <div class="form-group col-sm-6">
+              <div class="form-row" id = "row1">
+                <div class="form-group col-10">
+                  <input type="file" name="upload[]" id="file1"> 
+                </div>
+                <div class="form-group col-2 text-right">
+                  <button class="btn btn-danger" type="button" id="x_button1" onclick="removeRow(this.id)"><i class="fa fa-close"></i></button>
                 </div>
               </div>
-              <div class="form-group col-sm-6 mx-auto">
-                <button class="btn add_more btn-primary" type="button">Add More Files</button>
-              </div>
+            </div>
+            <div class="form-group col-sm-6 text-center">
+              <button class="btn add_more btn-primary" type="button">Add More Files</button>
             </div>
           </div>
-
+          
           <h4>Notes:</h4> 
           <textarea name="notes" value="" rows='4' cols='40'></textarea>
         </div>
@@ -157,29 +155,29 @@
     </body>  
 
     <script type="text/javascript">
-      var counter = 1;
-      $('.add_more').click(function(e)
-      {
-        counter++;
-        var row_id = "#row"+counter;
-        var html_file = "<div class='form-row' id = row"+counter+">"+
-                          "<div class='form-group col-sm-6'>"+
-                            "<input type='file' name='upload[]'/></div>"+
-                          "<div class='form-group col-sm-6 text-center'>"+
-                            "<button class='btn btn-danger' type='button' id='x_button"+counter+"' onclick='removeRow(this.id)'><i class='fa fa-close'></i></button>"+
-                          "</div>"+
-                        "</div>";
+    var counter = 1;
+    $('.add_more').click(function(e)
+    {
+      counter++;
+      var row_id = "#row"+counter;
+      var html_file = "<div class='form-row' id = row"+counter+">"+
+                        "<div class='form-group col-10'>"+
+                          "<input type='file' name='upload[]'/></div>"+
+                        "<div class='form-group col-2 text-right'>"+
+                          "<button class='btn btn-danger' type='button' id='x_button"+counter+"' onclick='removeRow(this.id)'><i class='fa fa-close'></i></button>"+
+                        "</div>"+
+                      "</div>";
 
-        $("#row1").after(html_file);
-      });
+      $("#row1").after(html_file);
+    });
 
-      function removeRow(id)
+    function removeRow(id)
+    {
+      if(id != "x_button1")
       {
-        if(id != "x_button1")
-        {
-          var res = id.substring(8,id.length);
-          $("#row"+res).remove();
-        }
+        var res = id.substring(8,id.length);
+        $("#row"+res).remove();
       }
+    }
     </script>  
 </html>    
