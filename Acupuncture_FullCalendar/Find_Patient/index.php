@@ -11,6 +11,7 @@
     <script src='/lib/popper.min.js'></script>
     <script src='/lib/bootstrap.min.js'></script> 
     <script src='/lib/jquery.min.js'></script>
+    <script src='/lib/moment.min.js'></script>
     <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js'></script>
     <script>
     $(document).ready(function () 
@@ -39,7 +40,7 @@
 
     <h1>Find Patient Information</h1>
     <div class="container">
-        <form form name = "form1" action="" method = "post" enctype = "multipart/form-data" >
+        <form form name = "form1" action="" method = "post" enctype = "multipart/form-data" id="patient_form">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="first_name">First Name</label>
@@ -70,83 +71,75 @@
                 <input type="text" class="form-control" name="ssn" id="ssn" placeholder="SSN" value = "">
               </div>
             </div>
-            <input type="submit" class="btn btn-info btn-block" value="Search" name="submit">                              
+            <input type="button" class="btn btn-info btn-block" value="Search" onclick="find_Patient()">                              
         </form>
     </div>
     <div class="container-fluid"> 
-    <?php
-        if(isset($_POST['submit']))
-        {
-            /* Attempt MySQL server connection.  */
-            $link = mysqli_connect("localhost", "root", "", "acupuncture");
-             
-            // Check connection
-            if($link === false){
-                die("ERROR: Could not connect. " . mysqli_connect_error());
-            }
-            
-            $first_name = $_POST['first_name'];
-            $last_name = $_POST['last_name'];
-            $email = $_POST['email'];
-            $license = $_POST['license'];
-            $phone_number = $_POST['number'];
-            $ssn = $_POST['ssn'];
+      <div class="table-responsive">
+        <table class = "table table-striped">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Number</th>
+                    <th>Email</th>
+                    <th>SSN</th>
+                    <th>License</th>
+                    <th>Birthday</th>
+                    <th>View?</th>
+                </tr>
+            </thead>
+            <tbody id="result">
 
-            $sql = "SELECT * 
-                    FROM patients 
-                    WHERE first_name = '$first_name' OR last_name = '$last_name' OR email = '$email' OR license = '$license' OR
-                    phone_number = '$phone_number' OR ssn = '$ssn'";
-
-            $result = mysqli_query($link,$sql); 
-            echo '
-            <div class="table-responsive">
-                <table class = "table table-striped">
-                    <thead>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Address</th>
-                            <th>City</th>
-                            <th>State</th>
-                            <th>Zip</th>
-                            <th>Number</th>
-                            <th>Email</th>
-                            <th>SSN</th>
-                            <th>License</th>
-                            <th>Birthday</th>
-                            <th>View?</th>
-                        </tr>
-                    </thead>';
-
-            while ($patients = mysqli_fetch_array($result)) 
-            {
-                echo 
-                '<tbody>
-                 <tr>
-                 <td>'.$patients['first_name'].'</td>
-                 <td>'.$patients['last_name'].'</td>
-                 <td>'.$patients['address'].'</td>
-                 <td>'.$patients['city'].'</td>
-                 <td>'.$patients['state'].'</td>
-                 <td>'.$patients['zip'].'</td>
-                 <td>'.$patients['phone_number'].'</td>
-                 <td>'.$patients['email'].'</td>
-                 <td>'.$patients['ssn'].'</td>
-                 <td>'.$patients['license'].'</td>
-                 <td>'.date_format(new DateTime($patients['birthday']),"m/d/Y").'</td>
-                 <td><form action="/Edit_Patient/index.php" method="POST">
-                      <input type="hidden" name="customer_id" value="'.$patients['customer_id'].'"/>
-                      <input type="submit" name="edit" value="View" /></form>
-                 </td>
-                 </tr>';
-            }
-                echo '</tbody>
-                      </table>
-                      </div>';
-            mysqli_close($link);
-        }
-    ?>    
+            </tbody>
+        </table>
+      </div>
     </div>
-    </body>    
-</html>    
+    </body>  
+    
+    <script type="text/javascript">
+    function find_Patient()
+    {
+      var fd = new FormData($('#patient_form')[0]);
+   
+      $.ajax(
+      {
+        type: 'POST',
+        url: 'find_patient.php',
+        data: fd,
+        contentType: false,
+        processData: false,
+        success: function (response) 
+        {
+          var data = JSON.parse(response);
 
+          for(var i = 0; i < data.length; i++)
+          {
+              var tr_str = '<tr><td>'+data[i].first_name+
+              '<td>'+data[i].last_name+'</td>'+
+              '<td>'+data[i].address+'</td>'+
+              '<td>'+data[i].city+'</td>'+
+              '<td>'+data[i].state+'</td>'+
+              '<td>'+data[i].zip+'</td>'+
+              '<td>'+data[i].phone_number+'</td>'+
+              '<td>'+data[i].email+'</td>'+
+              '<td>'+data[i].ssn+'</td>'+
+              '<td>'+data[i].license+'</td>'+
+              '<td>'+moment(data[i].birthday).format("MM/DD/YY")+'</td>'+
+              '<td><form action="/Edit_Patient/index.php" method="POST">'+
+                  '<input type="hidden" name="customer_id" value="'+data[i].customer_id+'"/>'+
+                  '<input type="submit" name="edit" value="View" /></form>'+
+              '</td>'
+              $("#result").append(tr_str);
+          } 
+        },
+        error: function () { console.log("Not Working");}
+      });
+    }    
+    </script>  
+
+</html>
