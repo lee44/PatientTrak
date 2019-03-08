@@ -291,9 +291,10 @@ $(document).ready(function ()
         processData: false,
         success: function (response) 
         {
-          alert_Success();
           // alert("You will now be redirected.");
           // window.location = "http://192.168.1.136:5555";
+          alert_Success();
+          
         },
         error: function () {}
       });

@@ -104,6 +104,7 @@
     <script type="text/javascript">
     function find_Patient()
     {
+      $("tbody").empty();
       var fd = new FormData($('#patient_form')[0]);
    
       $.ajax(
