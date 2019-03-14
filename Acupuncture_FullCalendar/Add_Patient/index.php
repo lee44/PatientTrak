@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link href='/lib/bootstrap.min.css' rel="stylesheet" />
+    <script src="draw.js"></script>
     <script src='/lib/jquery-3.3.1.slim.min.js'></script>
     <script src='/lib/popper.min.js'></script>
     <script src='/lib/bootstrap.min.js'></script>
     <script src='/lib/jquery.min.js'></script>
     <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js'></script>
+    
     <script>
     $(document).ready(function () 
     {
@@ -21,14 +23,16 @@
       $("#x_button1").on('click', function() {  $("#file1").val(''); });
     });
     </script>   
-
+    <style>
+     /*body { background-color: #ccc; }*/
+  </style>
 </head>    
     <body>        
     <nav class="navbar navbar-expand-lg navbar-light bglight">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
-            </button>
-
+      </button>
+      
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav justify-content-between">
           <li class="nav-item"><a class="nav-link" href="/index.php">Home</a></li>
@@ -144,14 +148,16 @@
             <div class="form-group col-sm-6 text-center">
               <button class="btn add_more btn-primary" type="button">Add More Files</button>
             </div>
-          </div>
-          
+          </div>          
           <h4>Notes:</h4> 
           <textarea name="notes" value="" rows='4' cols='40'></textarea>
         </div>
         <input type="submit" class="btn btn-success btn-block" value="Submit">      
       </form>
-    </div>
+      <!-- <button id="clear">clear</button><br> -->
+        <!-- <canvas id="main" width="300" height="300"></canvas> -->
+    </div>   
+
     </body>  
 
     <script type="text/javascript">
