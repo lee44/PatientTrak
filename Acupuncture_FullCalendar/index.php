@@ -168,7 +168,7 @@
       {
         contentHeight: $(window).height()*0.83,
         titleRangeSeparator: " - ",
-        minTime: "07:00:00", maxTime: "24:00:00",
+        minTime: "08:00:00", maxTime: "19:00:00",
         allDaySlot:false,
         editable: true,
         header: 
@@ -179,7 +179,7 @@
         },
         selectable: true,
         selectHelper: true,
-        longPressDelay:350,
+        longPressDelay:300,
 
         events: "events.php",
         
