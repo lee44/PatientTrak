@@ -49,19 +49,19 @@
 <!-- Appointment Modal Dialog -->
       <div id="dialog-form" title="Create Appointment">
         <form id = "appointmentForm">
-            <h3>Title</h3>
+            <h6>Title</h6>
             <input type="text" name="title" id="title" class="text ui-widget-content ui-corner-all">
-            <h3>Description</h3>
-            <textarea id = "description" form="usrform" class="text ui-widget-content ui-corner-all" rows="6" cols="37" style="resize:none"></textarea>
+            <h6>Description</h6>
+            <textarea id = "description" form="usrform" class="text ui-widget-content ui-corner-all" rows="3" cols="37" style="resize:none"></textarea>
          </form>
       </div>
 <!-- Edit/Delete Existing Modal Dialog -->
       <div id="dialog-form2" title="Edit/Delete Appointment">
         <form id = "edit_delete_appointmentForm">
-            <h3>Title</h3>
+            <h5>Title</h5>
             <input type="text" name="edit_delete_title" id="title2" class="text ui-widget-content ui-corner-all">
-            <h3>Description</h3>
-            <textarea id = "edit_delete_description" form="usrform" class="text ui-widget-content ui-corner-all" rows="6" cols="37" style="resize:none"></textarea>
+            <h5>Description</h5>
+            <textarea id = "edit_delete_description" form="usrform" class="text ui-widget-content ui-corner-all" rows="3" cols="37" style="resize:none"></textarea>
          </form>
       </div>
 		
@@ -77,8 +77,9 @@
       var dialog = j1121( "#dialog-form" ).dialog(
       {
         autoOpen: false,
-        height: 400,
+        height: 350,
         width: 350,
+        position: {my: "top middle",at: "top middle", of: "#navbarSupportedContent"},
         modal: true,
         buttons: 
         { 
@@ -114,8 +115,9 @@
       var dialog2 = j1121( "#dialog-form2" ).dialog(
       {
         autoOpen: false,
-        height: 400,
+        height: 350,
         width: 350,
+        position: {my: "top middle",at: "top middle", of: "#navbarSupportedContent"},
         modal: true,
         buttons: 
         { 
@@ -177,6 +179,7 @@
         },
         selectable: true,
         selectHelper: true,
+        longPressDelay:350,
 
         events: "events.php",
         
