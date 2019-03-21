@@ -179,7 +179,7 @@
         },
         selectable: true,
         selectHelper: true,
-        longPressDelay:300,
+        longPressDelay:290,
 
         events: "events.php",
         
