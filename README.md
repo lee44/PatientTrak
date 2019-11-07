@@ -11,7 +11,7 @@ PatientTrak is a patient management software that schedules appointments, record
 ![screencapture-192-168-1-128-5555-Table-Query-index-php-2019-11-06-21_08_14 Copy](https://user-images.githubusercontent.com/13184429/68418306-d91e3800-014c-11ea-9bfd-c5f63e023d3e.png)
 
 ## Features
-* Schedule events and attach notes to each event inside the calendar
+* Schedule events and attach notes inside the calendar
 * Store patient information and important documents
 * Search the database for patient's profile
 * Update or Delete patient information
