@@ -1,6 +1,6 @@
 # PatientTrak
 
-PatientTrak is a patient management software that schedules appointments, records patient information and payments, and generate reports 
+PatientTrak is a patient management software that schedules appointments, records patient information and payments, and generate reports using a WAMP server. 
 
 ## Screenshots
 ![screencapture-192-168-1-128-5555-index-php-2019-11-06-21_00_16 Copy](https://user-images.githubusercontent.com/13184429/68418309-d91e3800-014c-11ea-8112-5001de97ae59.png)
@@ -18,3 +18,12 @@ PatientTrak is a patient management software that schedules appointments, record
 * Store charges and payments for each patient
 * Generate reports
 * Display all patients stored in the database
+
+## Built With
+* HTML5
+* CSS
+* JavaScript
+* Bootstrap
+* Jquery
+* PHP
+* MySQL
